@@ -1,5 +1,4 @@
 local keymap = vim.keymap
-
 local opts = { noremap = true, silent = true }
 
 -- Directory Navigation
@@ -16,6 +15,10 @@ keymap.set("n", "<C-l>", "<C-w>l", opts) -- Navigate Right
 keymap.set("n", "<leader>sv", ":vsplit<CR>", opts) -- Split Vertically
 keymap.set("n", "<leader>sh", ":split<CR>", opts) -- Split Horizontally
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", opts) -- Toggle Minimize
+
+-- Exit on jj and jk
+keymap.set("i", "jj", "<ESC>", opts)
+keymap.set("i", "jk", "<ESC>", opts)
 
 -- Indenting
 keymap.set("v", "<", "<gv")
