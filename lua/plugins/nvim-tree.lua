@@ -8,6 +8,7 @@ return {
       },
       view = {
         adaptive_size = true,
+        side = 'right',
       }
     })
   end,
