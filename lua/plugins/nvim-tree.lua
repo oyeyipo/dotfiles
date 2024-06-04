@@ -1,15 +1,16 @@
 return {
-  "nvim-tree/nvim-tree.lua",
-  lazy = false,
-  config = function()
-    require('nvim-tree').setup({
-      filters = {
-        dotfiles = false,
-      },
-      view = {
-        adaptive_size = true,
-        side = 'right',
-      }
-    })
-  end,
+	"nvim-tree/nvim-tree.lua",
+	lazy = false,
+	config = function()
+		require("nvim-tree").setup({
+			filters = {
+				dotfiles = false,
+			},
+			view = {
+				adaptive_size = true,
+				-- side = "left",
+			},
+		})
+	end,
 }
+
