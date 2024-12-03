@@ -36,18 +36,16 @@ alias gbl="git blame"
 alias gps="git push"
 alias gpl="git pull"
 alias gpst="git push origin --tags"
-alias gb="git branch"
 alias gc="git commit"
-alias gd="git diff"
 alias gk="gitk --all&"
 alias gx="gitx --all"
+alias grmc="git rm -r --cached"  # Untrack Files without deleting them
+
+# Bash
 alias k="clear"
 
 # show ignored files by git
 alias gx="ign = ls-files -o -i --exclude-standard"
-
-# Untrack Files without deleting them
-alias grmc="git rm -r --cached"
 
 # --------- Python Django ----------------------------------
 alias pdtest="python manage.py test"
