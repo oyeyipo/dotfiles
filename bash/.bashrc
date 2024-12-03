@@ -43,10 +43,17 @@ alias gx="gitx --all"
 alias grmc="git rm -r --cached"  # Untrack Files without deleting them
 alias gx="ign = ls-files -o -i --exclude-standard"   # show ignored files by git
 
+# Neovim
+alias vim="nvim"
+alias n="nvim"
+
 # --------- Python Django ----------------------------------
 alias pdtest="python manage.py test"
 alias pdrun="python manage.py runserver"
 alias pdftest="python manage.py test functional_tests"
+
+# Env
+export PATH=$PATH:/home/wale/.local/bin
 
 # oh-my-posh setup
 # the following must be as the last line
