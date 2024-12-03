@@ -1,0 +1,7 @@
+[user]
+	email = olaclassik@gmail.com
+	name = Olawale Oyeyipo
+[pull]
+	rebase = true
+[init]
+	defaultbranch = main
