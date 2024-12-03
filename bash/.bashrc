@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 alias ll='ls -al'
 alias grep='grep --color=auto'
+alias k="clear"
 
 #-------------------------------------------------------------
 alias g="git status"
@@ -40,12 +41,7 @@ alias gc="git commit"
 alias gk="gitk --all&"
 alias gx="gitx --all"
 alias grmc="git rm -r --cached"  # Untrack Files without deleting them
-
-# Bash
-alias k="clear"
-
-# show ignored files by git
-alias gx="ign = ls-files -o -i --exclude-standard"
+alias gx="ign = ls-files -o -i --exclude-standard"   # show ignored files by git
 
 # --------- Python Django ----------------------------------
 alias pdtest="python manage.py test"
