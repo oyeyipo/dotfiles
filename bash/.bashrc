@@ -57,5 +57,5 @@ export PATH=$PATH:/home/wale/.local/bin
 
 # oh-my-posh setup
 # the following must be as the last line
-eval "$(oh-my-posh init bash --config ~/AppData/Local/Programs/oh-my-posh/themes/robbyrussell.omp.json)" # There is a POSH_THEMES_PATH env that could have been used
+eval "$(oh-my-posh init bash --config "$POSH_THEMES_PATH/robbyrussell.omp.json")"
 
