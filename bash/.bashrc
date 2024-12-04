@@ -106,9 +106,9 @@ PATH="$PATH:$HOME/bin"
 # Automatically do an ls after each cd
 cd() {
 	if [ -n "$1" ]; then
-		builtin cd "$@" && ls
+		builtin cd "$@" && ls -a
 	else
-		builtin cd ~ && ls
+		builtin cd ~ && ls -a
 	fi
 }
 
