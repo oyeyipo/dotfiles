@@ -52,10 +52,20 @@ alias pdtest="python manage.py test"
 alias pdrun="python manage.py runserver"
 alias pdftest="python manage.py test functional_tests"
 
-# Env
-export PATH=$PATH:/home/wale/.local/bin
+#######################################################
+# PATH
+#######################################################
 
+# This is so python/pip commands are available
+PATH="$PATH:$HOME/.local/bin"
+
+# This is where you put your hand rolled scripts (remember to chmod them)
+PATH="$PATH:$HOME/bin"
+
+#######################################################
 # oh-my-posh setup
+#######################################################
+
 # the following must be as the last line
 eval "$(oh-my-posh init bash --config "$POSH_THEMES_PATH/robbyrussell.omp.json")"
 
