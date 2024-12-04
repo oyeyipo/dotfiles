@@ -16,7 +16,7 @@ config.font_size = 9.0
 -- General settings
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
-config.pane_focus_follows_mouse = true
+config.pane_focus_follows_mouse = false
 config.window_background_opacity = 0.9
 
 -- Setting shell
