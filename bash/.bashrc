@@ -90,7 +90,7 @@ alias pdrun="python manage.py runserver"
 alias pdftest="python manage.py test functional_tests"
 
 #######################################################
-# PATH
+# PATHS
 #######################################################
 
 # This is so python/pip commands are available
@@ -98,6 +98,19 @@ PATH="$PATH:$HOME/.local/bin"
 
 # This is where you put your hand rolled scripts (remember to chmod them)
 PATH="$PATH:$HOME/bin"
+
+######################################################
+# FUNCTIONS
+######################################################
+
+# Automatically do an ls after each cd
+cd() {
+	if [ -n "$1" ]; then
+		builtin cd "$@" && ls
+	else
+		builtin cd ~ && ls
+	fi
+}
 
 #######################################################
 # oh-my-posh setup
