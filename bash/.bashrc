@@ -10,6 +10,19 @@ alias ll='ls -al'
 alias grep='grep --color=auto'
 alias k="clear"
 
+#######################################################
+# GENERAL
+#######################################################
+
+iatest=$(expr index "$-" i)
+
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
+
+# Show auto-completion list automatically, without double tab
+if [[ $iatest > 0 ]]; then bind "set show-all-if-unmodified On"; fi
+
 #-------------------------------------------------------------
 alias g="git status"
 alias gu="git status -u"
