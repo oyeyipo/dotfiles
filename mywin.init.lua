@@ -13,7 +13,6 @@ g.maplocalleader = ' '
 -- Nerd Font
 g.have_nerd_font = true
 
-
 -- [[ Setting options ]]
 opt.number = true
 opt.relativenumber = true	-- To help with jumping
@@ -67,7 +66,6 @@ opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 10
-
 
 -- [[ disregard the followings below‼ PICK UP AT -> [[ Basic Keymaps ]] ]]
 
