@@ -1,7 +1,29 @@
 [user]
 	email = olaclassik@gmail.com
 	name = Olawale Oyeyipo
+
+[alias]
+	# Remove branches which have been deleted from remote
+	prune = fetch --prune
+
+	# undo last commit but keep staging
+	undo = reset --soft HEAD^
+  
+	# stash absolutely everything right now
+	stash-all = stash save --include-untracked
+
+	# easier to read log
+	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
 [pull]
 	rebase = true
+	
 [init]
 	defaultbranch = main
+
+[merge]
+	# show original change, incoming change, and unchanged
+	conflictstyle = diff3
+
+[branch]
+	autosetuprebase = always
