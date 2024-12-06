@@ -240,7 +240,7 @@ end)
 config.unix_domains = {
 	{
 		name = 'unix',
-		skip_permissions_check = true,
+		skip_permissions_check = false,
 	},
 }
 
