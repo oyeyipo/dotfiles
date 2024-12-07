@@ -1,8 +1,3 @@
--- This is my current init.lua that is being used in my windows 10
--- It was created from kickstart.nvim and I like it. Because it 
--- solves the slow opening of neovim text editor for me.
--- Use it as the base for your full blown neovim config.
-
 local opt = vim.opt
 local g = vim.g
 
@@ -21,7 +16,7 @@ opt.relativenumber = true	-- To help with jumping
 opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-opt.showmode = false
+opt.showmode = true
 
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
