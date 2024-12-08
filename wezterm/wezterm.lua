@@ -3,7 +3,7 @@ local wezterm 		= require("wezterm")
 
 -- Variable declarations
 local act 		= wezterm.action
-local mux 		= wezterm.mux
+-- local mux 		= wezterm.mux
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -123,7 +123,7 @@ config.keys = {
 		key = "r",
 		action = wezterm.action.ActivateKeyTable { name = "resize_pane", one_shot = false },
 	},
-	-- Attach to muxer
+	--[[-- Attach to muxer
 	{
 		mods = "LEADER",
 		key = "a",
@@ -165,7 +165,7 @@ config.keys = {
 		key = "s",
 		action = act.ShowLauncherArgs { flags = "WORKSPACES" },
 	},
-	-- use < and > for navigation workspaces prev and next
+	--]]
 }
 
 for i = 1, 9 do
@@ -235,20 +235,23 @@ wezterm.on("update-right-status", function(window, _)
 	} .. window:active_workspace())
 end)
 
--- [[ Configuere session like tmux
--- Not sure if below will work for windows OS
-config.unix_domains = {
+--[[ Configuere session like tmux
+Not sure if below will work for windows OS
+--]]
+--[[config.unix_domains = {
 	{
 		name = 'unix',
 		skip_permissions_check = true,
 	},
 }
+--]]
 
--- [[This causes `wezterm` to act as though it was started as
--- `wezterm connect unix` by default, connecting the unix
--- domain on startup.
--- If you prefer to connect manually, leave out this line.]]
-
+--[[
+This causes `wezterm` to act as though it was started as
+`wezterm connect unix` by default, connecting the unix
+domain on startup.
+If you prefer to connect manually, leave out this line.
+--]]
 -- config.default_gui_startup_args = { 'connect', 'unix' }
 
 -- ....and finally, return the configuration to wezterm
