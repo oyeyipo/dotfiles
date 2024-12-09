@@ -1,14 +1,14 @@
-local opt = vim.opt
-local g = vim.g
-
 -- Set <space> as the leader key
-g.mapleader = ' '
-g.maplocalleader = ' '
+vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Nerd Font
-g.have_nerd_font = true
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
+local opt = vim.opt
+
 opt.number = true
 opt.relativenumber = true	-- To help with jumping
 
@@ -16,7 +16,7 @@ opt.relativenumber = true	-- To help with jumping
 opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-opt.showmode = false
+opt.showmode = true
 
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -66,6 +66,8 @@ opt.scrolloff = 10
 
 -- Not serious, but i just love this:
 local k = vim.keymap
+
+k.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Disable arrow keys in normal mode
 k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
