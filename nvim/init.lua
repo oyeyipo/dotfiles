@@ -34,6 +34,8 @@ opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 opt.ignorecase = true
 opt.smartcase = true
+opt.incsearch = true
+opt.hlsearch = false
 
 -- Keep signcolumn on by default
 opt.signcolumn = 'yes'
