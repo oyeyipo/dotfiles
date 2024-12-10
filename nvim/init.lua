@@ -62,6 +62,14 @@ opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 10
 
+-- Tab / indentation
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.expandtab = true
+opt.smartindent = true
+opt.wrap = false
+
 -- [[ disregard the followings below‼ PICK UP AT -> [[ Basic Keymaps ]] ]]
 
 -- Not serious, but i just love this:
