@@ -9,14 +9,21 @@ vim.g.have_nerd_font = true
 -- [[ Setting options ]]
 local opt = vim.opt
 
+-- Appearance
 opt.number = true
 opt.relativenumber = true	-- To help with jumping
+opt.termguicolors = true
+opt.colorcolumn = "100"
+opt.signcolumn = "yes"
+opt.scrolloff = 10
+opt.cmdheight = 1
+opt.completeopt = "menuone,noinsert,noselect"
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-opt.showmode = true
+opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -36,9 +43,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.incsearch = true
 opt.hlsearch = false
-
--- Keep signcolumn on by default
-opt.signcolumn = 'yes'
 
 -- Decrease update time
 opt.updatetime = 250
@@ -61,9 +65,6 @@ opt.inccommand = 'split'
 -- Show which line your cursor is on
 opt.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 10
-
 -- Tab / indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -71,6 +72,12 @@ opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
 opt.wrap = false
+
+-- Other Bahaviours
+opt.encoding = "UTF-8"
+opt.autochdir = false
+opt.hidden = true
+opt.errorbells = false
 
 -- [[ disregard the followings below‼ PICK UP AT -> [[ Basic Keymaps ]] ]]
 
