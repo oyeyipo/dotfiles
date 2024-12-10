@@ -86,18 +86,26 @@ local k = vim.keymap
 
 k.set("n", "<leader>pv", vim.cmd.Ex)
 
+k.set("v", "J", "<cmd>m '>+1<CR>gv=gv")
+k.set("v", "K", "<cmd>m '<-2<CR>gv=gv")
+
+-- greatest remap ever
+k.set("x", "<leader>p", [["_dP]])
+
 -- Disable arrow keys in normal mode
 k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 k.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 k.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 k.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTES: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
+--[[
+Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+is not what someone will guess without a bit more experience.
+
+NOTES: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+or just use <C-\><C-n> to exit terminal mode
+--]]
 k.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode'})
 
 -- [[ Basic Autocommands ]]
