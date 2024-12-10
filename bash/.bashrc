@@ -87,6 +87,9 @@ alias pdtest="python manage.py test"
 alias pdrun="python manage.py runserver"
 alias pdftest="python manage.py test functional_tests"
 
+# Remove!!!
+alias lua="lua.exe"
+
 #######################################################
 # PATHS
 #######################################################
