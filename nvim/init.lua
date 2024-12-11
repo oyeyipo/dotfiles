@@ -66,37 +66,60 @@ opt.inccommand = 'split'
 opt.cursorline = true
 
 -- Tab / indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
 opt.expandtab = true
 opt.smartindent = true
-opt.wrap = false
+
+opt.wrap = true
 
 -- Other Bahaviours
 opt.encoding = "UTF-8"
 opt.autochdir = false
 opt.hidden = true
 opt.errorbells = false
+opt.swapfile = false
+opt.backup = false
+--opt.undodir = vim.fn.expand("~/.vim/undodir")
+opt.backspace = "indent,eol,start"
+opt.iskeyword:append("-")
+opt.modifiable = true
+-- makes the cursor blinks but there is no diff btw normal and insert mode cursor
+--opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- [[ disregard the followings below‼ PICK UP AT -> [[ Basic Keymaps ]] ]]
 
 -- Not serious, but i just love this:
 local k = vim.keymap
+local opts = { noremap = true, silent = true }
 
-k.set("n", "<leader>pv", vim.cmd.Ex)
+k.set("n", "<leader>pv", vim.cmd.Ex, opts)
 
-k.set("v", "J", "<cmd>m '>+1<CR>gv=gv")
-k.set("v", "K", "<cmd>m '<-2<CR>gv=gv")
+k.set("v", "J", "<cmd>m '>+1<CR>gv=gv", opts)
+k.set("v", "K", "<cmd>m '<-2<CR>gv=gv", opts)
 
 -- greatest remap ever
-k.set("x", "<leader>p", [["_dP]])
+--k.set("x", "<leader>p", [["_dP]], opts)
 
 -- Disable arrow keys in normal mode
 k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 k.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 k.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 k.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
+-- Exit on kj and jk
+k.set("i", "jj", "<ESC>", opts)
+k.set("i", "jk", "<ESC>", opts)
+
+-- Toggle wrapping !!! NOT WORKING yet
+k.set({'i', 'n'}, '<A-z>', function()
+    if opts.wrap then
+        opts.wrap = false
+    else
+        opts.wrap = true
+    end
+end)
 
 --[[
 Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
