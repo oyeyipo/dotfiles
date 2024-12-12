@@ -81,7 +81,7 @@ opt.autochdir = false
 opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false
-opt.backup = true   -- maybe change to false later and depend on undodir below
+opt.backup = false
 --opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.backspace = "indent,eol,start"
 opt.iskeyword:append("-")
@@ -103,7 +103,7 @@ k.set("v", "K", "<cmd>m '<-2<CR>gv=gv", opts)
 -- greatest remap ever
 --k.set("x", "<leader>p", [["_dP]], opts)
 
--- Disable arrow keys in normal mode
+-- DISABLE arrow keys in normal mode
 k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 k.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 k.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
@@ -133,6 +133,7 @@ is not what someone will guess without a bit more experience.
 NOTES: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 or just use <C-\><C-n> to exit terminal mode
 --]]
+
 k.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode'})
 
 -- [[ Basic Autocommands ]]
