@@ -1,5 +1,5 @@
 # My Dotfiles
 
-Hi, this is config for Wale.
+Hi, this contains personalized configs for Wale's PCs.
 
 Have a good one!
