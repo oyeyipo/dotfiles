@@ -13,7 +13,7 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true	-- To help with jumping
 opt.termguicolors = true
-opt.colorcolumn = "100"
+opt.colorcolumn = "80"
 opt.signcolumn = "yes"
 opt.scrolloff = 10
 opt.cmdheight = 1
@@ -38,7 +38,8 @@ opt.breakindent = true
 -- Save undo history
 opt.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the 
+-- search term
 opt.ignorecase = true
 opt.smartcase = true
 opt.incsearch = true
@@ -80,7 +81,7 @@ opt.autochdir = false
 opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false
-opt.backup = false
+opt.backup = true   -- maybe change to false later and depend on undodir below
 --opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.backspace = "indent,eol,start"
 opt.iskeyword:append("-")
@@ -112,12 +113,15 @@ k.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 k.set("i", "jj", "<ESC>", opts)
 k.set("i", "jk", "<ESC>", opts)
 
--- Toggle wrapping !!! NOT WORKING yet
+-- Toggle wrapping !!! WORKING but DONOT like it yet
+local wrap = true
 k.set({'i', 'n'}, '<A-z>', function()
-    if opts.wrap then
-        opts.wrap = false
+    if wrap then
+        vim.cmd('set nowrap')
+        wrap = false
     else
-        opts.wrap = true
+        vim.cmd('set wrap')
+        wrap = true
     end
 end)
 
