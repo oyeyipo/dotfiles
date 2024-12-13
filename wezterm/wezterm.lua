@@ -1,9 +1,9 @@
 -- Pull in the wezterm API
-local wezterm 		= require("wezterm")
+local wezterm = require("wezterm")
 
 -- Variable declarations
-local act 		= wezterm.action
--- local mux 		= wezterm.mux
+local act = wezterm.action
+-- local mux = wezterm.mux
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -19,7 +19,7 @@ config.font_size = 9.0
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
 config.pane_focus_follows_mouse = false
-config.window_background_opacity = 0.5
+config.window_background_opacity = 0.8
 
 -- Setting shell
 config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } -- { "pwsh.exe", "-NoLogo" }
