@@ -1,17 +1,17 @@
-	-- Format on save
-	vim.api.nvim_create_autocmd("BufWritePre", {
-        desc = "Format on save",
-		group = vim.api.nvim_create_augroup("olawale-lsp-formatting", {}),
-		callback = function()
-			-- local efm = vim.lsp.get_active_clients({ name = "efm" })
-			local efm = vim.lsp.get_clients()
-			if vim.tbl_isempty(efm) then
-				return
-			end
+-- Format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    desc = "Format on save",
+	group = vim.api.nvim_create_augroup("olawale-lsp-formatting", {}),
+	callback = function()
+		-- local efm = vim.lsp.get_active_clients({ name = "efm" })
+		local efm = vim.lsp.get_clients()
+		if vim.tbl_isempty(efm) then
+			return
+		end
 
-			vim.lsp.buf.format({ name = "efm" })
-		end,
-	})
+		vim.lsp.buf.format({ name = "efm" })
+	end,
+})
 
 -- Highlight when yanking (copying) text
 -- Try it with `yap` in normal mode
