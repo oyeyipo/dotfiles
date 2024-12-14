@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local platform = require("platform")
 
 -- Variable declarations
 local act = wezterm.action
@@ -11,7 +12,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Night Owlish Light"
+config.color_scheme = "Tokyo Night"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 9.0
 
@@ -19,11 +20,13 @@ config.font_size = 9.0
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
 config.pane_focus_follows_mouse = false
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.9
 
 -- Setting shellTokyo Night
 -- for windows powershell: { "pwsh.exe", "-NoLogo" }
-config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } 
+if platfrom.os == 'windows' then
+    config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } 
+end
 
 -- Multiplexing
 config.leader = { 
