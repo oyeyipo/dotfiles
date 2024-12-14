@@ -11,7 +11,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Night Owlish Light"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 9.0
 
@@ -19,13 +19,18 @@ config.font_size = 9.0
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
 config.pane_focus_follows_mouse = false
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 
 -- Setting shell
-config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } -- { "pwsh.exe", "-NoLogo" }
+-- for windows powershell: { "pwsh.exe", "-NoLogo" }
+config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } 
 
 -- Multiplexing
-config.leader = { key = "s", mods = "CTRL", colors = { compose_cursor = 'blue' }, timeout_milliseconds = 2000 }
+config.leader = { 
+    mods = "CTRL",
+    key = "s",
+    colors = { compose_cursor = 'blue' }, timeout_milliseconds = 2000 
+}
 config.keys = {
 	{
 		mods = "LEADER",
@@ -189,7 +194,7 @@ config.key_tables = {
 }
 
 -- tab bar
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = false
@@ -221,11 +226,10 @@ wezterm.on("update-right-status", function(window, _)
 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 	end
 
-	-- wezterm.log_info("Welcome Olawale")
-
+    -- arrow color based on if tab is first pane
 	if window:active_tab():tab_id() ~= 0 then
 		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
-	end	-- arrow color based on if tab is first pane
+	end	
 
 	window:set_right_status(wezterm.format {
 		{ Background = { Color = "#b7bdf8" } },
