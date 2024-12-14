@@ -32,6 +32,11 @@ config.leader = {
     colors = { compose_cursor = 'blue' }, timeout_milliseconds = 2000 
 }
 config.keys = {
+    {
+        key = 'r',
+        mods = 'CMD|SHIFT',
+        action = wezterm.action.ReloadConfiguration,
+    },
 	{
 		mods = "LEADER",
 		key = "t",
@@ -238,6 +243,12 @@ wezterm.on("update-right-status", function(window, _)
 		{ Text = SOLID_LEFT_ARROW }
 	} .. window:active_workspace())
 end)
+
+-- Reload configuration notification
+wezterm.on('window-config-reloaded', function(window, pane)
+        window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
+    end
+)
 
 --[[ Configuere session like tmux
 Not sure if below will work for windows OS
