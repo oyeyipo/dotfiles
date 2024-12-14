@@ -51,7 +51,7 @@ config.window_background_opacity = 0.9
 
 -- Setting shellTokyo Night
 -- for windows powershell: { "pwsh.exe", "-NoLogo" }
-if platform.os == 'windows' then
+if platform().os == 'windows' then
     config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } 
 end
 
