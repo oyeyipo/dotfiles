@@ -1,9 +1,33 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
-local script_dir = debug.getinfo(1, "S").source:match("@(.*[/\\])")
-package.path = package.path .. ";" .. script_dir .. "?.lua"
-local platform = require("platform")
+local function is_found(str, pattern)
+    return string.find(str, pattern) ~= nil
+end
+
+local function platform()
+    local is_win = is_found(wezterm.target_triple, 'windows')
+    local is_linux = is_found(wezterm.target_triple, 'linux')
+    local is_mac = is_found(wezterm.target_triple, 'apple')
+    local os
+
+    if is_win then
+        so = 'windows'
+    elseif is_linux then
+        os = 'linux'
+    elseif is_mac then
+        os = 'mac'
+    else
+        error('Unknown platform')
+    end
+
+    return {
+        os = os,
+        is_win = is_win,
+        is_linux = is_linux,
+        is_mac = is_mac,
+    }
+end
 
 -- Variable declarations
 local act = wezterm.action
@@ -27,7 +51,7 @@ config.window_background_opacity = 0.9
 
 -- Setting shellTokyo Night
 -- for windows powershell: { "pwsh.exe", "-NoLogo" }
-if platfrom.os == 'windows' then
+if platform.os == 'windows' then
     config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } 
 end
 
