@@ -24,13 +24,14 @@ local opts = {
         lazy = true,
     },
     install = {
-        colorscheme = { "nightfox" }
+        colorscheme = { "tokyonight" }
     },
     rtp = {
         disabled_plugins = {
             "gzip",
             "matchit",
             "matchparen",
+            "netrw",
             "netrwPlugin",
             "tarPlugin",
             "tohtml",

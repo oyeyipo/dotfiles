@@ -1,5 +1,5 @@
 return {
-    "folke/which-key.lua",
+    "folke/which-key.nvim",
     lazy = false,
 }
 
