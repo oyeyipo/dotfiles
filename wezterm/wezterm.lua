@@ -1,5 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+
+local script_dir = debug.getinfo(1, "S").source:match("@(.*[/\\])")
+package.path = package.path .. ";" .. script_dir .. "?.lua"
 local platform = require("platform")
 
 -- Variable declarations
