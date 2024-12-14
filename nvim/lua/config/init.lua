@@ -23,8 +23,23 @@ local opts = {
     defaults = {
         lazy = true,
     },
+    install = {
+        colorscheme = { "nightfox" }
+    },
+    rtp = {
+        disabled_plugins = {
+            "gzip",
+            "matchit",
+            "matchparen",
+            "netrwPlugin",
+            "tarPlugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin",
+        },
+    },
     change_detection == {
-        notify = true,
+        notify = true,          -- Remove!!! or set to false
     },
 }
 

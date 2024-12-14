@@ -74,14 +74,10 @@ opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false
 opt.backup = false
---opt.undodir = vim.fn.expand("~/.vim/undodir")
+opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.backspace = "indent,eol,start"
 opt.iskeyword:append("-")
 opt.modifiable = true
 -- makes the cursor blinks but there is no diff btw normal and insert mode cursor
 --opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-
-
-
-
 
