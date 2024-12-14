@@ -19,7 +19,7 @@ config.font_size = 9.0
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
 config.pane_focus_follows_mouse = false
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1.0
 
 -- Setting shell
 -- for windows powershell: { "pwsh.exe", "-NoLogo" }

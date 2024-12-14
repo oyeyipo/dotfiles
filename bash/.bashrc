@@ -3,8 +3,13 @@
 # IF not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# ls alias
 alias ls='ls --color=auto'
-alias ll='ls -al'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# grep alias
 alias grep='grep --color=auto'
 
 #######################################################
