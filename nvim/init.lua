@@ -5,6 +5,15 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
--- bringin all configs
-require('config')
+-- Remove background
+--[[
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
+--]]
+
+require 'config'
 
