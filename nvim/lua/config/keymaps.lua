@@ -20,10 +20,10 @@ k.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 k.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Exit on kj and jk
-k.set("i", "jj", "<ESC>", opts)
-k.set("i", "jk", "<ESC>", opts)
+k.set("i", "jj", "<Esc>", opts)
+k.set("i", "jk", "<Esc>", opts)
 
--- Toggle wrapping !!! WORKING but DONOT like it yet
+-- Toggle wrapping !!! WORKING BUT DO NOT like it yet
 local wrap = true
 k.set({'i', 'n'}, '<A-z>', function()
     if wrap then
