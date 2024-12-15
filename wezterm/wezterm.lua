@@ -12,7 +12,7 @@ local function platform()
     local os
 
     if is_win then
-        so = 'windows'
+        os = 'windows'
     elseif is_linux then
         os = 'linux'
     elseif is_mac then
