@@ -7,11 +7,50 @@ k.set('n', '<Esc>', '<cmd>nohlsearch<CR>', opts)
 -- Diagnostic keymaps
 k.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list'})
 
+-- Remap J and K in visual mode to move selected lines down or up while maintaining selection and reindenting.
 k.set("v", "J", "<cmd>m '>+1<CR>gv=gv", opts)
 k.set("v", "K", "<cmd>m '<-2<CR>gv=gv", opts)
 
--- greatest remap ever
+-- Scroll down or up half a screen and center the cursor.
+k.set("n", "<C-d>", "<C-d>zz", opts)
+k.set("n", "<C-u>", "<C-u>zz", opts)
+
+-- Jump to the next or previous search result, center it, and open folds
+k.set("n", "n", "nzzzv", opts)  
+k.set("n", "N", "Nzzzv", opts) 
+
+-- Perform custom line join operation
+k.set("n", "J", "mzJ`z", opts)
+
+-- Replace selected text with clipboard content without overwriting the clipboard
 k.set("x", "<leader>p", [["_dP]], opts)
+
+-- NOTE: For when you want to separate neovim and system clipboard
+-- Yank (copy) to system clipboard in normal and visual modes.
+-- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) 
+-- Yank (copy) the entire line to system clipboard in normal mode.
+-- vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+-- Delete to the black hole register in normal and visual modes, without affecting the clipboard
+-- normal `d` is CUT while the below is real delete deal
+k.set({"n", "v"}, "<leader>d", [["_d]], opts)
+
+-- Jump to the next or previous item in the quickfix list and center the cursor.
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+
+-- Jump to the next or previous item in the location list and center the cursor.
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") 
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+
+-- Search and replace the word under the cursor across the entire file, with confirmation prompt.
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) 
+
+-- Source current neovim config file
+k.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)
 
 -- DISABLE arrow keys in normal mode
 k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')

@@ -40,7 +40,7 @@ local opts = {
         },
     },
     change_detection == {
-        notify = false,          -- Remove!!! or set to false
+        notify = false,          -- TODO: Remove!!! or set to false
     },
 }
 
