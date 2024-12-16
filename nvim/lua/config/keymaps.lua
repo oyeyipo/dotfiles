@@ -42,15 +42,7 @@ end)
 k.set('t', '<Esc><Esc>', '<C-\\><C-n>', table.insert(opts, { desc = 'Exit terminal mode'}))
 
 -- Neo-tree navigation
-k.set("n", "<leader>m", ":Neotree toggle<CR>", table.insert(opts, { desc = 'Open file [M]anager'}))   
-
---[[
-    /   <cmd>Neotree toggle current reveal_force_cwd<cr>
-    nnoremap | :Neotree reveal<cr>
-    nnoremap gd :Neotree float reveal_file=<cfile> reveal_force_cwd<cr>
-    nnoremap <leader>b :Neotree toggle show buffers right<cr>
-    nnoremap <leader>s :Neotree float git_status<cr>
---]]
+k.set("n", "\\", ":Neotree toggle<CR>", table.insert(opts, { desc = 'Neotree toggle'}))   
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
