@@ -25,7 +25,7 @@ k.set("n", "J", "mzJ`z", opts)
 -- Replace selected text with clipboard content without overwriting the clipboard
 k.set("x", "<leader>p", [["_dP]], opts)
 
--- NOTE: For when you want to separate neovim and system clipboard
+-- For when you want to separate neovim and system clipboard
 -- Yank (copy) to system clipboard in normal and visual modes.
 -- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) 
 -- Yank (copy) the entire line to system clipboard in normal mode.
@@ -45,12 +45,10 @@ k.set({"n", "v"}, "<leader>d", [["_d]], opts)
 
 
 -- Search and replace the word under the cursor across the entire file, with confirmation prompt.
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) 
+k.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[S]earch and [R]eplace current word" }) 
 
 -- Source current neovim config file
-k.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+k.set("n", "<leader>so", function() vim.cmd("so") end, { desc = "[S][O]urce current config file" })
 
 -- DISABLE arrow keys in normal mode
 k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -85,8 +83,16 @@ k.set("n", "\\", ":Neotree toggle<CR>", table.insert(opts, { desc = 'Neotree tog
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+k.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+k.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+k.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+k.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+--
+
+--[[ NOTE: Find this to quite interesting
+mode = { "n", "v" },
+    { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
+    { "<leader>w", "<cmd>w<cr>", desc = "Write" },
+--]]
 
