@@ -1,7 +1,7 @@
-require "config.globals"
-require "config.options"
-require "config.keymaps"
-require "config.autocmds" 
+require("config.globals")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
 
 -- Lazy nvim set up
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -20,29 +20,28 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-    defaults = {
-        lazy = true,
-    },
-    install = {
-        colorscheme = { "tokyonight" }
-    },
-    rtp = {
-        disabled_plugins = {
-            "gzip",
-            "matchit",
-            "matchparen",
-            "netrw",
-            "netrwPlugin",
-            "tarPlugin",
-            "tohtml",
-            "tutor",
-            "zipPlugin",
-        },
-    },
-    change_detection == {
-        notify = false,          -- TODO: Remove!!! or set to false
-    },
+	defaults = {
+		lazy = true,
+	},
+	install = {
+		colorscheme = { "tokyonight" },
+	},
+	rtp = {
+		disabled_plugins = {
+			"gzip",
+			"matchit",
+			"matchparen",
+			"netrw",
+			"netrwPlugin",
+			"tarPlugin",
+			"tohtml",
+			"tutor",
+			"zipPlugin",
+		},
+	},
+	change_detection == {
+		notify = false, -- TODO: Remove!!! or set to false
+	},
 }
 
 require("lazy").setup("plugins", opts)
-
