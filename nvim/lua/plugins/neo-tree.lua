@@ -9,7 +9,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+		{ "\\", ":Neotree toggle<CR>", desc = "NeoTree toggle", silent = true },
 	},
 	opts = {
 		close_if_last_window = true,
