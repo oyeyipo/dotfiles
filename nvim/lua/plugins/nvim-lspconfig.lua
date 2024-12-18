@@ -14,6 +14,9 @@ return {
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
+
+		-- Collection of linters and formatters configured for efm
+		-- { "creativenull/efmls-configs-nvim", version = "v1.x.x" },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -27,8 +30,6 @@ return {
 					mode = mode or "n"
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
-
-				local olawale
 
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
@@ -135,6 +136,17 @@ return {
 		-- LSP configuration online: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
+			-- efm = {
+			-- 	init_options = { documentFormatting = true },
+			-- 	settings = {
+			-- 		languages = {
+			-- 			lua = {
+			-- 				require("efmls-configs.linters.luacheck"),
+			-- 				require("efmls-configs.formatters.stylua"),
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			pyright = {},
 			lua_ls = {
 				-- cmd = { ... },
@@ -165,7 +177,11 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
-			"efm",
+			"luacheck",
+			"cbfmt",
+			"markdown-toc",
+			"markdownlint",
+			"mdformat",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
