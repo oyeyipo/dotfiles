@@ -31,7 +31,7 @@ return { -- Autoformat
 			}
 		end,
 		formatters_by_ft = {
-			lua = { "stylua" },
+			lua = { "stylua", lsp_format = "prefer" },
 			markdown = { "cbfmt", "markdown-toc", "markdownlint", "mdformat" },
 
 			-- Conform can also run multiple formatters sequentially

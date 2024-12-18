@@ -8,21 +8,28 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
-	config = function()
-		require("neo-tree").setup({
-			close_if_last_window = true,
+	keys = {
+		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+	},
+	opts = {
+		close_if_last_window = true,
+		window = {
+			position = "right",
+			width = 40,
+		},
+		filesystem = {
 			window = {
-				position = "right",
-				width = 40,
-			},
-			filesystem = {
-				filtered_items = {
-					visible = false, -- when true, they will just be displayed differently than normal items
-					hide_dotfiles = false,
-					hide_gitignored = false,
-					hide_hidden = false, -- only works on Windows for hidden files/directories
+				-- TODO: create mapping for floating window, bind to <leader>fm
+				mappings = {
+					["\\"] = "close_window",
 				},
 			},
-		})
-	end,
+			filtered_items = {
+				visible = false, -- when true, they will just be displayed differently than normal items
+				hide_dotfiles = false,
+				hide_gitignored = false,
+				hide_hidden = false, -- only works on Windows for hidden files/directories
+			},
+		},
+	},
 }

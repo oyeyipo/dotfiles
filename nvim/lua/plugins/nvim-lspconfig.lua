@@ -136,21 +136,22 @@ return {
 		-- LSP configuration online: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-			-- efm = {
-			-- 	init_options = { documentFormatting = true },
-			-- 	settings = {
-			-- 		languages = {
-			-- 			lua = {
-			-- 				require("efmls-configs.linters.luacheck"),
-			-- 				require("efmls-configs.formatters.stylua"),
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
+			efm = {
+				filetypes = {
+					"lua",
+				},
+				init_options = { documentFormatting = true },
+				settings = {
+					languages = {
+						lua = {
+							require("efmls-configs.linters.luacheck"),
+							require("efmls-configs.formatters.stylua"),
+						},
+					},
+				},
+			},
 			pyright = {},
 			lua_ls = {
-				-- cmd = { ... },
-				-- filetypes = { ... },
 				capabilities = capabilities,
 				settings = {
 					Lua = {
