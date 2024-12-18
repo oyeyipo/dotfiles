@@ -5,7 +5,7 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true -- To help with jumping
 opt.termguicolors = true
-opt.colorcolumn = "80"
+opt.colorcolumn = "100"
 opt.signcolumn = "yes"
 opt.scrolloff = 10
 opt.cmdheight = 1
@@ -78,5 +78,3 @@ opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.backspace = "indent,eol,start"
 opt.iskeyword:append("-")
 opt.modifiable = true
--- makes the cursor blinks but there is no diff btw normal and insert mode cursor
---opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"

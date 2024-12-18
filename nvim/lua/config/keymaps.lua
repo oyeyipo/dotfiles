@@ -85,11 +85,6 @@ end)
 -- or just use <C-\><C-n> to exit terminal mode
 k.set("t", "<Esc><Esc>", "<C-\\><C-n>", table.insert(opts, { desc = "Exit terminal mode" }))
 
--- Neo-tree navigation
--- TODO: create map for floating window bind to <leader>fm
--- TODO: move to neotree plugin file
-k.set("n", "\\", ":Neotree toggle<CR>", table.insert(opts, { desc = "Neotree toggle" }))
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 k.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
