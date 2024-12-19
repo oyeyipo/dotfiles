@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [My Dotfiles](#my-dotfiles)
+  - [Luarocks paths and defualt issue fix](#luarocks-paths-and-defualt-issue-fix)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # My Dotfiles
 
 Hi, this contains personalized configs for Wale's PCs.
@@ -14,9 +25,8 @@ Requirements:
 
 ## Luarocks paths and defualt issue fix
 
-This assumes you have Lua 5.1 and luarocks <latest version> installed and on the path
-
-You are gets this error:
+This assumes you have Lua 5.1 and luarocks (latest version) installed and on
+the path. You are gets this error:
 
 ```bash
 $ luarocks install luacheck
@@ -65,7 +75,7 @@ luarocks config lua_version "5.1"
 
 Expected output:
 
-```
+```sh
 Lua version will default to 5.1 in C:\Users\olacl\.luarocks
 Wrote
         lua_version = "5.1"
@@ -79,9 +89,10 @@ Next, set the path to the lua excutable on the system
 luarocks config variables.LUA "C:\Program Files (x86)\Lua\5.1\lua.exe"
 ```
 
-Confirm the following output is similar to yours in the `.luarocks` directory (using Powershell)
+Confirm the following output is similar to yours in the `.luarocks`
+directory (using Powershell)
 
-```
+```pwsh
 > ls C:\Users\olacl\.luarocks\
 config-5.1.lua  config-5.4.lua  default-lua-version.lua
 
