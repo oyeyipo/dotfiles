@@ -14,6 +14,9 @@ return { -- Autoformat
 	},
 	opts = {
 		notify_on_error = false,
+		default_format_opts = {
+			lsp_format = "prefer",
+		},
 		format_on_save = function(bufnr)
 			-- Disable "format_on_save lsp_fallback" for languages that don't
 			-- have a well standardized coding style. You can add additional
@@ -31,8 +34,8 @@ return { -- Autoformat
 			}
 		end,
 		formatters_by_ft = {
-			lua = { "stylua", lsp_format = "prefer" },
-			markdown = { "cbfmt", "markdown-toc", "markdownlint", "mdformat" },
+			lua = { "stylua" },
+			markdown = { "doctoc", "markdownlint", "mdformat" },
 
 			-- Conform can also run multiple formatters sequentially
 			python = { "isort", "black" },

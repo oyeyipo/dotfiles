@@ -17,6 +17,9 @@ return {
 
 		-- Collection of linters and formatters configured for efm
 		{ "creativenull/efmls-configs-nvim", version = "v1.x.x" },
+
+		-- vscode-like pictograms for neovim lsp completion items
+		{ "onsails/lspkind.nvim", opts = {} },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -136,6 +139,8 @@ return {
 			efm = {
 				filetypes = {
 					"lua",
+					"python",
+					"markdown",
 				},
 				settings = {
 					languages = {
@@ -143,10 +148,36 @@ return {
 							require("efmls-configs.linters.selene"),
 							require("efmls-configs.formatters.stylua"),
 						},
+						markdown = {
+							require("efmls-configs.linters.markdownlint"),
+							require("efmls-configs.formatters.mdformat"),
+
+							-- For more information on how to setup your own command:
+							--  sample: https://github.com/mattn/efm-langserver#configuration-for-neovim-builtin-lsp-with-nvim-lspconfig
+							--  schema: https://github.com/mattn/efm-langserver/blob/master/schema.md
+							{ formatCommand = "doctoc --notitle ${INPUT}" },
+						},
+						python = {
+							require("efmls-configs.linters.flake8"),
+							require("efmls-configs.formatters.black"),
+							require("efmls-configs.formatters.isort"),
+						},
 					},
 				},
 			},
-			pyright = {},
+			pyright = {
+				settings = { -- see: https://microsoft.github.io/pyright/#/settings
+					pyright = {
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							diagnosticMode = "workspace",
+						},
+					},
+				},
+			},
+			marksman = {},
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -175,11 +206,15 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format Lua code
+			"stylua",
 			-- "selene", -- WARN: requires rust/cargo on path
 			"doctoc",
 			"markdownlint",
 			"mdformat",
+			"black",
+			"isort",
+			"docformatter",
+			"flake8",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
