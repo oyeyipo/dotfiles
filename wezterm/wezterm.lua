@@ -2,31 +2,31 @@
 local wezterm = require("wezterm")
 
 local function is_found(str, pattern)
-    return string.find(str, pattern) ~= nil
+	return string.find(str, pattern) ~= nil
 end
 
 local function platform()
-    local is_win = is_found(wezterm.target_triple, 'windows')
-    local is_linux = is_found(wezterm.target_triple, 'linux')
-    local is_mac = is_found(wezterm.target_triple, 'apple')
-    local os
+	local is_win = is_found(wezterm.target_triple, "windows")
+	local is_linux = is_found(wezterm.target_triple, "linux")
+	local is_mac = is_found(wezterm.target_triple, "apple")
+	local os
 
-    if is_win then
-        os = 'windows'
-    elseif is_linux then
-        os = 'linux'
-    elseif is_mac then
-        os = 'mac'
-    else
-        error('Unknown platform')
-    end
+	if is_win then
+		os = "windows"
+	elseif is_linux then
+		os = "linux"
+	elseif is_mac then
+		os = "mac"
+	else
+		error("Unknown platform")
+	end
 
-    return {
-        os = os,
-        is_win = is_win,
-        is_linux = is_linux,
-        is_mac = is_mac,
-    }
+	return {
+		os = os,
+		is_win = is_win,
+		is_linux = is_linux,
+		is_mac = is_mac,
+	}
 end
 
 -- Variable declarations
@@ -51,31 +51,32 @@ config.window_background_opacity = 0.9
 
 -- Setting shellTokyo Night
 -- for windows powershell: { "pwsh.exe", "-NoLogo" }
-if platform().os == 'windows' then
-    config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe' } 
+if platform().os == "windows" then
+	config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe" }
 end
 
 -- Multiplexing
-config.leader = { 
-    mods = "CTRL",
-    key = "s",
-    colors = { compose_cursor = 'blue' }, timeout_milliseconds = 2000 
+config.leader = {
+	mods = "CTRL",
+	key = "s",
+	colors = { compose_cursor = "blue" },
+	timeout_milliseconds = 2000,
 }
 config.keys = {
-    {
-        key = 'r',
-        mods = 'CMD|SHIFT',
-        action = wezterm.action.ReloadConfiguration,
-    },
+	{
+		key = "r",
+		mods = "CMD|SHIFT",
+		action = wezterm.action.ReloadConfiguration,
+	},
 	{
 		mods = "LEADER",
 		key = "t",
-		action = wezterm.action.SpawnTab "CurrentPaneDomain",
+		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
 	{
 		mods = "LEADER",
 		key = "x",
-		action =  wezterm.action.CloseCurrentPane { confirm = true },
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
 		mods = "LEADER",
@@ -90,32 +91,32 @@ config.keys = {
 	{
 		mods = "LEADER",
 		key = "\\",
-		action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		mods = "LEADER",
 		key = "-",
-		action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		mods = "ALT",
 		key = "h",
-		action = wezterm.action.ActivatePaneDirection "Left",
+		action = wezterm.action.ActivatePaneDirection("Left"),
 	},
 	{
 		mods = "ALT",
 		key = "j",
-		action = wezterm.action.ActivatePaneDirection "Down",
+		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
 	{
 		mods = "ALT",
 		key = "k",
-		action = wezterm.action.ActivatePaneDirection "Up",
+		action = wezterm.action.ActivatePaneDirection("Up"),
 	},
 	{
 		mods = "ALT",
 		key = "l",
-		action = wezterm.action.ActivatePaneDirection "Right",
+		action = wezterm.action.ActivatePaneDirection("Right"),
 	},
 	-- TODO: Add arrow keys as redundancy for resizing panes
 	{
@@ -131,16 +132,14 @@ config.keys = {
 	{
 		mods = "LEADER",
 		key = ",",
-		action = act.PromptInputLine {
+		action = act.PromptInputLine({
 			description = "Enter new name for tab",
-			action = wezterm.action_callback(
-				function(window, pane, line)
-					if line then
-						window:active_tab():set_title(line)
-					end
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
 				end
-			),
-		},
+			end),
+		}),
 	},
 	{
 		mods = "LEADER",
@@ -150,18 +149,18 @@ config.keys = {
 	{
 		mods = "LEADER",
 		key = "w",
-		action = act.CloseCurrentTab { confirm = true },
+		action = act.CloseCurrentTab({ confirm = true }),
 	},
 	-- Swap a pane with another one
 	{
 		mods = "LEADER|SHIFT",
 		key = "{",
-		action = act.PaneSelect { mode = "SwapWithActiveKeepFocus" }
+		action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }),
 	},
 	{
 		mods = "LEADER",
 		key = "r",
-		action = wezterm.action.ActivateKeyTable { name = "resize_pane", one_shot = false },
+		action = wezterm.action.ActivateKeyTable({ name = "resize_pane", one_shot = false }),
 	},
 	--[[-- Attach to muxer
 	{
@@ -213,18 +212,18 @@ for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "LEADER",
-		action = wezterm.action.ActivateTab(i-1),
+		action = wezterm.action.ActivateTab(i - 1),
 	})
 end
 
 config.key_tables = {
 	resize_pane = {
-		{ key = "h", action = act.AdjustPaneSize { "Left", 1 } },
-		{ key = "j", action = act.AdjustPaneSize { "Down", 1 } },
-		{ key = "k", action = act.AdjustPaneSize { "Up", 1 } },
-		{ key = "l", action = act.AdjustPaneSize { "Right", 1 } },
-		{ key = "Escape", action = "PopKeyTable" },	 
-		{ key = "Enter", action = "PopKeyTable" },	 
+		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+		{ key = "Escape", action = "PopKeyTable" },
+		{ key = "Enter", action = "PopKeyTable" },
 	},
 }
 
@@ -257,28 +256,27 @@ wezterm.on("update-right-status", function(window, _)
 	local prefix = ""
 
 	if window:leader_is_active() then
-		prefix = " " .. utf8.char(0x1f30a)	-- ocean wave
+		prefix = " " .. utf8.char(0x1f30a) -- ocean wave
 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 	end
 
-    -- arrow color based on if tab is first pane
+	-- arrow color based on if tab is first pane
 	if window:active_tab():tab_id() ~= 0 then
 		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
-	end	
+	end
 
-	window:set_right_status(wezterm.format {
+	window:set_right_status(wezterm.format({
 		{ Background = { Color = "#b7bdf8" } },
 		{ Text = prefix },
 		ARROW_FOREGROUND,
-		{ Text = SOLID_LEFT_ARROW }
-	} .. window:active_workspace())
+		{ Text = SOLID_LEFT_ARROW },
+	}) .. window:active_workspace())
 end)
 
 -- Reload configuration notification
-wezterm.on('window-config-reloaded', function(window, pane)
-        window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
-    end
-)
+wezterm.on("window-config-reloaded", function(window, _)
+	window:toast_notification("wezterm", "configuration reloaded!", nil, 4000)
+end)
 
 --[[ Configuere session like tmux
 Not sure if below will work for windows OS
@@ -301,4 +299,3 @@ If you prefer to connect manually, leave out this line.
 
 -- ....and finally, return the configuration to wezterm
 return config
-
