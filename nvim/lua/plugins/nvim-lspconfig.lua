@@ -16,7 +16,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 
 		-- Collection of linters and formatters configured for efm
-		-- { "creativenull/efmls-configs-nvim", version = "v1.x.x" },
+		{ "creativenull/efmls-configs-nvim", version = "v1.x.x" },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -64,7 +64,7 @@ return {
 				-- or a suggestion from your LSP for this to activate.
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
-				-- WARN: This is not Goto Definition, this Goto Declaration.
+				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header.
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
@@ -110,14 +110,13 @@ return {
 		})
 
 		-- Change diagnostic symbols in the sign column (gutter)
-		-- if vim.g.have_nerd_font then
-		--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-		--   local diagnostic_signs = {}
-		--   for type, icon in pairs(signs) do
-		--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-		--   end
-		--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-		-- end
+		if vim.g.have_nerd_font then
+			local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+			end
+		end
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -132,19 +131,16 @@ return {
 		--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/s
-		--
-		-- LSP configuration online: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			efm = {
 				filetypes = {
 					"lua",
 				},
-				init_options = { documentFormatting = true },
 				settings = {
 					languages = {
 						lua = {
-							require("efmls-configs.linters.luacheck"),
+							require("efmls-configs.linters.selene"),
 							require("efmls-configs.formatters.stylua"),
 						},
 					},
@@ -152,14 +148,16 @@ return {
 			},
 			pyright = {},
 			lua_ls = {
-				capabilities = capabilities,
 				settings = {
 					Lua = {
 						completion = {
 							callSnippet = "Replace",
 						},
 						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						diagnostics = { disable = { "missing-fields" } },
+						diagnostics = {
+							globals = { "utf8" },
+							disable = { "missing-fields" },
+						},
 					},
 				},
 			},
@@ -178,9 +176,8 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
-			"luacheck",
-			"cbfmt",
-			"markdown-toc",
+			-- "selene", -- WARN: requires rust/cargo on path
+			"doctoc",
 			"markdownlint",
 			"mdformat",
 		})
