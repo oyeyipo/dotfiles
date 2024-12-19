@@ -39,7 +39,7 @@ local opts = {
 			"zipPlugin",
 		},
 	},
-	change_detection == {
+	change_detection = {
 		notify = false, -- TODO: Remove!!! or set to false
 	},
 }
