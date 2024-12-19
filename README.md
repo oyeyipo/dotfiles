@@ -9,7 +9,7 @@ Hi, this contains personalized configs for Wale's PCs.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Requirements](#requirements)
-  - [Languages](#languages)
+  - [Languages and package managers](#languages-and-package-managers)
 - [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix](#luarocks-paths-and-defualt-issue-fix)
 
@@ -20,7 +20,7 @@ Hi, this contains personalized configs for Wale's PCs.
 - ripgrep
 - gcc (optionally, gdb)
 
-### Languages
+### Languages and package managers
 
 Ensure the following languages are installed and available on the path
 
