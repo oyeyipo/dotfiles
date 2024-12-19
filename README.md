@@ -1,29 +1,38 @@
+# My Dotfiles
+
+Hi, this contains personalized configs for Wale's PCs.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [My Dotfiles](#my-dotfiles)
+- [Requirements](#requirements)
+  - [Languages](#languages)
+- [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix](#luarocks-paths-and-defualt-issue-fix)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# My Dotfiles
-
-Hi, this contains personalized configs for Wale's PCs.
-
-Requirements:
+## Requirements
 
 - ripgrep
 - gcc (optionally, gdb)
-- install languages & their package managers (ensure they are on the path):
-  - python/pip
-  - lua/luarocks
-  - node/npm
-  - golang/go (need for `efm` lsp)
 
-## Luarocks paths and defualt issue fix
+### Languages
+
+Ensure the following languages are installed and available on the path
+
+- python/pip
+- lua/luarocks
+- node/npm
+- golang/go (need for `efm` lsp)
+- rust/cargo
+
+## Issues and fixes
+
+### Luarocks paths and defualt issue fix
 
 This assumes you have Lua 5.1 and luarocks (latest version) installed and on
 the path. You are gets this error:
