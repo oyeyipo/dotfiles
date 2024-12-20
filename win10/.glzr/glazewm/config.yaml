@@ -109,6 +109,16 @@ workspaces:
   - name: '9'
 
 window_rules:
+  - commands: ["move --workspace 2"]
+    match:
+      # Move browsers to workspace 1.
+      - window_process: { regex: "msedge|brave|chrome" }
+      
+  - commands: ["move --workspace 3"]
+    match:
+      # Move terminals to workspace 3.
+      - window_process: { regex: "wezterm" }
+ 
   - commands: ['ignore']
     match:
       # Ignores any Zebar windows.
