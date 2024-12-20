@@ -46,15 +46,15 @@ k.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Search and replace the word under the cursor across the entire file, with confirmation prompt.
 k.set(
-	"n",
-	"<leader>sr",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "[S]earch and [R]eplace current word" }
+    "n",
+    "<leader>rw",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Search and [R]eplace current [W]ord" }
 )
 
 -- Source current neovim config file
 k.set("n", "<leader>so", function()
-	vim.cmd("so")
+    vim.cmd("so")
 end, { desc = "[S][O]urce current config file" })
 
 -- DISABLE arrow keys in normal mode
@@ -67,17 +67,11 @@ k.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 k.set("i", "jj", "<Esc>", opts)
 k.set("i", "jk", "<Esc>", opts)
 
--- Toggle wrapping !!! WORKING BUT DO NOT like it yet
-local wrap = true
-k.set({ "i", "n" }, "<A-z>", function()
-	if wrap then
-		vim.cmd("set nowrap")
-		wrap = false
-	else
-		vim.cmd("set wrap")
-		wrap = true
-	end
-end)
+-- Toggle wrapping
+k.set("n", "<leader>z", function()
+    vim.wo.wrap = not vim.wo.wrap
+    print("Wrap " .. (vim.wo.wrap and "Enabled" or "Disabled"))
+end, { desc = "[z] Toggle Wrap" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 --
@@ -97,21 +91,3 @@ k.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- Indenting
 k.set("v", "<", "<gv")
 k.set("v", ">", ">gv")
-
---[[ NOTE: Find this to quite interesting bind <leader>z to quit, <leader><leader> to write
-mode = { "n", "v" },
-    { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
-    { "<leader>w", "<cmd>w<cr>", desc = "Write" },
-
-:bd will close the current buffer.
-
-If you’re copying blocks of text around and need to align the indent 
-of a block in its new location, use ]p instead of just p.
-
-To mark a block of lines and indent it, Vjj> to indent three lines (Vim only).
-
-To indent the current line or a visual block:
-ctrl-t, ctrl-d  - indent current line forward, backwards 
-                  (insert mode)
-visual > or <   - indent block by sw (repeat with . )
---]]
