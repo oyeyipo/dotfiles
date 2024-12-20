@@ -17,9 +17,6 @@ return {
 
 		-- Collection of linters and formatters configured for efm
 		{ "creativenull/efmls-configs-nvim", version = "v1.x.x" },
-
-		-- vscode-like pictograms for neovim lsp completion items
-		{ "onsails/lspkind.nvim", opts = {} },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -136,35 +133,6 @@ return {
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/s
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-			efm = {
-				filetypes = {
-					"lua",
-					"python",
-					"markdown",
-				},
-				settings = {
-					languages = {
-						lua = {
-							require("efmls-configs.linters.selene"),
-							require("efmls-configs.formatters.stylua"),
-						},
-						markdown = {
-							require("efmls-configs.linters.markdownlint"),
-							require("efmls-configs.formatters.mdformat"),
-
-							-- For more information on how to setup your own command:
-							--  sample: https://github.com/mattn/efm-langserver#configuration-for-neovim-builtin-lsp-with-nvim-lspconfig
-							--  schema: https://github.com/mattn/efm-langserver/blob/master/schema.md
-							{ formatCommand = "doctoc --notitle --maxlevle 3 ${INPUT}" },
-						},
-						python = {
-							require("efmls-configs.linters.flake8"),
-							require("efmls-configs.formatters.black"),
-							require("efmls-configs.formatters.isort"),
-						},
-					},
-				},
-			},
 			pyright = {
 				settings = { -- see: https://microsoft.github.io/pyright/#/settings
 					pyright = {
@@ -178,6 +146,8 @@ return {
 				},
 			},
 			marksman = {},
+			yamlls = {},
+			ts_ls = {},
 			lua_ls = {
 				settings = {
 					Lua = {
