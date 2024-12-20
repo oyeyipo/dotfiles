@@ -26,10 +26,10 @@ return { -- Autoformat
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				lsp_format_opt = "never"
 			else
-				lsp_format_opt = "fallback"
+				lsp_format_opt = "prefer"
 			end
 			return {
-				timeout_ms = 500,
+				timeout_ms = 1000,
 				lsp_format = lsp_format_opt,
 			}
 		end,

@@ -155,7 +155,7 @@ return {
 							-- For more information on how to setup your own command:
 							--  sample: https://github.com/mattn/efm-langserver#configuration-for-neovim-builtin-lsp-with-nvim-lspconfig
 							--  schema: https://github.com/mattn/efm-langserver/blob/master/schema.md
-							{ formatCommand = "doctoc --notitle ${INPUT}" },
+							{ formatCommand = "doctoc --notitle --maxlevle 3 ${INPUT}" },
 						},
 						python = {
 							require("efmls-configs.linters.flake8"),
