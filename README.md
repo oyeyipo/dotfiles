@@ -3,9 +3,7 @@
 Hi, this contains personalized configs for Wale's PCs.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Requirements](#requirements)
@@ -18,7 +16,9 @@ Hi, this contains personalized configs for Wale's PCs.
 ## Requirements
 
 - ripgrep
+- fzf
 - gcc (optionally, gdb)
+- make
 
 ### Languages and package managers
 
@@ -47,7 +47,7 @@ Please set your Lua interpreter with:
 
 ```
 
-Solution:
+**Solution steps:**
 
 Run `luarocks` only and pay attention to the end part of the output. this:
 
