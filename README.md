@@ -10,6 +10,7 @@ Hi, this contains personalized configs for Wale's PCs.
   - [Languages and package managers](#languages-and-package-managers)
 - [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix](#luarocks-paths-and-defualt-issue-fix)
+- [Neovim tips and tricks](#neovim-tips-and-tricks)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -132,5 +133,19 @@ Configuration:
       C:\Users\olacl\.luarocks ("user")
 
 ```
+
+## Neovim tips and tricks
+
+:bd will close the current buffer.
+
+If you're copying blocks of text around and need to align the indent
+of a block in its new location, use \]P instead of just p.
+
+To mark a block of lines and indent it, Vjj> to indent three lines (Vim only).
+
+To indent the current line or a visual block:
+ctrl-t, ctrl-d - indent current line forward, backwards
+(insert mode)
+visual > or < - indent block by sw (repeat with . )
 
 Have a good one!
