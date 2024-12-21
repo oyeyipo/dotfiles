@@ -23,7 +23,7 @@ k.set("n", "N", "Nzzzv", opts)
 k.set("n", "J", "mzJ`z", opts)
 
 -- Replace selected text with clipboard content without overwriting the clipboard
-k.set("x", "<leader>p", [["_dP]], opts)
+k.set("x", "<leader>rp", [["_dP]], opts)
 
 -- For when you want to separate neovim and system clipboard
 -- Yank (copy) to system clipboard in normal and visual modes.
@@ -46,15 +46,15 @@ k.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Search and replace the word under the cursor across the entire file, with confirmation prompt.
 k.set(
-    "n",
-    "<leader>rw",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Search and [R]eplace current [W]ord" }
+	"n",
+	"<leader>rw",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Search and [R]eplace current [W]ord" }
 )
 
 -- Source current neovim config file
 k.set("n", "<leader>so", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end, { desc = "[S][O]urce current config file" })
 
 -- DISABLE arrow keys in normal mode
@@ -69,8 +69,8 @@ k.set("i", "jk", "<Esc>", opts)
 
 -- Toggle wrapping
 k.set("n", "<leader>z", function()
-    vim.wo.wrap = not vim.wo.wrap
-    print("Wrap " .. (vim.wo.wrap and "Enabled" or "Disabled"))
+	vim.wo.wrap = not vim.wo.wrap
+	print("Wrap " .. (vim.wo.wrap and "Enabled" or "Disabled"))
 end, { desc = "[z] Toggle Wrap" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
