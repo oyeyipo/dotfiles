@@ -1,6 +1,6 @@
 return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPost", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	main = "nvim-treesitter.configs", -- TODO: what???
 	opts = {
@@ -47,5 +47,8 @@ return { -- Highlight, edit, and navigate code
 			additional_vim_regex_highlighting = { "ruby" },
 		},
 		indent = { enable = true, disable = { "ruby" } },
+	},
+	dependencies = {
+		{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 1 } },
 	},
 }
