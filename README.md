@@ -3,13 +3,15 @@
 Hi, this contains personalized configs for Wale's PCs.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Requirements](#requirements)
   - [Languages and package managers](#languages-and-package-managers)
 - [Issues and fixes](#issues-and-fixes)
-  - [Luarocks paths and defualt issue fix](#luarocks-paths-and-defualt-issue-fix)
+  - [Luarocks paths and defualt issue fix (Windows PC)](#luarocks-paths-and-defualt-issue-fix-windows-pc)
 - [Neovim tips and tricks](#neovim-tips-and-tricks)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -33,7 +35,7 @@ Ensure the following languages are installed and available on the path
 
 ## Issues and fixes
 
-### Luarocks paths and defualt issue fix
+### Luarocks paths and defualt issue fix (Windows PC)
 
 This assumes you have Lua 5.1 and luarocks (latest version) installed and on
 the path. You are gets this error:
