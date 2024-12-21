@@ -20,10 +20,10 @@ iatest=$(expr index "$-" i)
 
 # Ignore case on auto-completion
 # Note: bind used instead of sticking these in .inputrc
-if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
+if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
 
 # Show auto-completion list automatically, without double tab
-if [[ $iatest > 0 ]]; then bind "set show-all-if-unmodified On"; fi
+if [[ $iatest -gt 0 ]]; then bind "set show-all-if-unmodified On"; fi
 
 ######################################################
 # ALIASES
@@ -48,7 +48,7 @@ alias rm="rm -v"
 alias mkdir="mkdir -p -v"
 
 # Make cd easier
-alias cd..="cd .."    # cd typo alias
+alias cd..="cd .." # cd typo alias
 
 # Git commands
 alias g="git status"
@@ -80,8 +80,8 @@ alias gpst="git push origin --tags"
 alias gc="git commit"
 alias gk="gitk --all&"
 alias gx="gitx --all"
-alias grmc="git rm -r --cached"  # Untrack Files without deleting them
-alias gx="ign = ls-files -o -i --exclude-standard"   # show ignored files by git
+alias grmc="git rm -r --cached"                    # Untrack Files without deleting them
+alias gx="ign = ls-files -o -i --exclude-standard" # show ignored files by git
 
 # Neovim
 alias vim="nvim"
@@ -94,6 +94,12 @@ alias pdftest="python manage.py test functional_tests"
 
 # Remove!!!
 alias lua="lua.exe"
+
+#######################################################
+# ENV
+#######################################################
+
+export LIBVA_DRIVER_NAME=i965
 
 #######################################################
 # PATHS
@@ -111,18 +117,20 @@ PATH="$PATH:$HOME/bin"
 
 # Automatically do an ls after each cd
 cd() {
-	if [ -n "$1" ]; then
-		builtin cd "$@" && ls -a
-	else
-		builtin cd ~ && ls -a
-	fi
+    if [ -n "$1" ]; then
+        builtin cd "$@" && ls -a
+    else
+        builtin cd ~ && ls -a
+    fi
 }
 
 #######################################################
 # fnm (Fast Node Manager)
 #######################################################
 
-eval "$(fnm env --use-on-cd --shell bash)"
+if [[ "$OSTYPE" == "mysys" ]]; then
+    eval "$(fnm env --use-on-cd --shell bash)"
+fi
 
 #######################################################
 # oh-my-posh setup
@@ -130,4 +138,3 @@ eval "$(fnm env --use-on-cd --shell bash)"
 
 # the following must be as the last line
 eval "$(oh-my-posh init bash --config "$POSH_THEMES_PATH/robbyrussell.omp.json")"
-
