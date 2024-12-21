@@ -147,6 +147,7 @@ return {
 			},
 			marksman = {},
 			yamlls = {},
+			bashls = {},
 			ts_ls = {},
 			lua_ls = {
 				settings = {
@@ -178,13 +179,18 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			-- "selene", -- WARN: requires rust/cargo on path
+			-- Markdown
 			"doctoc",
 			"markdownlint",
 			"mdformat",
+			--Python
 			"black",
 			"isort",
 			"docformatter",
 			"flake8",
+			-- sh/bash
+			"shfmt",
+			"shellcheck",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
