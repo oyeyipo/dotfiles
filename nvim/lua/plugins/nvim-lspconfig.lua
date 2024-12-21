@@ -16,7 +16,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 
 		-- Collection of linters and formatters configured for efm
-		{ "creativenull/efmls-configs-nvim", version = "v1.x.x" },
+		-- { "creativenull/efmls-configs-nvim", version = "v1.x.x" },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
