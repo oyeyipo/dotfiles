@@ -183,14 +183,17 @@ return {
 			"doctoc",
 			"markdownlint",
 			"mdformat",
-			--Python
+			-- Python
 			"black",
 			"isort",
 			"docformatter",
 			"flake8",
+			"debugpy",
 			-- sh/bash
 			"shfmt",
 			"shellcheck",
+			-- GoLang
+			"delve",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
