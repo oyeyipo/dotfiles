@@ -9,6 +9,7 @@ Hi, this contains personalized configs for Wale's PCs.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Requirements](#requirements)
+- [Packages Installation Process (Neovim)](#packages-installation-process-neovim)
   - [Languages and package managers](#languages-and-package-managers)
 - [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix (Windows PC)](#luarocks-paths-and-defualt-issue-fix-windows-pc)
@@ -22,6 +23,28 @@ Hi, this contains personalized configs for Wale's PCs.
 - fzf
 - gcc (optionally, gdb)
 - make
+
+## Packages Installation Process (Neovim)
+
+Every lsp, formatter, or linters are installed through `mason-tool-installer`
+located in `nvim-lspconfig.lua` file instead of manually using `:Mason` installer.
+`:Mason` is mostly used for used to view packages already installed and maybe update
+packages if updates are available.
+
+After adding lsp, formatter, dap, or linter to mason-tool-installer `ensure_installed`
+list (lsp is added to the `servers` list). Restart neovim and run the command `MasonToolInstall`.
+Optionally confirm package installation using `:Mason` command.
+
+You will add the installed installed package to the following files depending on
+their category, as follows:
+
+- LSP: leave it in `servers` list as mentioned above in `nvim-lspconfig.lua` file.
+- Formatters: Add the formatter to it file-type in the `conform.lua` file.
+- Linters: Add the linter to it file-type in the`nvim-lint.lua` file.
+
+DAPs are ensure installed and configure in the `debug.lua` file.
+
+Restart Neovim for the additions to take effect.
 
 ### Languages and package managers
 
