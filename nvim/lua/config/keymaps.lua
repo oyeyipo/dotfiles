@@ -34,7 +34,7 @@ k.set("x", "<leader>rp", [["_dP]], opts)
 -- Delete to the black hole register in normal and visual modes,
 -- without affecting the clipboard.
 -- Normal `d` is CUT while the below is real delete deal
-k.set({ "n", "v" }, "<leader>d", [["_d]], opts)
+k.set({ "n", "v" }, "<leader>dd", [["_d]], opts)
 
 -- Jump to the next or previous item in the quickfix list and center the cursor.
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
