@@ -1,3 +1,6 @@
+-- NOTE: Ensure you have installed and have lazygit on your path
+-- see: https://github.com/jesseduffield/lazygit
+
 return { -- Calling lazygit from with neovim
 	"kdheepak/lazygit.nvim",
 	lazy = true,
