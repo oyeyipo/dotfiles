@@ -137,4 +137,4 @@ fi
 #######################################################
 
 # the following must be as the last line
-eval "$(oh-my-posh init bash --config "$POSH_THEMES_PATH/robbyrussell.omp.json")"
+eval "$(oh-my-posh init bash --config "$HOME/custom-rubbyrussell.omp.json")"
