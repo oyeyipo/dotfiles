@@ -10,7 +10,8 @@ Hi, this contains personalized configs for Wale's PCs.
 
 - [Requirements](#requirements)
 - [Packages Installation Process (Neovim)](#packages-installation-process-neovim)
-  - [Languages and package managers](#languages-and-package-managers)
+  - [DAP](#dap)
+- [Languages and package managers](#languages-and-package-managers)
 - [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix (Windows PC)](#luarocks-paths-and-defualt-issue-fix-windows-pc)
 - [Neovim tips and tricks](#neovim-tips-and-tricks)
@@ -26,13 +27,13 @@ Hi, this contains personalized configs for Wale's PCs.
 
 ## Packages Installation Process (Neovim)
 
-Every lsp, formatter, or linters are installed through `mason-tool-installer`
+Every lsp, formatter, debuggers, or linters are installed through `mason-tool-installer`
 located in `nvim-lspconfig.lua` file instead of manually using `:Mason` installer.
 `:Mason` is mostly used for used to view packages already installed and maybe update
 packages if updates are available.
 
 After adding lsp, formatter, dap, or linter to mason-tool-installer `ensure_installed`
-list (lsp is added to the `servers` list). Restart neovim and run the command `MasonToolInstall`.
+list (lsp is added to the `servers` list). Restart neovim and run the command, `MasonToolsInstall`.
 Optionally confirm package installation using `:Mason` command.
 
 You will add the installed installed package to the following files depending on
@@ -42,11 +43,21 @@ their category, as follows:
 - Formatters: Add the formatter to it file-type in the `conform.lua` file.
 - Linters: Add the linter to it file-type in the`nvim-lint.lua` file.
 
-DAPs are ensure installed and configure in the `debug.lua` file.
+### DAP
+
+DAPs are a little different. After install the DAP (eg. `debugpy`, `delve`) you will
+need to install nvim-dap client adapter (eg. `nvim-dap-python`, `nvim-dap-go`).
+
+DAPs are added to `ensure_installed` list in `nvim-lspconfig.lua` file and run the
+normal `MasonToolsInstall` command.
+
+nvim-dap client adapter for the DAPs are first add to the dependencies of nvim-dap
+in `debug.lua` file, then call its `setup()` function in the `config` property of
+the same file.
 
 Restart Neovim for the additions to take effect.
 
-### Languages and package managers
+## Languages and package managers
 
 Ensure the following languages are installed and available on the path
 
