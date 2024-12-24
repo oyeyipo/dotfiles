@@ -5,7 +5,7 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true -- To help with jumping
 opt.termguicolors = true
-opt.colorcolumn = "100"
+opt.colorcolumn = "80"
 opt.signcolumn = "yes"
 opt.scrolloff = 10
 opt.cmdheight = 1
@@ -38,7 +38,7 @@ opt.incsearch = true
 opt.hlsearch = false
 
 -- Decrease update time
-opt.updatetime = 250
+opt.updatetime = 200
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
