@@ -40,6 +40,12 @@ return { -- Autoformat
 
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+
+			-- Use the "_" filetype to run formatters on filetypes that don't
+			-- have other formatters configured.
+			["_"] = { "trim_whitespace" },
 		},
+		-- Custom formatters and overrides for built-in formatters
+		formatters = {},
 	},
 }
