@@ -14,9 +14,6 @@ return {
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
-
-		-- Collection of linters and formatters configured for efm
-		-- { "creativenull/efmls-configs-nvim", version = "v1.x.x" },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -147,7 +144,11 @@ return {
 			},
 			marksman = {},
 			yamlls = {},
-			bashls = {},
+			bashls = {
+				settings = {
+					bashIde = { shfmt = { caseIndent = true } },
+				},
+			},
 			ts_ls = {},
 			lua_ls = {
 				settings = {
