@@ -4,7 +4,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- opts = {},
 	config = function()
-		require("transparent").clear_prefix("lualine")
+		-- require("transparent").clear_prefix("lualine")
 
 		require("lualine").setup({
 			options = {
