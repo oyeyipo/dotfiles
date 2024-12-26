@@ -11,6 +11,7 @@ Hi, this contains personalized configs for Wale's PCs.
 - [Requirements](#requirements)
 - [Packages Installation Process (Neovim)](#packages-installation-process-neovim)
   - [DAP](#dap)
+  - [Test using Neotest](#test-using-neotest)
 - [Languages and package managers](#languages-and-package-managers)
 - [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix (Windows PC)](#luarocks-paths-and-defualt-issue-fix-windows-pc)
@@ -56,6 +57,37 @@ in `debug.lua` file, then call its `setup()` function in the `config` property o
 the same file.
 
 Restart Neovim for the additions to take effect.
+
+### Test using Neotest
+
+To get started you will also need to install an adapter for your test runner. See
+the adapter's documentation for their specific setup instructions.
+
+See [Supported-runners](https://github.com/nvim-neotest/neotest#supported-runners)
+
+For any runner without an adapter you can use `neotest-vim-test` which supports any
+runner that `vim-test` supports. The `vim-test` adapter does not support some
+of the more advanced features such as error locations or per-test output. If
+you're using the `vim-test` adapter then install `vim-test` too.
+
+To config, provide your adapters and other config to the setup function.
+
+```lua
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")({
+      dap = { justMyCode = false },
+    }),
+    require("neotest-plenary"),
+    require("neotest-vim-test")({
+      ignore_file_types = { "python", "vim", "lua" },
+    }),
+  },
+})
+```
+
+See :h neotest.Config for configuration options and :h neotest.setup() for the
+default values.
 
 ## Languages and package managers
 
