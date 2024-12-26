@@ -6,6 +6,8 @@ return {
 	config = function()
 		-- require("transparent").clear_prefix("lualine")
 
+		-- require('lspconfig').util.search_ancestors
+
 		require("lualine").setup({
 			options = {
 				theme = "auto",
@@ -13,7 +15,7 @@ return {
 			},
 			sections = {
 				lualine_c = {
-					{ "buffers" },
+					{ "filename" },
 				},
 			},
 		})
