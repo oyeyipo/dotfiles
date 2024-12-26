@@ -12,6 +12,9 @@ return {
 		-- Required dependency for nvim-dap-ui
 		"nvim-neotest/nvim-nio",
 
+		-- Enable info display when debugging
+		"theHamsta/nvim-dap-virtual-text",
+
 		-- Installs the debug adapters for you
 		"williamboman/mason.nvim",
 		"jay-babu/mason-nvim-dap.nvim",
@@ -84,6 +87,8 @@ return {
 			-- see mason-nvim-dap README for more information
 			handlers = {},
 		})
+
+		require("nvim-dap-virtual-text").setup()
 
 		-- Change breakpoint icons
 		vim.api.nvim_set_hl(0, "DapBreak", { fg = "#e51400" })
