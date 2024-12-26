@@ -29,6 +29,8 @@ return { -- Autocompletion
 		-- vscode-like pictograms for neovim lsp completion items
 		"onsails/lspkind.nvim",
 
+		"brenoprata10/nvim-highlight-colors",
+
 		"saadparwaiz1/cmp_luasnip",
 
 		-- Adds other completion capabilities.
@@ -42,7 +44,26 @@ return { -- Autocompletion
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
+		local highlightcolors = require("nvim-highlight-colors")
+
 		luasnip.config.setup({})
+
+		-- Nvim-highlight-colors Commands
+		-- Command	Description
+		-- :HighlightColors On	Turn highlights on
+		-- :HighlightColors Off	Turn highlights off
+		-- :HighlightColors Toggle	Toggle highlights
+		-- :HighlightColors IsActive	Highlights active / disabled
+		-- Commands are also available in lua:
+		--
+		-- require("nvim-highlight-colors").turnOn()
+		-- require("nvim-highlight-colors").turnOff()
+		-- require("nvim-highlight-colors").toggle()
+		-- require("nvim-highlight-colors").is_active()
+		highlightcolors.setup({
+			--Highlight tailwind colors, e.g. 'bg-blue-500'
+			enable_tailwind = false,
+		})
 
 		cmp.setup({
 			snippet = {
@@ -102,6 +123,10 @@ return { -- Autocompletion
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 			}),
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 			sources = {
 				{
 					name = "lazydev",
@@ -112,13 +137,27 @@ return { -- Autocompletion
 				{ name = "luasnip" },
 				{ name = "path" },
 			},
-			-- configure lspkind for vs-code like icons
 			formatting = {
-				format = lspkind.cmp_format({
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
+				format = function(entry, item)
+					local color_item = highlightcolors.format(entry, { kind = item.kind })
+					item = lspkind.cmp_format({
+						maxwidth = 50,
+						ellipsis_char = "...",
+					})(entry, item)
+					if color_item.abbr_hl_group then
+						item.kind_hl_group = color_item.abbr_hl_group
+						item.kind = color_item.abbr
+					end
+					return item
+				end,
 			},
+			-- OLD: configure lspkind for vs-code like icons
+			-- formatting = {
+			-- 	format = lspkind.cmp_format({
+			-- 		maxwidth = 50,
+			-- 		ellipsis_char = "...",
+			-- 	}),
+			-- },
 		})
 	end,
 }
