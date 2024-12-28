@@ -85,6 +85,7 @@ alias gx="ign = ls-files -o -i --exclude-standard" # show ignored files by git
 
 # Neovim
 alias vim="nvim"
+alias v="nvim"
 alias n="nvim"
 
 # Python Django
@@ -140,5 +141,5 @@ fi
 eval "$(oh-my-posh init bash --config "$HOME/custom-rubbyrussell.omp.json")"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
