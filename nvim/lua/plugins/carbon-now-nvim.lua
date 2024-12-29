@@ -5,7 +5,7 @@ return { -- Create beautiful code snippet
 		{
 			"<leader>cc",
 			"<cmd>CarbonNow<CR>",
-			{ desc = "[C]apture [C]ode", silent = true },
+			desc = "[C]apture [C]ode",
 			mode = "v",
 		},
 	},
