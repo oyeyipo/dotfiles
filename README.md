@@ -3,9 +3,7 @@
 Hi, this contains personalized configs for Wale's PCs.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Requirements](#requirements)
@@ -16,6 +14,7 @@ Hi, this contains personalized configs for Wale's PCs.
 - [Issues and fixes](#issues-and-fixes)
   - [Luarocks paths and defualt issue fix (Windows PC)](#luarocks-paths-and-defualt-issue-fix-windows-pc)
 - [Neovim tips and tricks](#neovim-tips-and-tricks)
+- [Arch Linux Keys Remap](#arch-linux-keys-remap)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -217,3 +216,14 @@ ctrl-t, ctrl-d - indent current line forward, backwards
 visual > or < - indent block by sw (repeat with . )
 
 Have a good one!
+
+## Arch Linux Keys Remap
+
+Go to the wiki and use the [evremap](https://wiki.archlinux.org/title/Input_remap_utilities#evremap)
+utility. It is a keyboard input remapper for Linux/Wayland systems.
+
+After installation using yay or pacman, create a config file `/etc/evremap.toml`
+or edit `evremap.service` to point to your config. Then [start](https://github.com/wez/evremap#systemd)
+the service.
+
+See also [start](https://wiki.archlinux.org/title/Start).
