@@ -36,16 +36,24 @@ return { -- Autoformat
 			sh = { "shfmt" },
 
 			-- Conform can also run multiple formatters sequentially
-			python = { "isort", "docformatter", "black" },
+			python = { "isort", "docformatter", "black", lsp_format = "never" },
 
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+
+			-- Use the "*" filetype to run formatters on all filetypes.
+			["*"] = { "codespell" },
 
 			-- Use the "_" filetype to run formatters on filetypes that don't
 			-- have other formatters configured.
 			["_"] = { "trim_whitespace" },
 		},
 		-- Custom formatters and overrides for built-in formatters
-		formatters = {},
+		formatters = {
+			isort = {
+				command = "isort",
+				args = { "-" },
+			},
+		},
 	},
 }
