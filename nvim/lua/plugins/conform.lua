@@ -54,6 +54,9 @@ return { -- Autoformat
 				command = "isort",
 				args = { "-" },
 			},
+			black = {
+				prepend_args = { "-l", "80" },
+			},
 		},
 	},
 }
