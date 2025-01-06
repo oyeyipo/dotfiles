@@ -1,1 +1,1 @@
-return require("plugins.theme.onedark")
+return require("plugins.theme.tokyo-night")

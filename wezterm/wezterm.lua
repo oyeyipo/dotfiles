@@ -39,6 +39,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
+-- for papercolor-theme, use: "Papercolor Light (Gogh)"
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 9.0
@@ -185,7 +186,7 @@ config.keys = {
 				{ Text = "Enter name for new workspace" },
 			},
 			action = wezterm.action_callback(function(window, pane, line)
-				-- line will be `nil` if they hit escape without entering anyting
+				-- line will be `nil` if they hit escape without entering anything
 				-- An empty string if they just hit enter
 				-- Or the actual line of text they wrote
 				if line then
@@ -278,7 +279,7 @@ wezterm.on("window-config-reloaded", function(window, _)
 	window:toast_notification("wezterm", "configuration reloaded!", nil, 4000)
 end)
 
---[[ Configuere session like tmux
+--[[ Configure session like tmux
 Not sure if below will work for windows OS
 --]]
 --[[config.unix_domains = {
