@@ -6,7 +6,7 @@
       "segments": [
         {
             "type": "python",
-            "foreground": "#ebeb49",
+            "foreground": "#e09107",
             "template": "({{ if .Venv }}venv:{{ .Venv }}{{ end }}) "
         },
         {
