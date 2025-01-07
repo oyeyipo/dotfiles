@@ -1,1 +1,1 @@
-return require("plugins.theme.nvim-catppuccin")
+return require("plugins.theme.tokyo-night")
