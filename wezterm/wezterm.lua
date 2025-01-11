@@ -212,7 +212,7 @@ for i = 1, 9 do
 	-- leader + number to activate that tab
 	table.insert(config.keys, {
 		key = tostring(i),
-		mods = "LEADER",
+		mods = "CTRL",
 		action = wezterm.action.ActivateTab(i - 1),
 	})
 end
