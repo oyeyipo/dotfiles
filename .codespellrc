@@ -1,0 +1,2 @@
+[codespell]
+skip = *.lua,*.po,*.ts,./src/3rdParty,./src/Test
