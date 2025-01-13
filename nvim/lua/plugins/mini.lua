@@ -1,5 +1,8 @@
 return {
 	"echasnovski/mini.nvim",
 	version = false,
-	config = function() end,
+	config = function()
+		require("mini.ai").setup()
+		require("mini.surround").setup()
+	end,
 }
