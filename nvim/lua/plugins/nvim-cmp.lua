@@ -49,13 +49,14 @@ return { -- Autocompletion
 		luasnip.config.setup({})
 
 		-- Nvim-highlight-colors Commands
+		--
 		-- Command	Description
 		-- :HighlightColors On	Turn highlights on
 		-- :HighlightColors Off	Turn highlights off
 		-- :HighlightColors Toggle	Toggle highlights
 		-- :HighlightColors IsActive	Highlights active / disabled
-		-- Commands are also available in lua:
 		--
+		-- Commands are also available in lua:
 		-- require("nvim-highlight-colors").turnOn()
 		-- require("nvim-highlight-colors").turnOff()
 		-- require("nvim-highlight-colors").toggle()
@@ -151,13 +152,6 @@ return { -- Autocompletion
 					return item
 				end,
 			},
-			-- OLD: configure lspkind for vs-code like icons
-			-- formatting = {
-			-- 	format = lspkind.cmp_format({
-			-- 		maxwidth = 50,
-			-- 		ellipsis_char = "...",
-			-- 	}),
-			-- },
 		})
 	end,
 }
