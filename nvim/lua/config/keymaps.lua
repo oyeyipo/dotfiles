@@ -2,14 +2,15 @@ local k = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-k.set("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
+k.set("n", "<Esc>", ":nohlsearch<CR>", opts)
 
 -- Diagnostic keymaps
 k.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- Remap J and K in visual mode to move selected lines down or up while maintaining selection and reindenting.
-k.set("v", "J", "<cmd>m '>+1<CR>gv=gv", opts)
-k.set("v", "K", "<cmd>m '<-2<CR>gv=gv", opts)
+-- Remap J and K in visual mode to move selected lines down or up
+-- while maintaining selection and reindenting.
+k.set("v", "J", ":m '>+1<CR>gv=gv", opts)
+k.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Scroll down or up half a screen and center the cursor.
 k.set("n", "<C-d>", "<C-d>zz", opts)
@@ -44,7 +45,8 @@ k.set({ "n", "v" }, "<leader>dd", [["_d]], opts)
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- Search and replace the word under the cursor across the entire file, with confirmation prompt.
+-- Search and replace the word under the cursor across the entire
+-- file, with confirmation prompt.
 k.set(
 	"n",
 	"<leader>rw",

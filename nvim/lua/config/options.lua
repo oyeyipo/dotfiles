@@ -65,7 +65,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.smartindent = true
 
-opt.wrap = true
+opt.wrap = false
 
 -- Other Bahaviours
 opt.encoding = "UTF-8"
