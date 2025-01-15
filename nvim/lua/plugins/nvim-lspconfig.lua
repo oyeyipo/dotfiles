@@ -198,6 +198,9 @@ return {
 			"shellcheck",
 			-- GoLang
 			"delve",
+			-- Javascript
+			"prettier",
+			"prettierd",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
