@@ -26,18 +26,22 @@ return { -- Autocompletion
 				},
 			},
 		},
+		"saadparwaiz1/cmp_luasnip",
+
 		-- vscode-like pictograms for neovim lsp completion items
 		"onsails/lspkind.nvim",
 
+		-- Realtime color highlighting; supports hex, rgb, hsl, CSS variables,
+		-- and Tailwind CSS
 		"brenoprata10/nvim-highlight-colors",
-
-		"saadparwaiz1/cmp_luasnip",
 
 		-- Adds other completion capabilities.
 		--  nvim-cmp does not ship with all sources by default. They are split
 		--  into multiple repos for maintenance purposes.
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-cmdline",
 	},
 	config = function()
 		-- See `:help cmp`
@@ -70,6 +74,7 @@ return { -- Autocompletion
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
+					vim.snippet.expand(args.body)
 				end,
 			},
 			completion = { completeopt = "menu,menuone,noinsert" },
@@ -121,8 +126,8 @@ return { -- Autocompletion
 					end
 				end, { "i", "s" }),
 
-				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion)
+				-- see: https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 			}),
 			window = {
 				completion = cmp.config.window.bordered(),
@@ -137,6 +142,7 @@ return { -- Autocompletion
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "path" },
+				{ name = "buffer" },
 			},
 			formatting = {
 				format = function(entry, item)
@@ -152,6 +158,30 @@ return { -- Autocompletion
 					return item
 				end,
 			},
+		})
+
+		-- `/` cmdline setup.
+		cmp.setup.cmdline("/", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = "buffer" },
+			},
+		})
+
+		-- `:` cmdline setup.
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{
+					name = "cmdline",
+					option = {
+						ignore_cmds = { "Man", "!" },
+					},
+				},
+			}),
+			matching = { disallow_symbol_nonprefix_matching = false },
 		})
 	end,
 }
