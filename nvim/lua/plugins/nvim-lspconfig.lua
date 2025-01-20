@@ -144,6 +144,7 @@ return {
 			},
 			marksman = {},
 			yamlls = {},
+			jsonls = {},
 			bashls = {
 				settings = {
 					bashIde = { shfmt = { caseIndent = true } },
@@ -164,6 +165,12 @@ return {
 					},
 				},
 			},
+			cssls = {},
+			css_variables = {},
+			tailwindcss = {},
+			html = {},
+			stimulus_ls = {},
+			clangd = {},
 		}
 
 		-- Ensure the servers and tools above are installed
