@@ -4,6 +4,7 @@ return { -- Highlight, edit, and navigate code
 	build = ":TSUpdate",
 	main = "nvim-treesitter.configs", -- TODO: what???
 	opts = {
+		-- A list of parser names, or "all"
 		ensure_installed = {
 			"bash",
 			"json",
