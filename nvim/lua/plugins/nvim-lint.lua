@@ -8,6 +8,13 @@ return { -- Linting
 			markdown = { "markdownlint" },
 			python = { "flake8" },
 			sh = { "shellcheck" },
+			typescript = { "biomejs" },
+			javascript = { "biomejs" },
+			json = { "biomejs" },
+			css = { "biomejs" },
+			javascriptreact = { "biomejs" },
+			typescriptreact = { "biomejs" },
+			jsx = { "biomejs" },
 			-- lua = { "luacheck" },
 		}
 

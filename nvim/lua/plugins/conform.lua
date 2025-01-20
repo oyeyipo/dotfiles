@@ -38,8 +38,10 @@ return { -- Autoformat
 			-- Conform can also run multiple formatters sequentially
 			python = { "isort", "docformatter", "black", lsp_format = "never" },
 
+			-- Web Techs
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+			typescript = { "prettierd", "prettier", stop_after_first = true },
 
 			-- Use the "*" filetype to run formatters on all filetypes.
 			["*"] = { "codespell" },
