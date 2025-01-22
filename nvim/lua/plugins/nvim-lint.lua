@@ -15,6 +15,7 @@ return { -- Linting
 			javascriptreact = { "biomejs" },
 			typescriptreact = { "biomejs" },
 			jsx = { "biomejs" },
+			cpp = { "cpplint" },
 			-- lua = { "luacheck" },
 		}
 

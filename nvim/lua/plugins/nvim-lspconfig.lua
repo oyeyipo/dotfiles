@@ -210,6 +210,8 @@ return {
 			"prettierd",
 			"biome",
 			"eslint_d",
+			-- C/C++
+			"cpplint",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
