@@ -14,6 +14,9 @@ return {
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
+
+		-- LSP signature hint as you type.
+		{ "ray-x/lsp_signature.nvim", opts = {} },
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -23,6 +26,8 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("olawale-lsp-attach", { clear = true }),
 			callback = function(event)
+				require("lsp_signature").setup({})
+
 				local map = function(keys, func, desc, mode)
 					mode = mode or "n"
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
