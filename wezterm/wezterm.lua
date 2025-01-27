@@ -63,6 +63,7 @@ config.leader = {
 	colors = { compose_cursor = "blue" },
 	timeout_milliseconds = 2000,
 }
+
 config.keys = {
 	{
 		key = "r",
@@ -185,7 +186,7 @@ config.keys = {
 				{ Foreground = { AnsiColor = "Fuchsia" } },
 				{ Text = "Enter name for new workspace" },
 			}),
-			action = wezterm.action_callback(function(window, pane, line)
+			action = wezterm.action_callback(function(window, _, line)
 				-- line will be `nil` if they hit escape without entering anything
 				-- An empty string if they just hit enter
 				-- Or the actual line of text they wrote
