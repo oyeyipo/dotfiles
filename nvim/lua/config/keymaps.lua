@@ -24,7 +24,7 @@ k.set("n", "N", "Nzzzv", opts)
 k.set("n", "J", "mzJ`z", opts)
 
 -- Replace selected text with clipboard content without overwriting the clipboard
-k.set("x", "<leader>rp", [["_dP]], opts)
+k.set("x", "<leader>v", [["_dP]], opts)
 
 -- For when you want to separate neovim and system clipboard
 -- Yank (copy) to system clipboard in normal and visual modes.
@@ -85,10 +85,10 @@ k.set("t", "<Esc><Esc>", "<C-\\><C-n>", table.insert(opts, { desc = "Exit termin
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
--- k.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
--- k.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
--- k.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
--- k.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+k.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+k.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+k.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+k.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Indenting
 k.set("v", "<", "<gv")
