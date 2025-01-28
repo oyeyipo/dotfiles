@@ -9,7 +9,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "\\", ":Neotree toggle<CR>", desc = "NeoTree toggle", silent = true },
+		{ "\\", ":Neotree toggle reveal<CR>", desc = "[\\] NeoTree toggle", silent = true },
 	},
 	-- opts = {},
 	config = function()
@@ -33,6 +33,30 @@ return {
 					hide_dotfiles = false,
 					hide_gitignored = false,
 					hide_hidden = false, -- only works on Windows for hidden files/directories
+					hide_by_name = {
+						".DS_Store",
+						-- "node_modules",
+					},
+					hide_by_pattern = {
+						--"*.meta",
+						--"*/src/*/tsconfig.json",
+					},
+				},
+			},
+			default_component_configs = {
+				diagnostics = {
+					symbols = {
+						hint = "󰌵",
+						info = " ",
+						warn = " ",
+						error = " ",
+					},
+					highlights = {
+						hint = "DiagnosticSignHint",
+						info = "DiagnosticSignInfo",
+						warn = "DiagnosticSignWarn",
+						error = "DiagnosticSignError",
+					},
 				},
 			},
 		})
