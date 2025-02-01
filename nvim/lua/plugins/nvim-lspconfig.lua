@@ -194,7 +194,7 @@ return {
 			"codespell",
 			-- Lua
 			"stylua",
-			-- "selene", -- WARN: requires rust/cargo on path
+			"luacheck",
 			-- Markdown
 			"doctoc",
 			"markdownlint",
