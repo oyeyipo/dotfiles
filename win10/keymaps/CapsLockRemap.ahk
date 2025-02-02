@@ -2,39 +2,21 @@
 ; - Acts as Escape when tapped
 ; - Functions as Control when held down
 ; Remap Escape to Caps Lock
+#Requires AutoHotkey v2.0
 
-; Variables to track key states
-CapsLockPressed := true
-CapsLockTimer := 0
+*CapsLock::
+{
+    Send "{LControl down}"
+}
 
-; Caps Lock pressedL start timer
-$CapsLock::
-    CapsLockPressed := true
-    CapsLockTimer := A_TickCount
-    SetTimer, CheckCapsLock, 150
-Return
+*CapsLock up::
+{
+    Send "{LControl Up}"
 
-; Caps Lock released: determine action
-$CapsLock Up::
-    SetTimer, CheckCapsLock, Off
-    if(CapsLockPressed) {
-        if(A_TickCount - CapsLockTimer < 150) {
-            Send, {Esc}
-        }
-    }
-    CapsLockPressed := false
-Return
-
-; Check if Caps Lock is held down
-CheckCapsLock:
-    if(GetKeyState("CapsLock", "P")) {
-        Send, {Blind}{Ctrl Down}
-        KeyWait, CapsLock
-        Send, {Blind}{Ctrl Up}
-    }
-    CapsLockPressed := false
-    SetTimer, CheckCapsLock, Off
-return
-
-; Remap Escape to Caps Lock
-$Esc::CapsLock
+    if (A_PriorKey=="CapsLock"){
+	if (A_TimeSincePriorHotkey < 200) ; in milliseconds
+		Suspend "1"
+		Send "{Esc}"
+		Suspend "0"
+	}
+}
