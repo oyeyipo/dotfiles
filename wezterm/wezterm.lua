@@ -38,9 +38,11 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
--- for papercolor-theme, use: "Papercolor Light (Gogh)"
-config.color_scheme = "" -- "Tokyo Night"
+-- Color scheme
+-- config.color_scheme = ""Papercolor Light (Gogh)""
+-- config.color_scheme = "Tokyo Night"
+config.color_scheme = "" -- Hello darkeness
+
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 9.0
 
