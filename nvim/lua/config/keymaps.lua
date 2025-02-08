@@ -65,9 +65,11 @@ k.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 k.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 k.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
--- Exit on kj and jk
+-- Convience keys by me
 k.set("i", "jj", "<Esc>", opts)
 k.set("i", "jk", "<Esc>", opts)
+k.set({ "n", "v" }, "H", "^", opts)
+k.set({ "n", "v" }, "L", "$", opts)
 
 -- Toggle wrapping
 k.set("n", "<leader>z", function()
