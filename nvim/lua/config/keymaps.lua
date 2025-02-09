@@ -38,8 +38,8 @@ k.set("x", "<leader>v", [["_dP]], opts)
 k.set({ "n", "v" }, "<leader>dd", [["_d]], opts)
 
 -- Jump to the next or previous item in the quickfix list and center the cursor.
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- k.set("n", "<C-k>", ":cnext<CR>zz", opts)
+-- k.set("n", "<C-j>", ":cprev<CR>zz", opts)
 
 -- Jump to the next or previous item in the location list and center the cursor.
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -68,8 +68,8 @@ k.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Convience keys by me
 k.set("i", "jj", "<Esc>", opts)
 k.set("i", "jk", "<Esc>", opts)
-k.set({ "n", "v" }, "H", "^", opts)
-k.set({ "n", "v" }, "L", "$", opts)
+-- k.set({ "n", "v" }, "H", "^", opts)
+-- k.set({ "n", "v" }, "L", "$", opts)
 
 -- Toggle wrapping
 k.set("n", "<leader>z", function()
