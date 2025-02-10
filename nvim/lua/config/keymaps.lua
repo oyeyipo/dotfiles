@@ -1,11 +1,15 @@
 local k = vim.keymap
 local opts = { noremap = true, silent = true }
 
+local function options(desc)
+	return { desc = desc, noremap = true, silent = true }
+end
+
 -- Clear highlights on search when pressing <Esc> in normal mode
-k.set("n", "<Esc>", ":nohlsearch<CR>", opts)
+k.set("n", "<Esc>", ":nohlsearch<CR>", options("Clear highlights on search"))
 
 -- Diagnostic keymaps
-k.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+k.set("n", "<leader>q", vim.diagnostic.setloclist, options("Open diagnostic [Q]uickfix list"))
 
 -- Remap J and K in visual mode to move selected lines down or up
 -- while maintaining selection and reindenting.
@@ -24,26 +28,26 @@ k.set("n", "N", "Nzzzv", opts)
 k.set("n", "J", "mzJ`z", opts)
 
 -- Replace selected text with clipboard content without overwriting the clipboard
-k.set("x", "<leader>v", [["_dP]], opts)
+k.set("x", "<leader>p", [["_dP]], options("[P]aste without overwriting clipboard"))
 
 -- For when you want to separate neovim and system clipboard
 -- Yank (copy) to system clipboard in normal and visual modes.
--- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+k.set({ "n", "v" }, "<leader>y", [["+y]])
 -- Yank (copy) the entire line to system clipboard in normal mode.
--- vim.keymap.set("n", "<leader>Y", [["+Y]])
+k.set("n", "<leader>Y", [["+Y]])
 
 -- Delete to the black hole register in normal and visual modes,
 -- without affecting the clipboard.
 -- Normal `d` is CUT while the below is real delete deal
-k.set({ "n", "v" }, "<leader>dd", [["_d]], opts)
+k.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Jump to the next or previous item in the quickfix list and center the cursor.
 -- k.set("n", "<C-k>", ":cnext<CR>zz", opts)
 -- k.set("n", "<C-j>", ":cprev<CR>zz", opts)
 
 -- Jump to the next or previous item in the location list and center the cursor.
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+k.set("n", "<leader>k", ":lnext<CR>zz", opts)
+k.set("n", "<leader>j", ":lprev<CR>zz", opts)
 
 -- Search and replace the word under the cursor across the entire
 -- file, with confirmation prompt.
