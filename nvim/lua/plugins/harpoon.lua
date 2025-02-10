@@ -49,11 +49,11 @@ return {
 		end, "[R]eplace buffer at [4]")
 
 		-- Toggle previous & next buffers stored within Harpoon list
-		map("<leader>p", function()
-			harpoon:list():prev()
-		end, "[P]revious buffer")
-		map("<leader>n", function()
-			harpoon:list():next()
-		end, "[N]ext buffer")
+		-- map("<leader>p", function()
+		-- 	harpoon:list():prev()
+		-- end, "[P]revious buffer")
+		-- map("<leader>n", function()
+		-- 	harpoon:list():next()
+		-- end, "[N]ext buffer")
 	end,
 }
