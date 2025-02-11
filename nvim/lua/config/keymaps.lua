@@ -42,12 +42,12 @@ k.set("n", "<leader>Y", [["+Y]])
 k.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Jump to the next or previous item in the quickfix list and center the cursor.
--- k.set("n", "<C-k>", ":cnext<CR>zz", opts)
--- k.set("n", "<C-j>", ":cprev<CR>zz", opts)
+-- k.set("n", "<C-k>", "<cmd>cnext<CR>zz", opts)
+-- k.set("n", "<C-j>", "<cmd>cprev<CR>zz", opts)
 
 -- Jump to the next or previous item in the location list and center the cursor.
-k.set("n", "<leader>k", ":lnext<CR>zz", opts)
-k.set("n", "<leader>j", ":lprev<CR>zz", opts)
+k.set("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
+k.set("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
 
 -- Search and replace the word under the cursor across the entire
 -- file, with confirmation prompt.
@@ -72,6 +72,7 @@ k.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Convience keys by me
 k.set("i", "jj", "<Esc>", opts)
 k.set("i", "jk", "<Esc>", opts)
+k.set("n", "Q", "<nop>")
 
 -- Toggle wrapping
 k.set("n", "<leader>z", function()
