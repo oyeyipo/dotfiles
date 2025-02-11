@@ -72,8 +72,6 @@ k.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Convience keys by me
 k.set("i", "jj", "<Esc>", opts)
 k.set("i", "jk", "<Esc>", opts)
--- k.set({ "n", "v" }, "H", "^", opts)
--- k.set({ "n", "v" }, "L", "$", opts)
 
 -- Toggle wrapping
 k.set("n", "<leader>z", function()
