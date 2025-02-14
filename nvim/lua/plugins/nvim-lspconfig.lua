@@ -206,6 +206,7 @@ return {
 			"docformatter",
 			"flake8",
 			"debugpy",
+			"djlint",
 			-- sh/bash
 			"shfmt",
 			"shellcheck",
