@@ -37,6 +37,7 @@ return { -- Highlight, edit, and navigate code
 			"java",
 			"kotlin",
 			"svelte",
+			"tree-sitter-hyprlang",
 		},
 		-- Autoinstall languages that are not installed
 		auto_install = true,

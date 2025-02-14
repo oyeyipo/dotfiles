@@ -176,6 +176,7 @@ return {
 			html = {},
 			stimulus_ls = {},
 			clangd = {},
+			hyprls = {},
 		}
 
 		-- Ensure the servers and tools above are installed
