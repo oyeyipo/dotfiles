@@ -57,7 +57,7 @@ return { -- Autoformat
 				args = { "-" },
 			},
 			black = {
-				prepend_args = { "-l", "80" },
+				prepend_args = { "-l", "79" },
 			},
 		},
 	},
