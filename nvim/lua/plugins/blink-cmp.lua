@@ -30,6 +30,8 @@ return { -- Autocompletion
 			opts = {},
 		},
 		"folke/lazydev.nvim",
+		"onsails/lspkind.nvim",
+		"nvim-tree/nvim-web-devicons",
 
 		-- Realtime color highlighting; supports hex, rgb, hsl, CSS variables,
 		-- and Tailwind CSS
