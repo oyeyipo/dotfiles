@@ -33,6 +33,8 @@ return { -- Autocompletion
 		"onsails/lspkind.nvim",
 		"nvim-tree/nvim-web-devicons",
 
+		{ "xzbdmw/colorful-menu.nvim", opts = {} },
+
 		-- Realtime color highlighting; supports hex, rgb, hsl, CSS variables,
 		-- and Tailwind CSS
 		{ "brenoprata10/nvim-highlight-colors", opts = {} },
@@ -77,21 +79,32 @@ return { -- Autocompletion
 			menu = {
 				border = "rounded",
 				draw = {
+					-- We don't need label_description now because label and label_description are already
+					-- combined together in label by colorful-menu.nvim.
+					columns = { { "kind_icon" }, { "label", gap = 1 } },
 					components = {
 						-- customize the drawing of kind icons
 						kind_icon = {
 							text = function(ctx)
 								-- default kind icon
 								local icon = ctx.kind_icon
-								-- if LSP source, check for color derived from documentation
-								if ctx.item.source_name == "LSP" then
-									local color_item = require("nvim-highlight-colors").format(
-										ctx.item.documentation,
-										{ kind = ctx.kind }
-									)
-									if color_item and color_item.abbr ~= "" then
-										icon = color_item.abbr
+								if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+									if dev_icon then
+										icon = dev_icon
 									end
+									-- if LSP source, check for color derived from documentation
+									if ctx.item.source_name == "LSP" then
+										local color_item = require("nvim-highlight-colors").format(
+											ctx.item.documentation,
+											{ kind = ctx.kind }
+										)
+										if color_item and color_item.abbr ~= "" then
+											icon = color_item.abbr
+										end
+									end
+								else
+									icon = require("lspkind").symbolic(ctx.kind, { mode = "symbol" })
 								end
 								return icon .. ctx.icon_gap
 							end,
@@ -99,16 +112,30 @@ return { -- Autocompletion
 								-- default highlight group
 								local highlight = "BlinkCmpKind" .. ctx.kind
 								-- if LSP source, check for color derived from documentation
-								if ctx.item.source_name == "LSP" then
-									local color_item = require("nvim-highlight-colors").format(
-										ctx.item.documentation,
-										{ kind = ctx.kind }
-									)
-									if color_item and color_item.abbr_hl_group then
-										highlight = color_item.abbr_hl_group
+								if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									local dev_icon, dev_highlight = require("nvim-web-devicons").get_icon(ctx.label)
+									if ctx.item.source_name == "LSP" then
+										local color_item = require("nvim-highlight-colors").format(
+											ctx.item.documentation,
+											{ kind = ctx.kind }
+										)
+										if color_item and color_item.abbr_hl_group then
+											highlight = color_item.abbr_hl_group
+										end
+									end
+									if dev_icon then
+										highlight = dev_highlight
 									end
 								end
 								return highlight
+							end,
+						},
+						label = {
+							text = function(ctx)
+								return require("colorful-menu").blink_components_text(ctx)
+							end,
+							highlight = function(ctx)
+								return require("colorful-menu").blink_components_highlight(ctx)
 							end,
 						},
 					},
