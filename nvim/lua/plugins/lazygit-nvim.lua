@@ -24,7 +24,7 @@ return { -- Calling lazygit from with neovim
 			function()
 				require("telescope").extensions.lazygit.lazygit()
 			end,
-			desc = "Start [L]azygit [Telescope]",
+			desc = "Start [L]azygit [T]elescope",
 		},
 	},
 	config = function()
