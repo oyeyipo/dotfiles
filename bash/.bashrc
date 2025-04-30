@@ -134,6 +134,22 @@ if [[ "$OSTYPE" == "mysys" ]]; then
 fi
 
 #######################################################
+# Linux desktop environment setting
+#######################################################
+if [ "$(uname)" = "Linux" ]; then
+    # Only set XDG_CURRENT_DESKTOP if it isn't already defined.
+    if [ -z "$XDG_CURRENT_DESKTOP" ]; then
+        if pgrep -x "plasmashell" >/dev/null 2>&1; then
+            # KDE session detected
+            export XDG_CURRENT_DESKTOP="KDE"
+        elif [ -n "$WAYLAND_DISPLAY" ]; then
+            # Running on Wayland but KDE-assume Hyprland
+            export XDG_CURRENT_DESKTOP="Hyprland"
+        fi
+    fi
+fi
+
+#######################################################
 # oh-my-posh setup
 #######################################################
 
