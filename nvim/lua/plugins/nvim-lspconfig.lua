@@ -16,6 +16,8 @@ return {
 		"saghen/blink.cmp",
 
 		-- LSP signature hint as you type.
+		-- blink.cmp has a built-in signature that can be used but is
+		-- currently experimental
 		{ "ray-x/lsp_signature.nvim", opts = {} },
 	},
 	config = function()
