@@ -39,10 +39,12 @@ return { -- Autoformat
 			-- Web Techs
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+			html = { "prettierd", "prettier", stop_after_first = true },
+			css = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 
 			-- Use the "*" filetype to run formatters on all filetypes.
-			["*"] = { "codespell" },
+			["*"] = { "codespell", "trim_whitespace" },
 
 			-- Use the "_" filetype to run formatters on filetypes that don't
 			-- have other formatters configured.

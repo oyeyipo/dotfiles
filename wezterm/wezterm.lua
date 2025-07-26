@@ -206,6 +206,12 @@ config.keys = {
 		key = "s",
 		action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
 	},
+	{
+		mods = "CTRL",
+		key = "Backspace",
+		action = act.SendString("\x17"), -- \x17 is ASCII for ctrl+w
+		-- act.SendKey ({key='w', mods='CTRL'})
+	},
 }
 
 for i = 1, 9 do
