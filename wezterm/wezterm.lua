@@ -43,7 +43,15 @@ local config = wezterm.config_builder()
 -- config.color_scheme = "Tokyo Night"
 config.color_scheme = "" -- Hello darkeness
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+
+
+config.font = wezterm.font_with_fallback({
+	"JetBrainsMono Nerd Font",
+	"JetBrains Mono",
+	"Cascadia Code",
+	"Consolas",
+	"Courier New",
+})
 config.font_size = 9.0
 
 -- General settings
@@ -242,6 +250,18 @@ config.tab_and_split_indices_are_zero_based = false
 config.tab_max_width = 32
 config.switch_to_last_active_tab_when_closing_tab = true
 
+wezterm.on("format-tab-title", function(tab)
+	local title = tab.tab_title
+	if not title or #title == 0 then
+		title = tab.active_pane.title
+	end
+
+	-- VS Code Look: icon + title
+	return {
+		{ Text = "   " .. title .. "  " },
+	}
+end) 
+
 -- Dim inactive panes
 -- config.inactive_pane_hsb = {
 --	saturation = 0.3,
@@ -311,7 +331,7 @@ end)
 
 -- Reload configuration notification
 wezterm.on("window-config-reloaded", function(window, _)
-	window:toast_notification("wezterm", "configuration reloaded!", nil, 4000)
+	window:toast_notification("wezterm", "configuration reloaded!", nil, 1000)
 end)
 
 --[[ Configure session like tmux
