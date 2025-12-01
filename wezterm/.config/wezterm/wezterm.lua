@@ -60,11 +60,32 @@ config.scrollback_lines = 5000
 config.pane_focus_follows_mouse = false
 config.window_background_opacity = 0.9
 
--- Setting shellTokyo Night
--- for windows powershell: { "pwsh.exe", "-NoLogo" }
-if platform().os == "windows" then
-	config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe" }
+
+------------------------------------------------------------
+-- DEFAULT PROGRAM (Windows-friendly)
+------------------------------------------------------------
+
+-- Pick an available shell automatically (WSL > Git Bash > PowerShell)
+
+local function detect_default_shell()
+    local shells = {
+        {"wsl.exe"},
+        { "C:/Program Files/Git/bin/bash.exe", "--login", "-i" },
+        { "pwsh.exe" },  -- for windows powershell: { "pwsh.exe", "-NoLogo" }
+        { "powershell.exe" },
+        { "cmd.exe" },
+    }
+
+    for _, cmd in ipairs(shells) do
+        if wezterm.run_child_process({ "where", cmd[1] }) then
+            return cmd
+        end
+    end
+
+    return { "powershell.exe" }
 end
+
+config.default_prog = detect_default_shell()
 
 -- Multiplexing
 config.leader = {
@@ -260,7 +281,7 @@ wezterm.on("format-tab-title", function(tab)
 	return {
 		{ Text = "   " .. title .. "  " },
 	}
-end) 
+end)
 
 -- Dim inactive panes
 -- config.inactive_pane_hsb = {
@@ -357,7 +378,7 @@ If you prefer to connect manually, leave out this line.
 -- understanding that vim/nvim is the fg process even if it's started
 -- through another command (that uses $EDITOR for example)
 
---[[ 
+--[[
 local w = require 'wezterm'
 local a = w.action
 
