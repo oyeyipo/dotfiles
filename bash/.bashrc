@@ -154,7 +154,8 @@ fi
 #######################################################
 
 # the following must be as the last line
-eval "$(oh-my-posh init bash --config "$HOME/custom-rubbyrussell.omp.json")"
+# eval "$(oh-my-posh init bash --config "$HOME/custom-rubbyrussell.omp.json")"
+eval "$(starship init bash)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
