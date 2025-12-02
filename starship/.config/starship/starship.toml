@@ -1,0 +1,60 @@
+# ~/.config/starship/starship.toml
+
+# Prompt
+add_newline = true
+format = "$username$hostname$directory$git_branch$git_status$cmd_duration$character "
+
+# Username and Hostname
+[username]
+style_user = "yellow"
+style_root = "red"
+show_always = false
+
+[hostname]
+disabled = true
+
+# Directory
+[directory]
+style = "cyan"
+truncate_to_repo = false
+
+# Git branch & status
+[git_branch]
+symbol = " "
+style = "green"
+
+[git_status]
+conflicted = "⚡"
+ahead = "↑"
+behind = "↓"
+diverged = "⇕"
+untracked = "?"
+staged = "+"
+deleted = "✖"
+renamed = "»"
+modified = "~"
+style = "red"
+
+# Command duration (only show if > 5s)
+[cmd_duration]
+min_time = 5000
+format = "[$duration]($style) "
+style = "yellow"
+
+# Character
+[character]
+symbol = "❯"
+error_symbol = "✖"
+vicmd_symbol = "❮"
+style_success = "green"
+style_failure = "red"
+
+# Disable unused modules for speed
+[package]
+disabled = true
+[rust]
+disabled = true
+[python]
+disabled = true
+[nodejs]
+disabled = true
