@@ -1,49 +1,27 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
-local function is_found(str, pattern)
-	return string.find(str, pattern) ~= nil
-end
+------------------------------------------------------------
+-- DEFAULT PROGRAM (Windows-friendly)
+------------------------------------------------------------
 
-local function platform()
-	local is_win = is_found(wezterm.target_triple, "windows")
-	local is_linux = is_found(wezterm.target_triple, "linux")
-	local is_mac = is_found(wezterm.target_triple, "apple")
-	local os
+local target = wezterm.target_triple
+local IS_WIN = target:find("windows") ~= nil
+local IS_LINUX = target:find("linux") ~= nil
+local IS_MAC = target:find("apple") ~= nil
 
-	if is_win then
-		os = "windows"
-	elseif is_linux then
-		os = "linux"
-	elseif is_mac then
-		os = "mac"
-	else
-		error("Unknown platform")
-	end
+local OS = IS_WIN and "windows" or IS_LINUX and "linux" or IS_MAC and "mac" or
+    error("Unknown platform: " .. target)
 
-	return {
-		os = os,
-		is_win = is_win,
-		is_linux = is_linux,
-		is_mac = is_mac,
-	}
-end
+------------------------------------------------------------
+-- CONFIG BUILDER
+------------------------------------------------------------
 
--- Variable declarations
-local act = wezterm.action
--- local mux = wezterm.mux
-
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices
-
--- Color scheme
--- config.color_scheme = ""Papercolor Light (Gogh)""
--- config.color_scheme = "Tokyo Night"
-config.color_scheme = "" -- Hello darkeness
-
-
+------------------------------------------------------------
+-- FONT (robust fallback -- will never error)
+------------------------------------------------------------
 
 config.font = wezterm.font_with_fallback({
 	"JetBrainsMono Nerd Font",
@@ -54,12 +32,23 @@ config.font = wezterm.font_with_fallback({
 })
 config.font_size = 9.0
 
--- General settings
+------------------------------------------------------------
+-- UI SETTINGS
+------------------------------------------------------------
+
+-- config.color_scheme = ""Papercolor Light (Gogh)""
+-- config.color_scheme = "Tokyo Night"
+config.color_scheme = "" -- Hello darkeness
 config.window_decorations = "RESIZE"
-config.scrollback_lines = 5000
+config.scrollback_lines = 10000
 config.pane_focus_follows_mouse = false
 config.window_background_opacity = 0.9
+config.macos_window_background_blur = 20
 
+-- Adjust padding between panes
+config.window_padding = {
+	left = 0, right = 0, top = 0, bottom = 0,
+}
 
 ------------------------------------------------------------
 -- DEFAULT PROGRAM (Windows-friendly)
@@ -85,6 +74,10 @@ local function detect_default_shell()
     return { "powershell.exe" }
 end
 
+------------------------------------------------------------
+-- LEADER KEY
+------------------------------------------------------------
+
 config.default_prog = detect_default_shell()
 
 -- Multiplexing
@@ -94,6 +87,12 @@ config.leader = {
 	colors = { compose_cursor = "blue" },
 	timeout_milliseconds = 2000,
 }
+
+------------------------------------------------------------
+-- KEYBINDINGS
+------------------------------------------------------------
+
+local act = wezterm.action
 
 config.keys = {
 	{
@@ -289,13 +288,6 @@ end)
 --	brightness = 0.5
 -- }
 
--- Adjust padding between panes
-config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
-}
 
 -- Neovim-Wezterm Navigator
 -- Approach 1: "get_foreground_process_name" (Does not work
