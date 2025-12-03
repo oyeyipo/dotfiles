@@ -10,8 +10,7 @@ local IS_WIN = target:find("windows") ~= nil
 local IS_LINUX = target:find("linux") ~= nil
 local IS_MAC = target:find("apple") ~= nil
 
-local OS = IS_WIN and "windows" or IS_LINUX and "linux" or IS_MAC and "mac" or
-    error("Unknown platform: " .. target)
+local OS = IS_WIN and "windows" or IS_LINUX and "linux" or IS_MAC and "mac" or error("Unknown platform: " .. target)
 
 ------------------------------------------------------------
 -- CONFIG BUILDER
@@ -46,9 +45,16 @@ config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 config.adjust_window_size_when_changing_font_size = false
 
+-- For zellij
+config.enable_kitty_keyboard = true
+config.enable_csi_u_key_encoding = true
+
 -- Adjust padding between panes
 config.window_padding = {
-	left = 0, right = 0, top = 0, bottom = 0,
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 
 ------------------------------------------------------------
@@ -58,21 +64,21 @@ config.window_padding = {
 -- Pick an available shell automatically (WSL > Git Bash > PowerShell)
 
 local function detect_default_shell()
-    local shells = {
-        {"wsl.exe"},
-        { "C:/Program Files/Git/bin/bash.exe", "--login", "-i" },
-        { "pwsh.exe" },  -- for windows powershell: { "pwsh.exe", "-NoLogo" }
-        { "powershell.exe" },
-        { "cmd.exe" },
-    }
+	local shells = {
+		{ "wsl.exe" },
+		{ "C:/Program Files/Git/bin/bash.exe", "--login", "-i" },
+		{ "pwsh.exe" }, -- for windows powershell: { "pwsh.exe", "-NoLogo" }
+		{ "powershell.exe" },
+		{ "cmd.exe" },
+	}
 
-    for _, cmd in ipairs(shells) do
-        if wezterm.run_child_process({ "where", cmd[1] }) then
-            return cmd
-        end
-    end
+	for _, cmd in ipairs(shells) do
+		if wezterm.run_child_process({ "where", cmd[1] }) then
+			return cmd
+		end
+	end
 
-    return { "powershell.exe" }
+	return { "powershell.exe" }
 end
 
 ------------------------------------------------------------
@@ -288,7 +294,6 @@ end)
 --	saturation = 0.3,
 --	brightness = 0.5
 -- }
-
 
 -- Neovim-Wezterm Navigator
 -- Approach 1: "get_foreground_process_name" (Does not work
