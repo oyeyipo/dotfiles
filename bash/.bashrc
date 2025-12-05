@@ -151,6 +151,24 @@ if [ "$(uname)" = "Linux" ]; then
 fi
 
 #######################################################
+# Zellij Auto-start integration for bash
+#######################################################
+
+if [[ -z "$ZELLIJ" ]]; then
+    # Auto-attach to an existing session if the user wants it
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
+    else
+        zellij -l welcome
+    fi
+
+    # Exit the shell after zellij if user sets ZELLIJ_AUTO_EXIT
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
+
+#######################################################
 # oh-my-posh setup
 #######################################################
 
