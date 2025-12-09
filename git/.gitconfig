@@ -2,6 +2,10 @@
 	email = olaclassik@gmail.com
 	name = Olawale Oyeyipo
 
+[core]
+    autocrlf = input
+    editor = nvim
+
 [alias]
 	# Remove branches which have been deleted from remote
 	prune = fetch --prune
