@@ -12,9 +12,9 @@ return {
 		opts = {
 			library = {
 				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 
-				-- Always loda the LazyVim library
+				-- Always load the LazyVim library
 				"LazyVim",
 
 				-- Load the wezterm types when the `wezterm` module is required

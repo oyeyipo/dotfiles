@@ -187,7 +187,7 @@ return {
 						},
 						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 						diagnostics = {
-							globals = { "utf8" },
+							globals = { "vim", "utf8" },
 							disable = { "missing-fields" },
 						},
 					},
@@ -200,6 +200,7 @@ return {
 			stimulus_ls = {},
 			clangd = {},
 			hyprls = {},
+			djlsp = {},
 		}
 
 		-- Ensure the servers and tools above are installed
