@@ -1,4 +1,5 @@
 -- Pull in the wezterm API
+---@type Wezterm
 local wezterm = require("wezterm")
 
 ------------------------------------------------------------
@@ -121,19 +122,5 @@ config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = false
 config.tab_max_width = 32
 config.switch_to_last_active_tab_when_closing_tab = true
-
-------------------------------------------------------------
--- ZELLIJ (welcome screen)
-------------------------------------------------------------
-
--- local function attach_zellij()
--- 	if not wezterm.gui.get_windows() then
--- 		return wezterm.action_for_key("SpawnCommandInNewZeroedPane")({ cmd = "zellij" })
--- 	end
--- end
---
--- if OS == "linux" then
--- 	wezterm.on("gui-startup", attach_zellij)
--- end
 
 return config
