@@ -93,9 +93,6 @@ alias pdtest="python manage.py test"
 alias pdrun="python manage.py runserver"
 alias pdftest="python manage.py test functional_tests"
 
-# Remove!!!
-alias lua="lua.exe"
-
 #######################################################
 # ENV
 #######################################################
@@ -169,12 +166,23 @@ if [[ -z "$ZELLIJ" ]]; then
 fi
 
 #######################################################
-# oh-my-posh setup
+# Enable bash completion
 #######################################################
 
-# the following must be as the last line
-# eval "$(oh-my-posh init bash --config "$HOME/custom-rubbyrussell.omp.json")"
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+
+# fzf CTRL-R history search
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
+
+#######################################################
+# Starship setup
+#######################################################
+
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
