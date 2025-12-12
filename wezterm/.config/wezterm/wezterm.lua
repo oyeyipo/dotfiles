@@ -37,8 +37,8 @@ config.font_size = 9.0
 ------------------------------------------------------------
 
 -- config.color_scheme = ""Papercolor Light (Gogh)""
--- config.color_scheme = "Tokyo Night"
-config.color_scheme = "" -- Hello darkeness
+-- config.color_scheme = "Kanagawa (Gogh)"
+config.color_scheme = "Tokyo Night"
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 10000
 config.pane_focus_follows_mouse = false
