@@ -64,25 +64,28 @@ config.window_padding = {
 
 -- Pick an available shell automatically (WSL > Git Bash > PowerShell)
 
-local function detect_default_shell()
-	local shells = {
-		{ "wsl.exe" },
-		{ "C:/Program Files/Git/bin/bash.exe", "--login", "-i" },
-		{ "pwsh.exe" }, -- for windows powershell: { "pwsh.exe", "-NoLogo" }
-		{ "powershell.exe" },
-		{ "cmd.exe" },
-	}
+-- local function detect_default_shell()
+-- 	local shells = {
+-- 		{ "wsl.exe" },
+-- 		{ "C:/Program Files/Git/bin/bash.exe", "--login", "-i" },
+-- 		{ "pwsh.exe" }, -- for windows powershell: { "pwsh.exe", "-NoLogo" }
+-- 		{ "powershell.exe" },
+-- 		{ "cmd.exe" },
+-- 	}
+--
+-- 	for _, cmd in ipairs(shells) do
+-- 		if wezterm.run_child_process({ "where", cmd[1] }) then
+-- 			return cmd
+-- 		end
+-- 	end
+--
+-- 	return { "powershell.exe" }
+-- end
 
-	for _, cmd in ipairs(shells) do
-		if wezterm.run_child_process({ "where", cmd[1] }) then
-			return cmd
-		end
-	end
-
-	return { "powershell.exe" }
+-- config.default_prog = detect_default_shell()
+if OS == "windows" then
+	config.default_domain = "WSL:archlinux"
 end
-
-config.default_prog = detect_default_shell()
 
 ------------------------------------------------------------
 -- LEADER KEY
