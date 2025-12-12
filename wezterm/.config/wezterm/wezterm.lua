@@ -30,7 +30,7 @@ local config = wezterm.config_builder()
 -- 	"Consolas",
 -- 	"Courier New",
 -- })
--- config.font_size = 9.0
+config.font_size = 9.0
 
 ------------------------------------------------------------
 -- UI SETTINGS
