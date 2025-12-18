@@ -23,13 +23,12 @@ local config = wezterm.config_builder()
 -- FONT (robust fallback -- will never error)
 ------------------------------------------------------------
 
--- config.font = wezterm.font_with_fallback({
--- 	"JetBrainsMono Nerd Font",
--- 	"JetBrains Mono",
--- 	"Cascadia Code",
--- 	"Consolas",
--- 	"Courier New",
--- })
+config.font = wezterm.font_with_fallback({
+	"Paper Mono Regular",
+	"JetBrainsMono Nerd Font",
+	"Consolas",
+	"Courier New",
+})
 config.font_size = 9.0
 
 ------------------------------------------------------------
