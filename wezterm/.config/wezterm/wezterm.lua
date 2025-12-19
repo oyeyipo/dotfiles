@@ -61,26 +61,6 @@ config.window_padding = {
 -- DEFAULT PROGRAM (Windows-friendly)
 ------------------------------------------------------------
 
--- Pick an available shell automatically (WSL > Git Bash > PowerShell)
-
--- local function detect_default_shell()
--- 	local shells = {
--- 		{ "wsl.exe" },
--- 		{ "C:/Program Files/Git/bin/bash.exe", "--login", "-i" },
--- 		{ "pwsh.exe" }, -- for windows powershell: { "pwsh.exe", "-NoLogo" }
--- 		{ "powershell.exe" },
--- 		{ "cmd.exe" },
--- 	}
---
--- 	for _, cmd in ipairs(shells) do
--- 		if wezterm.run_child_process({ "where", cmd[1] }) then
--- 			return cmd
--- 		end
--- 	end
---
--- 	return { "powershell.exe" }
--- end
-
 -- config.default_prog = detect_default_shell()
 if OS == "windows" then
 	config.default_domain = "WSL:archlinux"
@@ -113,7 +93,6 @@ config.keys = {
 		mods = "CTRL",
 		key = "Backspace",
 		action = act.SendString("\x17"), -- \x17 is ASCII for ctrl+w
-		-- act.SendKey ({key='w', mods='CTRL'})
 	},
 }
 
