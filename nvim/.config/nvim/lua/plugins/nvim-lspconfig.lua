@@ -201,6 +201,7 @@ return {
 			clangd = {},
 			hyprls = {},
 			djlsp = {},
+			docker_language_server = {},
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -243,6 +244,8 @@ return {
 			"eslint_d",
 			-- C/C++
 			"cpplint",
+			-- Docker/containers/kubernetes
+			"hadolint",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
