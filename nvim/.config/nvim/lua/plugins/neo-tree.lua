@@ -1,6 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	-- lazy = false,
+	lazy = false,
 	branch = "v3.x",
 	cmd = "Neotree",
 	dependencies = {
@@ -9,7 +9,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "\\", ":Neotree toggle reveal<CR>", desc = "[\\] NeoTree toggle", silent = true },
+		{ "\\", ":Neotree reveal<CR>", desc = "[\\] NeoTree toggle", silent = true },
 	},
 	-- opts = {},
 	config = function()
@@ -26,6 +26,7 @@ return {
 					-- TODO: create mapping for floating window, bind to <leader>fm
 					mappings = {
 						["\\"] = "close_window",
+						["Z"] = "expand_all_subnodes",
 					},
 				},
 				filtered_items = {
