@@ -40,7 +40,7 @@ config.color_scheme = "Tokyo Night"
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 10000
 config.pane_focus_follows_mouse = false
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 config.adjust_window_size_when_changing_font_size = false
 
