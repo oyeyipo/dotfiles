@@ -36,6 +36,7 @@ return { -- Autoformat
 			lua = { "stylua" },
 			markdown = { "doctoc", "markdownlint", "mdformat" },
 			sh = { "shfmt" },
+			kdl = { "kdlfmt" },
 
 			-- Conform can also run multiple formatters sequentially
 			python = { "isort", "docformatter", "black", lsp_format = "never" },
