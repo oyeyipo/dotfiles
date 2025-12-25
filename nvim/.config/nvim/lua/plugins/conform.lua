@@ -40,6 +40,7 @@ return { -- Autoformat
 
 			-- Conform can also run multiple formatters sequentially
 			python = { "isort", "docformatter", "black", lsp_format = "never" },
+			htmldjango = { "djlint", lsp_format = "never" },
 
 			-- Web Techs
 			-- You can use 'stop_after_first' to run the first available formatter from the list
@@ -63,6 +64,14 @@ return { -- Autoformat
 			},
 			black = {
 				prepend_args = { "-l", "80" },
+			},
+			djlint = {
+				prepend_args = {
+					"--profile=django",
+					"--indent=2",
+					"--max-line-length=80",
+					"--max-blank-lines=1",
+				},
 			},
 		},
 	},

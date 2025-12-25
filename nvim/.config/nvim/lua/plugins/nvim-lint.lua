@@ -17,6 +17,7 @@ return { -- Linting
 			jsx = { "biomejs" },
 			cpp = { "cpplint" },
 			lua = { "luacheck" },
+			htmldjango = { "djlint" },
 		}
 
 		-- To allow other plugins to add linters to require('lint').linters_by_ft,
