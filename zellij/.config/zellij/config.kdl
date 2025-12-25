@@ -268,19 +268,19 @@ keybinds clear-defaults=true {
         }
     }
     scroll {
-        bind "Alt left" {
+        bind "Ctrl left" {
             MoveFocusOrTab "left"
             SwitchToMode "locked"
         }
-        bind "Alt down" {
+        bind "Ctrl down" {
             MoveFocus "down"
             SwitchToMode "locked"
         }
-        bind "Alt up" {
+        bind "Ctrl up" {
             MoveFocus "up"
             SwitchToMode "locked"
         }
-        bind "Alt right" {
+        bind "Ctrl right" {
             MoveFocusOrTab "right"
             SwitchToMode "locked"
         }
@@ -292,19 +292,19 @@ keybinds clear-defaults=true {
             SwitchToMode "entersearch"
             SearchInput 0
         }
-        bind "Alt h" {
+        bind "Ctrl h" {
             MoveFocusOrTab "left"
             SwitchToMode "locked"
         }
-        bind "Alt j" {
+        bind "Ctrl j" {
             MoveFocus "down"
             SwitchToMode "locked"
         }
-        bind "Alt k" {
+        bind "Ctrl k" {
             MoveFocus "up"
             SwitchToMode "locked"
         }
-        bind "Alt l" {
+        bind "Ctrl l" {
             MoveFocusOrTab "right"
             SwitchToMode "locked"
         }
@@ -405,7 +405,7 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl h" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"
+                name "move_focus"
                 payload "left"
             }
         }
@@ -423,7 +423,7 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl l" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"
+                name "move_focus"
                 payload "right"
             }
         }
@@ -450,6 +450,33 @@ keybinds clear-defaults=true {
                 name "resize"
                 payload "right"
             }
+        }
+        bind "Ctrl 1" {
+            GoToTab 1
+        }
+        bind "Ctrl 2" {
+            GoToTab 2
+        }
+        bind "Ctrl 3" {
+            GoToTab 3
+        }
+        bind "Ctrl 4" {
+            GoToTab 4
+        }
+        bind "Ctrl 5" {
+            GoToTab 5
+        }
+        bind "Ctrl 6" {
+            GoToTab 6
+        }
+        bind "Ctrl 7" {
+            GoToTab 7
+        }
+        bind "Ctrl 8" {
+            GoToTab 8
+        }
+        bind "Ctrl 9" {
+            GoToTab 9
         }
         bind "Alt n" {
             NewPane
