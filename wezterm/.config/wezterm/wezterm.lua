@@ -24,7 +24,6 @@ local config = wezterm.config_builder()
 ------------------------------------------------------------
 
 config.font = wezterm.font_with_fallback({
-	"Paper Mono",
 	"JetBrainsMonoNL Nerd Font Mono",
 	"Symbols Nerd Font Mono",
 	"Consolas",
