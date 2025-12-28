@@ -2,7 +2,7 @@ return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- TODO: what???
+	main = "nvim-treesitter",
 	opts = {
 		-- A list of parser names, or "all"
 		ensure_installed = {
