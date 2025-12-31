@@ -185,6 +185,7 @@ eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
+eval "$(mise activate bash)" # or zsh, fish, etc.
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
