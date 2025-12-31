@@ -159,11 +159,13 @@ return {
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			basedpyright = {
-				settings = { -- see: https://microsoft.github.io/pyright/#/settings
+				settings = {
 					basedpyright = {
 						disableOrganizeImports = true,
 						analysis = {
+							autoSearchPaths = true,
 							diagnosticMode = "workspace",
+							useLibraryCodeForTypes = true,
 						},
 					},
 				},
