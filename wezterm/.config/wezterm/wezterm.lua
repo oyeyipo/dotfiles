@@ -85,12 +85,7 @@ config.keys = {
 	{
 		key = "r",
 		mods = "CMD|SHIFT",
-		action = wezterm.action.ReloadConfiguration,
-	},
-	{
-		mods = "CTRL",
-		key = "Backspace",
-		action = act.SendString("\x17"), -- \x17 is ASCII for ctrl+w
+		action = act.ReloadConfiguration,
 	},
 }
 
