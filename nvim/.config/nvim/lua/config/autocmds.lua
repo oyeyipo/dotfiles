@@ -24,6 +24,16 @@ end, {
 vim.api.nvim_create_user_command("FormatEnable", function()
 	vim.b.disable_autoformat = false
 	vim.g.disable_autoformat = false
-end, {
-	desc = "Re-enable autoformat-on-save",
-})
+end, { desc = "Re-enable autoformat-on-save" })
+
+vim.api.nvim_create_user_command("LinterInfo", function()
+	local lint = require("lint")
+	local ft = vim.bo.filetype
+	local linters = lint.linters_by_ft[ft] or {}
+
+	if #linters > 0 then
+		print("Linters for " .. ft .. ": " .. table.concat(linters, ", "))
+	else
+		print("No linters configured for " .. ft)
+	end
+end, { desc = "Show active linters for filetyp" })
