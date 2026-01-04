@@ -17,7 +17,7 @@ return { -- Linting
 			jsx = { "biomejs" },
 			cpp = { "cpplint" },
 			lua = { "luacheck" },
-			htmldjango = { "djlint", "biomejs" },
+			htmldjango = { "djlint" },
 			html = { "biomejs" },
 			yaml = { "yamllint" },
 		}
