@@ -42,8 +42,8 @@ k.set("n", "<leader>Y", [["+Y]])
 k.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Jump to the next or previous item in the quickfix list and center the cursor.
--- k.set("n", "<C-k>", "<cmd>cnext<CR>zz", opts)
--- k.set("n", "<C-j>", "<cmd>cprev<CR>zz", opts)
+k.set("n", "]q", "<cmd>cnext<CR>zz", opts)
+k.set("n", "[q", "<cmd>cprev<CR>zz", opts)
 
 -- Jump to the next or previous item in the location list and center the cursor.
 k.set("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
