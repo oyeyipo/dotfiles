@@ -1,7 +1,109 @@
 #!/bin/bash
 
+export TERM="xterm-256color"            # getting proper close
+export HISTCONTROL=ignoredups:erasedups # no duplicate entries
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Set FZF Defaults
+export FZF_DEFAULT_OPTS="--layout=reverse --border=rounded --margin=3% --color=dark"
+
+# Set pager
+export PAGER="less"
+export MANPAGER="less"
+
+# Make less feel vim-native
+export LESS="-R --use-color -i"
+export LESSHISTFILE=-
+
 # IF not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Set VI mode
+set -o vi
+bind 'set keyseq-timeout 1'
+
+# SHOPT
+shopt -s autocd  # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
+shopt -s cmdhist # save multi-line commands in history as single line
+shopt -s dotglob
+shopt -s histappend     # do not overwrite history
+shopt -s expand_aliases # expand aliases
+shopt -s checkwinsize   # checks term size when bash regains control
+
+#ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
+cdown() {
+    N=$1
+    while [[ $((--N)) -gt 0 ]]; do
+        echo "$N" | figlet -c | lolcat && sleep 1
+    done
+}
+
+### Function extract for common file formats ###
+# Optimized Extract Function
+ex() {
+    if [ -z "$1" ]; then
+        echo "Usage: ex <file>"
+        return 1
+    fi
+
+    # Save current separator and switch to newline/backspace
+    # This stays INSIDE the function so it doesn't affect your whole terminal
+    local old_ifs=$IFS
+    IFS=$(echo -en "\n\b")
+
+    for n in "$@"; do
+        if [ -f "$n" ]; then
+            case "${n%,}" in
+            *.tar.bz2 | *.tar.gz | *.tar.xz | *.tbz2 | *.tgz | *.txz | *.tar) tar xvf "$n" ;;
+            *.bz2) bunzip2 "$n" ;;
+            *.rar) unrar x "$n" ;;
+            *.gz) gunzip "$n" ;;
+            *.zip) unzip "$n" ;;
+            *.z) uncompress "$n" ;;
+            *.7z | *.iso) 7z x "$n" ;;
+            *.xz) unxz "$n" ;;
+            *) echo "ex: '$n' - unknown format" ;;
+            esac
+        else
+            echo "'$n' - file does not exist"
+        fi
+    done
+
+    # Restore original separator immediately
+    IFS=$old_ifs
+}
+
+# navigation
+up() {
+    local d=""
+    local limit="$1"
+
+    # Default to limit of 1
+    if [ -z "$limit" ] || [ "$limit" -le 0 ]; then
+        limit=1
+    fi
+
+    for ((i = 1; i <= limit; i++)); do
+        d="../$d"
+    done
+
+    # perform cd. Show error if cd fails
+    if ! cd "$d"; then
+        echo "Couldn't go up $limit dirs."
+    fi
+}
+
+### ALIASES ###
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
 
 # ls alias
 alias ls='ls --color=auto'
