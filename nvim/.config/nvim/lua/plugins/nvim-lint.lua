@@ -6,7 +6,7 @@ return { -- Linting
 
 		lint.linters_by_ft = {
 			markdown = { "markdownlint" },
-			python = { "flake8" },
+			-- python = { "flake8" },
 			sh = { "shellcheck" },
 			typescript = { "biomejs" },
 			javascript = { "biomejs" },

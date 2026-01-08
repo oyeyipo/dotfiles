@@ -169,6 +169,7 @@ return {
 					},
 				},
 			},
+			ruff = {},
 			marksman = {},
 			yamlls = {},
 			jsonls = {},
@@ -228,7 +229,6 @@ return {
 			"black",
 			"isort",
 			"docformatter",
-			"flake8",
 			"debugpy",
 			"djlint",
 			-- sh/bash
