@@ -35,7 +35,7 @@ config.font_size = 9.0
 -- UI SETTINGS
 ------------------------------------------------------------
 
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Night Owl (Gogh)"
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 10000
 config.pane_focus_follows_mouse = false
