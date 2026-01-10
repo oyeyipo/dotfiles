@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ~/.bash_profile
 
 # Source .bashrc for interactive settings
