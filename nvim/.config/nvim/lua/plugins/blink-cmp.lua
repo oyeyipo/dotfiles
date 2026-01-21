@@ -104,7 +104,8 @@ return { -- Autocompletion
 										end
 									end
 								else
-									icon = require("lspkind").symbolic(ctx.kind, { mode = "symbol" })
+									local lspkind = require("lspkind")
+									icon = lspkind.symbol_map[ctx.kind] or lspkind.presets.default[ctx.kind] or ""
 								end
 								return icon .. ctx.icon_gap
 							end,
