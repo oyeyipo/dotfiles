@@ -40,7 +40,7 @@ return { -- Autoformat
 
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "docformatter", "black" },
-			python = { "isort", "docformatter", lsp_format = "fallback" },
+			python = { "isort", "ruff_fix", "ruff_format", lsp_format = "never" },
 			htmldjango = { "djlint" },
 
 			-- Web Techs
@@ -52,7 +52,7 @@ return { -- Autoformat
 			yaml = { "prettierd", "prettier", stop_after_first = true },
 
 			-- Use the "*" filetype to run formatters on all filetypes.
-			["*"] = { "codespell", "trim_whitespace" },
+			["*"] = { "trim_whitespace" },
 
 			-- Use the "_" filetype to run formatters on filetypes that don't
 			-- have other formatters configured.
