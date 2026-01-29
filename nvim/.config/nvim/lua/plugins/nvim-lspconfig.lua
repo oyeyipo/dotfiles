@@ -4,8 +4,8 @@ return {
 	dependencies = {
 		-- `config = true` instructs the plugin manager to run the default setup function
 		-- for the plugin ie., `require("mason").setup()`
-		{ "williamboman/mason.nvim", config = true },
-		"williamboman/mason-lspconfig.nvim",
+		{ "mason-org/mason.nvim", config = true },
+		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		-- Useful status updates for LSP.
