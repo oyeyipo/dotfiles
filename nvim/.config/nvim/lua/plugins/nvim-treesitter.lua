@@ -1,11 +1,7 @@
 return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
-	build = ":TSUpdate",
-	main = "nvim-treesitter.config",
-	opts = {
-		-- A list of parser names, or "all"
-		ensure_installed = {
+	config = function()
+		local filetypes = {
 			"bash",
 			"json",
 			"jsdoc",
@@ -37,18 +33,17 @@ return { -- Highlight, edit, and navigate code
 			"java",
 			"kotlin",
 			"svelte",
-		},
+		}
 		-- Autoinstall languages that are not installed
-		auto_install = true,
-		highlight = {
-			enable = true,
-			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-			--  If you are experiencing weird indenting issues, add the language to
-			--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-			additional_vim_regex_highlighting = { "ruby" },
-		},
-		indent = { enable = true, disable = { "ruby" } },
-	},
+		require("nvim-treesitter").install(filetypes)
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = filetypes,
+
+			callback = function()
+				vim.treesitter.start()
+			end,
+		})
+	end,
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-context", opts = { multiline_threshold = 1 } },
 	},
