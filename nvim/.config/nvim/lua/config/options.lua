@@ -82,5 +82,5 @@ opt.swapfile = false
 opt.backup = false
 opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.backspace = "indent,eol,start"
-opt.iskeyword:append("-")
+vim.opt.iskeyword:append("-")
 opt.modifiable = true
