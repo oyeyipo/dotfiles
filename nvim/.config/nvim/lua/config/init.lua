@@ -17,7 +17,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	})
 end
 
-vim.opt.rtp:prepend(lazypath)
+--@type vim.Option
+local rtp = vim.opt.rtp
+rtp:prepend(lazypath)
 
 local opts = {
 	defaults = {

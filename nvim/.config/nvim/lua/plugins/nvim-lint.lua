@@ -63,7 +63,7 @@ return { -- Linting
 				-- Only run the linter in buffers that you can modify in order to
 				-- avoid superfluous noise, notably within the handy LSP pop-ups that
 				-- describe the hovered symbol using Markdown.
-				if vim.opt_local.modifiable:get() then
+				if vim.bo.modifiable then
 					lint.try_lint()
 				end
 			end,

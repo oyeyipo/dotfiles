@@ -1,5 +1,5 @@
 -- [[ Setting options ]]
-local opt = vim.opt
+local opt = vim.o
 
 -- Appearance
 opt.number = true
