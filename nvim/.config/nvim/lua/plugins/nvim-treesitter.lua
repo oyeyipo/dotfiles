@@ -34,11 +34,9 @@ return { -- Highlight, edit, and navigate code
 			"kotlin",
 			"svelte",
 		}
-		-- Autoinstall languages that are not installed
 		require("nvim-treesitter").install(filetypes)
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = filetypes,
-
 			callback = function()
 				vim.treesitter.start()
 			end,

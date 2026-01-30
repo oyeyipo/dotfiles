@@ -1,5 +1,5 @@
 return {
-	"echasnovski/mini.nvim",
+	"nvim-mini/mini.nvim",
 	version = false,
 	config = function()
 		-- Better Around/Inside textobjects
@@ -16,8 +16,5 @@ return {
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
-
-		-- there is more
-		-- Check out: https://github.com/echasnovski/mini.nvim
 	end,
 }
