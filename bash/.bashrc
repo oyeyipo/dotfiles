@@ -106,10 +106,19 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # ls alias
-alias ls='ls --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# alias ls='ls --color=auto'
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
+
+alias l='eza -F --icons --icons --color=always --group-directories-first'       # type indicator
+alias ls='eza -al --icons --color=always --group-directories-first'             # my preferred listing
+alias la='eza -a --icons --color=always --group-directories-first'              # all files and dirs
+alias ll='eza -l --icons --color=always --group-directories-first'              # long format
+alias lt='eza -aT --icons --color=always --group-directories-first'             # tree listing
+alias l.='eza -al --icons --color=always --group-directories-first ../'         # ls on the PARENT directory
+alias l..='eza -al --icons --color=always --group-directories-first ../../'     # ls on directory 2 levels up
+alias l...='eza -al --icons --color=always --group-directories-first ../../../' # ls on directory 3 levels up
 
 # grep alias
 alias grep='grep --color=auto'
