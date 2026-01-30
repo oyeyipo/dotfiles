@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		-- `config = true` instructs the plugin manager to run the default setup function
 		-- for the plugin ie., `require("mason").setup()`
-		{ "mason-org/mason.nvim", config = true },
+		{ "mason-org/mason.nvim", opts = {} },
 		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
@@ -19,6 +19,8 @@ return {
 		-- blink.cmp has a built-in signature that can be used but is
 		-- currently experimental
 		{ "ray-x/lsp_signature.nvim", opts = {} },
+
+		"gonstoll/wezterm-types",
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -198,10 +200,6 @@ return {
 		--    :Mason
 		--
 		--  You can press `g?` for help in this menu.
-		require("mason").setup()
-
-		-- You can add other tools here that you want Mason to install
-		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			-- ALL
@@ -240,10 +238,6 @@ return {
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls" },
-		})
-
 		for name, server in pairs(servers) do
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 			vim.lsp.config(name, server)
@@ -270,15 +264,11 @@ return {
 							"lua/?/init.lua",
 						},
 					},
-					-- Make the server aware of Neovim runtime files
 					workspace = {
 						checkThirdParty = false,
 						library = {
 							vim.env.VIMRUNTIME,
 							"wezterm-types",
-							-- dependencies = {
-							-- 	"gonstoll/wezterm-types",
-							-- },
 						},
 					},
 				})
@@ -287,5 +277,6 @@ return {
 				Lua = {},
 			},
 		})
+		vim.lsp.enable("lua_ls")
 	end,
 }
