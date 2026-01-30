@@ -5,7 +5,6 @@ return {
     -- `config = true` instructs the plugin manager to run the default setup function
     -- for the plugin ie., `require("mason").setup()`
     { 'mason-org/mason.nvim', opts = {} },
-    'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
@@ -86,36 +85,16 @@ return {
       end,
     })
 
-    -- Diagnostic Config
-    -- See :help vim.diagnostic.Opts
-    vim.diagnostic.config {
-      severity_sort = true,
-      update_in_insert = false,
-      float = { border = 'rounded', source = 'if_many' },
-      underline = { severity = vim.diagnostic.severity.ERROR },
-
-      -- Can switch between these as you prefer
-      virtual_text = true, -- Text shows up at the end of the line
-      virtual_lines = false, -- Text shows up underneath the line, with virtual lines
-
-      -- Auto open the float, so you easily read the errors when jumping '[d' and ']d'
-      jump = { float = true },
-    }
-
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    --  Add any additional override configuration in the following tables. Available keys are:
-    --  - cmd (table): Override the default command used to start the server
-    --  - filetypes (table): Override the default list of associated filetypes for the server
-    --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-    --  - settings (table): Override the default settings passed when initializing the server.
-    --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/s
+    -- Enable the following language servers
+    --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+    --  see `:help lsp-config` for information about keys and how to configure
     local servers = {
-      -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
       basedpyright = {
         settings = {
           basedpyright = {
@@ -159,6 +138,7 @@ return {
       -- ALL
       -- "codespell",
       -- Lua
+      'lua_ls', -- Lua Language server
       'stylua',
       'luacheck',
       -- Markdown
@@ -208,10 +188,7 @@ return {
         client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
           runtime = {
             version = 'LuaJIT',
-            path = {
-              'lua/?.lua',
-              'lua/?/init.lua',
-            },
+            path = { 'lua/?.lua', 'lua/?/init.lua' },
           },
           workspace = {
             checkThirdParty = false,
