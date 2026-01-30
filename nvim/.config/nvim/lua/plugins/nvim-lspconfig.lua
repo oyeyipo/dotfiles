@@ -181,20 +181,6 @@ return {
 				},
 			},
 			ts_ls = {},
-			lua_ls = {
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						diagnostics = {
-							globals = { "vim", "utf8" },
-							disable = { "missing-fields" },
-						},
-					},
-				},
-			},
 			cssls = {},
 			css_variables = {},
 			tailwindcss = {},
@@ -251,20 +237,54 @@ return {
 			-- YAML
 			"yamllint",
 		})
+
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("mason-lspconfig").setup({
-			ensure_installed = {}, -- explicitly set to an empty table (mason-tool-installer populates installs)
-			automatic_installation = false,
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					-- This handles overriding only values explicitly passed
-					-- by the server configuration above. Useful when disabling
-					-- certain features of an LSP (for example, turning off formatting for ts_ls)
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
+			ensure_installed = { "lua_ls" },
+		})
+
+		for name, server in pairs(servers) do
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			vim.lsp.config(name, server)
+			vim.lsp.enable(name)
+		end
+
+		vim.lsp.config("lua_ls", {
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if
+						path ~= vim.fn.stdpath("config")
+						and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+					then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						version = "LuaJIT",
+						path = {
+							"lua/?.lua",
+							"lua/?/init.lua",
+						},
+					},
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							"wezterm-types",
+							-- dependencies = {
+							-- 	"gonstoll/wezterm-types",
+							-- },
+						},
+					},
+				})
+			end,
+			settings = {
+				Lua = {},
 			},
 		})
 	end,

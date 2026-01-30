@@ -29,7 +29,6 @@ return { -- Autocompletion
 			},
 			opts = {},
 		},
-		"folke/lazydev.nvim",
 		"onsails/lspkind.nvim",
 		"nvim-tree/nvim-web-devicons",
 
@@ -145,10 +144,7 @@ return { -- Autocompletion
 		},
 
 		sources = {
-			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-			providers = {
-				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
-			},
+			default = { "lsp", "path", "snippets" },
 		},
 
 		-- Whether to automatically show the window when new completion items are available
