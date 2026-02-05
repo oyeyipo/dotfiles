@@ -99,6 +99,7 @@ up() {
 
 ### ALIASES ###
 # navigation
+alias cd='z'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
