@@ -194,6 +194,16 @@ alias gk="gitk --all&"
 alias gx="gitx --all"
 alias grmc="git rm -r --cached"                    # Untrack Files without deleting them
 alias gx="ign = ls-files -o -i --exclude-standard" # show ignored files by git
+alias gwl='git worktree list'
+alias gwa='git worktree add'
+alias gwr='git worktree remove'
+
+## Creates git worktree & configures Python environment in one step
+wt() {
+    git worktree add "../${PWD##*/}-$1" -b "$1"
+    cd "../${PWD##*/}-$1" || exit
+    python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+}
 
 # Neovim
 alias vim="nvim"
