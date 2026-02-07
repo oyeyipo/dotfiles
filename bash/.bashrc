@@ -200,9 +200,28 @@ alias gwr='git worktree remove'
 
 ## Creates git worktree & configures Python environment in one step
 wt() {
-    git worktree add "../${PWD##*/}-$1" -b "$1"
-    cd "../${PWD##*/}-$1" || exit
-    python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+    local branch="$1"
+    [[ -z "$branch" ]] && {
+        echo "Usage: wt <branch>"
+        return 1
+    }
+
+    local repo base dir
+    repo=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)") || return 1
+    base=$(git rev-parse --show-toplevel)
+    dir="$base/../$repo-$branch"
+
+    git worktree add "$dir" -B "$branch" || branch 1
+    cd "$dir" || return 1
+
+    if [[ ! -d .venv ]]; then
+        python -m venv .venv || return 1
+    fi
+
+    # shellcheck source=/dev/null
+    source .venv/bin/activate || return 1
+
+    [[ -f requirements.txt ]] && pip install -r requirements.txt
 }
 
 # Neovim
