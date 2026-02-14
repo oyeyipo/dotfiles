@@ -18,6 +18,16 @@ vim.diagnostic.config {
   virtual_text = true, -- Text shows up at the end of the line
   virtual_lines = false, -- Text shows up underneath the line, with virtual lines
 
+  -- Diagnostic signs with icons
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      [vim.diagnostic.severity.WARN] = '󰀪 ',
+      [vim.diagnostic.severity.HINT] = '󰌶 ',
+      [vim.diagnostic.severity.INFO] = ' ',
+    },
+  },
+
   -- Auto open the float, so you easily read the errors when jumping '[d' and ']d'
   jump = { float = true },
 }
