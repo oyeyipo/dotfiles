@@ -12,6 +12,10 @@ export FZF_DEFAULT_OPTS="--layout=reverse --border=rounded --margin=3% --color=d
 export PAGER="less"
 export MANPAGER="less"
 
+mann() {
+    man "$1" | bat -l man --style=-numbers
+}
+
 # Make less feel vim-native
 export LESS="-R --use-color -i"
 export LESSHISTFILE=-
