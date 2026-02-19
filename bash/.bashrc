@@ -24,8 +24,8 @@ export LESSHISTFILE=-
 [[ $- != *i* ]] && return
 
 # Set VI mode
-# set -o vi
-# bind 'set keyseq-timeout 1'
+set -o vi
+bind 'set keyseq-timeout 1'
 
 # SHOPT
 shopt -s autocd  # change to named directory
