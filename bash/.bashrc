@@ -27,6 +27,17 @@ export LESSHISTFILE=-
 set -o vi
 bind 'set keyseq-timeout 1'
 
+# vi-mode cursor shape (works in many terminals)
+function _vi_cursor() {
+    # 1 = block, 5 = bar (DECSCUSR)
+    printf '\e[%s q' "$1"
+}
+
+# Hook into Readline mode changes (Bash 4.4+ typically)
+bind 'set show-mode-in-prompt on'
+bind 'set vi-ins-mode-string \1\e[5 q\2'
+bind 'set vi-cmd-mode-string \1\e[1 q\2'
+
 # SHOPT
 shopt -s autocd  # change to named directory
 shopt -s cdspell # autocorrects cd misspellings
