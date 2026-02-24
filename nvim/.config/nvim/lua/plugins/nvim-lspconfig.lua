@@ -126,6 +126,9 @@ return {
       hyprls = {},
       djlsp = {},
       docker_language_server = {},
+      zls = {},
+      ast_grep = {},
+      rust_analyzer = {},
     }
 
     -- Ensure the servers and tools above are installed
