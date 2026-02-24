@@ -1,0 +1,8 @@
+# Vi keybindings for all readline apps (bash, python basic REPL, etc.)
+set editing-mode vi
+set keyseq-timeout 1
+
+# Cursor shape switch via readline's vi-mode prompt strings
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[5 q\2
+set vi-cmd-mode-string \1\e[1 q\2

@@ -1,9 +1,11 @@
 #!/bin/bash
 
-export TERM="xterm-256color"            # getting proper close
 export HISTCONTROL=ignoredups:erasedups # no duplicate entries
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# IF not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # Set FZF Defaults
 export FZF_DEFAULT_OPTS="--layout=reverse --border=rounded --margin=3% --color=dark"
@@ -12,16 +14,11 @@ export FZF_DEFAULT_OPTS="--layout=reverse --border=rounded --margin=3% --color=d
 export PAGER="less"
 export MANPAGER="less"
 
-mann() {
-    man "$1" | bat -l man --style=-numbers
-}
+mann() { man "$@" | bat -l man --style=plain; }
 
 # Make less feel vim-native
 export LESS="-R --use-color -i"
 export LESSHISTFILE=-
-
-# IF not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
 # Set VI mode
 set -o vi
@@ -39,16 +36,17 @@ bind 'set vi-ins-mode-string \1\e[5 q\2'
 bind 'set vi-cmd-mode-string \1\e[1 q\2'
 
 # SHOPT
-shopt -s autocd  # change to named directory
-shopt -s cdspell # autocorrects cd misspellings
-shopt -s cmdhist # save multi-line commands in history as single line
-shopt -s dotglob
+shopt -s autocd         # change to named directory
+shopt -s cdspell        # autocorrects cd misspellings
+shopt -s cmdhist        # save multi-line commands in history as single line
+shopt -s dotglob        # make `*` includes dotfile
 shopt -s histappend     # do not overwrite history
 shopt -s expand_aliases # expand aliases
 shopt -s checkwinsize   # checks term size when bash regains control
 
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
+bind "set show-all-if-unmodified on"
 
 cdown() {
     N=$1
@@ -139,23 +137,6 @@ alias l...='eza -al --icons --color=always --group-directories-first ../../../' 
 # grep alias
 alias grep='grep --color=auto'
 
-#######################################################
-# GENERAL
-#######################################################
-
-iatest=$(expr index "$-" i)
-
-# Ignore case on auto-completion
-# Note: bind used instead of sticking these in .inputrc
-if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
-
-# Show auto-completion list automatically, without double tab
-if [[ $iatest -gt 0 ]]; then bind "set show-all-if-unmodified On"; fi
-
-######################################################
-# ALIASES
-######################################################
-
 # Repeat the lst command with sudo prefixed
 alias please="sudo $(fc -ln -1)"
 
@@ -196,7 +177,6 @@ alias gr="git rebase"
 alias gl="git log --oneline --decorate --graph"
 alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 alias glga="git log --graph --oneline --all --decorate"
-alias gb="git branch"
 alias gs="git show"
 alias gd="git diff --color --color-words --abbrev"
 alias gdc="git diff --cached"
@@ -205,13 +185,11 @@ alias gps="git push"
 alias gpl="git pull"
 alias gpst="git push origin --tags"
 alias gc="git commit"
-alias gk="gitk --all&"
-alias gx="gitx --all"
-alias grmc="git rm -r --cached"                    # Untrack Files without deleting them
-alias gx="ign = ls-files -o -i --exclude-standard" # show ignored files by git
+alias grmc="git rm -r --cached" # Untrack Files without deleting them
 alias gwl='git worktree list'
 alias gwa='git worktree add'
 alias gwr='git worktree remove'
+alias gi='git ls-files -o -i --exclude-standard'
 
 ## Creates git worktree & configures Python environment in one step
 wt() {
@@ -226,7 +204,7 @@ wt() {
     base=$(git rev-parse --show-toplevel)
     dir="$base/../$repo-$branch"
 
-    git worktree add "$dir" -B "$branch" || branch 1
+    git worktree add "$dir" -B "$branch" || return 1
     cd "$dir" || return 1
 
     if [[ ! -d .venv ]]; then
@@ -270,19 +248,13 @@ PATH="$PATH:$HOME/bin"
 ######################################################
 
 # Automatically do an ls after each cd
-cd() {
-    if [ -n "$1" ]; then
-        builtin cd "$@" && ls -a
-    else
-        builtin cd ~ && ls -a
-    fi
-}
+# cd() { builtin cd "$@" && ls -a; }
 
 #######################################################
 # fnm (Fast Node Manager)
 #######################################################
 
-if [[ "$OSTYPE" == "mysys" ]]; then
+if [[ "$OSTYPE" == "msys" ]]; then
     eval "$(fnm env --use-on-cd --shell bash)"
 fi
 
@@ -355,11 +327,16 @@ eval "$(pyenv init - bash)"
 eval "$(pyenv virtualenv-init -)"
 
 # fnm
-FNM_PATH="/home/wale/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
     export PATH="$FNM_PATH:$PATH"
     eval "$(fnm env)"
 fi
 
 # opencode
-export PATH=/home/wale/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# improve startup with guard
+# command -v starship >/dev/null && eval "$(starship init bash)"
+# command -v zoxide  >/dev/null && eval "$(zoxide init bash)"
+# command -v mise    >/dev/null && eval "$(mise activate bash)"
