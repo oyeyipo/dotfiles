@@ -4,20 +4,10 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   -- opts = {},
   config = function()
-    -- require("transparent").clear_prefix("lualine")
-
-    -- require('lspconfig').util.search_ancestors
-
-    -- local lint_progress = function()
-    -- 	local linters = require("lint").get_running()
-    -- 	if #linters == 0 then
-    -- 		return "󰦕"
-    -- 	end
-    -- 	return "󱉶 " .. table.concat(linters, ", ")
-    -- end
+    vim.cmd 'colorscheme nightfox'
 
     require('lualine').setup {
-      theme = 'night-owl',
+      theme = 'auto',
       options = {
         globalstatus = true,
       },
@@ -25,7 +15,6 @@ return {
         lualine_c = {
           'filename',
           'lsp_status',
-          -- lint_progress,
         },
       },
     }

@@ -6,6 +6,6 @@ return {
     require('nightfox').setup {
       options = { dim_inactive = true, transparent = vim.g.transparent_enabled },
     }
-    vim.cmd.colorscheme 'carbonfox'
+    vim.cmd.colorscheme 'nightfox'
   end,
 }
