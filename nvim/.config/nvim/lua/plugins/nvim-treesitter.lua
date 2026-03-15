@@ -1,7 +1,7 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   config = function()
-    local filetypes = {
+    local parsers = {
       'bash',
       'json',
       'jsdoc',
@@ -39,10 +39,27 @@ return { -- Highlight, edit, and navigate code
       'comment',
       'zig',
     }
-    require('nvim-treesitter').install(filetypes)
+    require('nvim-treesitter').install(parsers)
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = filetypes,
-      callback = function() vim.treesitter.start() end,
+      callback = function(args)
+        local buf, filetype = args.buf, args.match
+
+        local language = vim.treesitter.language.get_lang(filetype)
+        if not language then return end
+
+        -- Check if parser exists and load it
+        if not vim.treesitter.language.add(language) then return end
+        -- Enable syntax highlighting and other treesitter features
+        vim.treesitter.start(buf, language)
+
+        -- enables treesitter based folds
+        -- for more info on folds see `:help folds`
+        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        -- vim.wo.foldmethod = 'expr'
+
+        -- enables treesitter based indentation
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
     })
   end,
   dependencies = {
