@@ -35,7 +35,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Telescope picker. This is really useful to discover what Telescope can
     -- do as well as how to actually do it!
 
-    -- [[ Configure Telescope ]]
     require('telescope').setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
@@ -52,6 +51,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
               ['<c-x>'] = 'delete_buffer',
             },
           },
+        },
+        find_files = {
+          hidden = true,
         },
       },
       extensions = {

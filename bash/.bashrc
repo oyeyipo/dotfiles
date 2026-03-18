@@ -22,13 +22,7 @@ export LESSHISTFILE=-
 
 # Set VI mode
 set -o vi
-bind 'set keyseq-timeout 1'
-
-# vi-mode cursor shape (works in many terminals)
-function _vi_cursor() {
-    # 1 = block, 5 = bar (DECSCUSR)
-    printf '\e[%s q' "$1"
-}
+bind 'set keyseq-timeout 40'
 
 # Hook into Readline mode changes (Bash 4.4+ typically)
 bind 'set show-mode-in-prompt on'
@@ -283,8 +277,8 @@ if [[ -z "$ZELLIJ" ]]; then
     # Auto-attach to an existing session if the user wants it
     if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
         zellij attach -c
-    # else
-    #     zellij -l welcome
+    else
+        zellij -l welcome
     fi
 
     # Exit the shell after zellij if user sets ZELLIJ_AUTO_EXIT
