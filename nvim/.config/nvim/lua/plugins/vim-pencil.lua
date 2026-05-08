@@ -1,4 +1,4 @@
 return {
-	"preservim/vim-pencil",
-	opt = {},
+  'preservim/vim-pencil',
+  opt = {},
 }

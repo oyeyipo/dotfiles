@@ -1,39 +1,37 @@
 -- Highlight when yanking (copying) text
 -- Try it with `yap` in normal mode
 -- See: `:help vim.hl.on_yank()`
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("olawale-highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('olawale-highlight-yank', { clear = true }),
+  callback = function() vim.hl.on_yank() end,
 })
 
-vim.api.nvim_create_user_command("FormatDisable", function(args)
-	if args.bang then
-		-- FormatDisable! will disable formatting just for this buffer
-		vim.b.disable_autoformat = true
-	else
-		vim.g.disable_autoformat = true
-	end
+vim.api.nvim_create_user_command('FormatDisable', function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
 end, {
-	desc = "Disable autoformat-on-save",
-	bang = true,
+  desc = 'Disable autoformat-on-save',
+  bang = true,
 })
 
-vim.api.nvim_create_user_command("FormatEnable", function()
-	vim.b.disable_autoformat = false
-	vim.g.disable_autoformat = false
-end, { desc = "Re-enable autoformat-on-save" })
+vim.api.nvim_create_user_command('FormatEnable', function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, { desc = 'Re-enable autoformat-on-save' })
 
-vim.api.nvim_create_user_command("LinterInfo", function()
-	local lint = require("lint")
-	local ft = vim.bo.filetype
-	local linters = lint.linters_by_ft[ft] or {}
+vim.api.nvim_create_user_command('LinterInfo', function()
+  local lint = require 'lint'
+  local ft = vim.bo.filetype
+  local linters = lint.linters_by_ft[ft] or {}
 
-	if #linters > 0 then
-		print("Linters for " .. ft .. ": " .. table.concat(linters, ", "))
-	else
-		print("No linters configured for " .. ft)
-	end
-end, { desc = "Show active linters for filetyp" })
+  if #linters > 0 then
+    print('Linters for ' .. ft .. ': ' .. table.concat(linters, ', '))
+  else
+    print('No linters configured for ' .. ft)
+  end
+end, { desc = 'Show active linters for filetyp' })

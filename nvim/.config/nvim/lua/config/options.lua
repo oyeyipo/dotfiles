@@ -5,14 +5,14 @@ local opt = vim.o
 opt.number = true
 opt.relativenumber = true -- To help with jumping
 opt.termguicolors = true
-opt.colorcolumn = "80"
-opt.signcolumn = "yes"
+opt.colorcolumn = '80'
+opt.signcolumn = 'yes'
 opt.scrolloff = 10
 opt.cmdheight = 1
-opt.completeopt = "menuone,noinsert,noselect"
+opt.completeopt = 'menuone,noinsert,noselect'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-opt.mouse = "a"
+opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 opt.showmode = false
@@ -20,9 +20,7 @@ opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 -- Remove this option if you want your OS clipboard to remain independent.
-vim.schedule(function()
-	opt.clipboard = "unnamedplus"
-end)
+vim.schedule(function() opt.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 opt.breakindent = true
@@ -50,10 +48,10 @@ opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor
 opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview Substitution live, as you type!
-opt.inccommand = "split"
+opt.inccommand = 'split'
 
 -- Show which line your cursor is on
 opt.cursorline = true
@@ -74,13 +72,13 @@ opt.smartindent = true
 opt.wrap = false
 
 -- Other Bahaviours
-opt.encoding = "UTF-8"
+opt.encoding = 'UTF-8'
 opt.autochdir = false
 opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false
 opt.backup = false
-opt.undodir = vim.fn.expand("~/.vim/undodir")
-opt.backspace = "indent,eol,start"
-vim.opt.iskeyword:append("-")
+opt.undodir = vim.fn.expand '~/.vim/undodir'
+opt.backspace = 'indent,eol,start'
+vim.opt.iskeyword:append '-'
 opt.modifiable = true
