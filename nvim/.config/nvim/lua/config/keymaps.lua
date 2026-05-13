@@ -29,7 +29,15 @@ vim.diagnostic.config {
   },
 
   -- Auto open the float, so you easily read the errors when jumping '[d' and ']d'
-  jump = { float = true },
+  jump = {
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float {
+        bufnr = bufnr,
+        scope = 'cursor',
+        focus = false,
+      }
+    end,
+  },
 }
 k.set('n', '<leader>q', vim.diagnostic.setloclist, options 'Open diagnostic [Q]uickfix list')
 
