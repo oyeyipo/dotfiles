@@ -5,6 +5,10 @@ return {
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
 
+      gitsigns.setup {
+        current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+      }
+
       local function map(mode, l, r, opts)
         opts = opts or {}
         opts.buffer = bufnr
