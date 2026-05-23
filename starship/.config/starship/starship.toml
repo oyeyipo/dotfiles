@@ -3,6 +3,7 @@
 # Prompt
 add_newline = true
 format = "$username$hostname$directory$git_branch$git_status$cmd_duration$character "
+scan_timeout = 500
 
 # Username and Hostname
 [username]
