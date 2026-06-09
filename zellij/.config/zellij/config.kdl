@@ -5,16 +5,16 @@ keybinds clear-defaults=true {
         }
     }
     pane {
-        bind "left" {
+        bind "left" "h" {
             MoveFocus "left"
         }
-        bind "down" {
+        bind "down" "j" {
             MoveFocus "down"
         }
-        bind "up" {
+        bind "up" "k" {
             MoveFocus "up"
         }
-        bind "right" {
+        bind "right" "l" {
             MoveFocus "right"
         }
         bind "c" {
@@ -33,21 +33,9 @@ keybinds clear-defaults=true {
             ToggleFocusFullscreen
             SwitchToMode "locked"
         }
-        bind "h" {
-            MoveFocus "left"
-        }
         bind "i" {
             TogglePanePinned
             SwitchToMode "locked"
-        }
-        bind "j" {
-            MoveFocus "down"
-        }
-        bind "k" {
-            MoveFocus "up"
-        }
-        bind "l" {
-            MoveFocus "right"
         }
         bind "n" {
             NewPane
@@ -81,17 +69,21 @@ keybinds clear-defaults=true {
         }
     }
     tab {
-        bind "left" {
-            GoToPreviousTab
+        bind "left" "h" {
+            MoveFocusOrTab "left"
+            SwitchToMode "locked"
         }
-        bind "down" {
-            GoToNextTab
+        bind "right" "l" {
+            MoveFocusOrTab "right"
+            SwitchToMode "locked"
         }
-        bind "up" {
-            GoToPreviousTab
+        bind "down" "j" {
+            MoveFocusOrTab "right"
+            SwitchToMode "locked"
         }
-        bind "right" {
-            GoToNextTab
+        bind "up" "k" {
+            MoveFocusOrTab "left"
+            SwitchToMode "locked"
         }
         bind "1" {
             GoToTab 1
@@ -141,18 +133,6 @@ keybinds clear-defaults=true {
             BreakPane
             SwitchToMode "locked"
         }
-        bind "h" {
-            GoToPreviousTab
-        }
-        bind "j" {
-            GoToNextTab
-        }
-        bind "k" {
-            GoToPreviousTab
-        }
-        bind "l" {
-            GoToNextTab
-        }
         bind "n" {
             NewTab
             SwitchToMode "locked"
@@ -177,26 +157,23 @@ keybinds clear-defaults=true {
         }
     }
     resize {
-        bind "left" {
+        bind "left" "h" {
             Resize "Increase left"
         }
-        bind "down" {
+        bind "down" "j" {
             Resize "Increase down"
         }
-        bind "up" {
+        bind "up" "k" {
             Resize "Increase up"
         }
-        bind "right" {
+        bind "right" "l" {
             Resize "Increase right"
         }
-        bind "+" {
+        bind "+" "=" {
             Resize "Increase"
         }
         bind "-" {
             Resize "Decrease"
-        }
-        bind "=" {
-            Resize "Increase"
         }
         bind "H" {
             Resize "Decrease left"
@@ -210,77 +187,34 @@ keybinds clear-defaults=true {
         bind "L" {
             Resize "Decrease right"
         }
-        bind "h" {
-            Resize "Increase left"
-        }
-        bind "j" {
-            Resize "Increase down"
-        }
-        bind "k" {
-            Resize "Increase up"
-        }
-        bind "l" {
-            Resize "Increase right"
-        }
         bind "r" {
             SwitchToMode "normal"
         }
     }
     move {
-        bind "left" {
+        bind "left" "h" {
             MovePane "left"
         }
-        bind "down" {
+        bind "down" "j" {
             MovePane "down"
         }
-        bind "up" {
+        bind "up" "k" {
             MovePane "up"
         }
-        bind "right" {
-            MovePane "right"
-        }
-        bind "h" {
-            MovePane "left"
-        }
-        bind "j" {
-            MovePane "down"
-        }
-        bind "k" {
-            MovePane "up"
-        }
-        bind "l" {
+        bind "right" "l" {
             MovePane "right"
         }
         bind "m" {
             SwitchToMode "normal"
         }
-        bind "n" {
+        bind "n" "tab" {
             MovePane
         }
         bind "p" {
             MovePaneBackwards
         }
-        bind "tab" {
-            MovePane
-        }
     }
     scroll {
-        bind "Ctrl left" {
-            MoveFocusOrTab "left"
-            SwitchToMode "locked"
-        }
-        bind "Ctrl down" {
-            MoveFocus "down"
-            SwitchToMode "locked"
-        }
-        bind "Ctrl up" {
-            MoveFocus "up"
-            SwitchToMode "locked"
-        }
-        bind "Ctrl right" {
-            MoveFocusOrTab "right"
-            SwitchToMode "locked"
-        }
         bind "e" {
             EditScrollback
             SwitchToMode "locked"
@@ -288,22 +222,6 @@ keybinds clear-defaults=true {
         bind "f" {
             SwitchToMode "entersearch"
             SearchInput 0
-        }
-        bind "Ctrl h" {
-            MoveFocusOrTab "left"
-            SwitchToMode "locked"
-        }
-        bind "Ctrl j" {
-            MoveFocus "down"
-            SwitchToMode "locked"
-        }
-        bind "Ctrl k" {
-            MoveFocus "up"
-            SwitchToMode "locked"
-        }
-        bind "Ctrl l" {
-            MoveFocusOrTab "right"
-            SwitchToMode "locked"
         }
         bind "s" {
             SwitchToMode "normal"
@@ -370,19 +288,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Ctrl left" {
-            MoveFocusOrTab "left"
-        }
-        bind "Ctrl down" {
-            MoveFocus "down"
-        }
-        bind "Ctrl up" {
-            MoveFocus "up"
-        }
-        bind "Ctrl right" {
-            MoveFocusOrTab "right"
-        }
-        bind "Alt +" {
+        bind "Alt +" "Alt =" {
             Resize "Increase"
         }
         bind "Alt -" {
@@ -415,9 +321,6 @@ keybinds clear-defaults=true {
         bind "Ctrl 9" {
             GoToTab 9
         }
-        bind "Alt =" {
-            Resize "Increase"
-        }
         bind "Alt [" {
             PreviousSwapLayout
         }
@@ -427,15 +330,28 @@ keybinds clear-defaults=true {
         bind "Alt f" {
             ToggleFloatingPanes
         }
+        bind "Alt i" {
+            MoveTab "left"
+        }
+        bind "Alt o" {
+            MoveTab "right"
+        }
+        bind "Alt n" {
+            NewPane
+        }
+        bind "Alt p" {
+            TogglePaneInGroup
+        }
+        bind "Alt Shift p" {
+            ToggleGroupMarking
+        }
+        // Unified Neovim Navigator Plugin Binds
         bind "Ctrl h" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "left"
                 floating false
             }
-        }
-        bind "Alt i" {
-            MoveTab "left"
         }
         bind "Ctrl j" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
@@ -457,18 +373,6 @@ keybinds clear-defaults=true {
                 payload "right"
                 floating false
             }
-        }
-        bind "Alt n" {
-            NewPane
-        }
-        bind "Alt o" {
-            MoveTab "right"
-        }
-        bind "Alt p" {
-            TogglePaneInGroup
-        }
-        bind "Alt Shift p" {
-            ToggleGroupMarking
         }
     }
     shared_except "locked" "renametab" "renamepane" {
@@ -494,6 +398,7 @@ keybinds clear-defaults=true {
             SwitchToMode "move"
         }
     }
+    // Added "session" exclusion to fix the ghost tab bug:
     shared_except "locked" "entersearch" "search" "renametab" "renamepane" "session" {
         bind "o" {
             SwitchToMode "session"
@@ -514,32 +419,23 @@ keybinds clear-defaults=true {
             SwitchToMode "scroll"
         }
     }
-    shared_except "locked" "resize" "pane" "tab" "entersearch" "renametab" "renamepane" {
+    shared_except "locked" "resize" "pane" "tab" "entersearch" "renametab" "renamepane" "session" {
         bind "r" {
             SwitchToMode "resize"
         }
     }
     shared_among "scroll" "search" {
-        bind "PageDown" {
+        bind "PageDown" "right" "l" "Ctrl f" {
             PageScrollDown
         }
-        bind "PageUp" {
+        bind "PageUp" "left" "h" "Ctrl b" {
             PageScrollUp
         }
-        bind "left" {
-            PageScrollUp
-        }
-        bind "down" {
+        bind "down" "j" {
             ScrollDown
         }
-        bind "up" {
+        bind "up" "k" {
             ScrollUp
-        }
-        bind "right" {
-            PageScrollDown
-        }
-        bind "Ctrl b" {
-            PageScrollUp
         }
         bind "Ctrl c" {
             ScrollToBottom
@@ -548,30 +444,12 @@ keybinds clear-defaults=true {
         bind "d" {
             HalfPageScrollDown
         }
-        bind "Ctrl f" {
-            PageScrollDown
-        }
-        bind "h" {
-            PageScrollUp
-        }
-        bind "j" {
-            ScrollDown
-        }
-        bind "k" {
-            ScrollUp
-        }
-        bind "l" {
-            PageScrollDown
-        }
         bind "u" {
             HalfPageScrollUp
         }
     }
     entersearch {
-        bind "Ctrl c" {
-            SwitchToMode "scroll"
-        }
-        bind "esc" {
+        bind "Ctrl c" "esc" {
             SwitchToMode "scroll"
         }
         bind "enter" {
