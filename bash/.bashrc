@@ -216,10 +216,26 @@ alias vim="nvim"
 alias v="nvim"
 alias n="nvim"
 
-# Python Django
+# Python and Django
 alias pdtest="python manage.py test"
 alias pdrun="python manage.py runserver"
 alias pdftest="python manage.py test functional_tests"
+
+va() {
+    if [ -f .venv/bin/activate ]; then
+        echo "Activating virtual environment from: .venv in $PWD"
+        echo -e "Enjoy working on the $(basename "$PWD") project, ${USER^}!"
+        source .venv/bin/activate
+    # If not found, check for a venv directory
+    elif [ -f venv/bin/activate ]; then
+        echo "Activating virtual environment from: venv in $PWD"
+        echo -e "Enjoy working on the $(basename "$PWD") project, ${USER^}!"
+        source venv/bin/activate
+    else
+        echo "Error: No 'venv' or '.venv' directory found." >&2
+        return 1
+    fi
+}
 
 #######################################################
 # ENV
