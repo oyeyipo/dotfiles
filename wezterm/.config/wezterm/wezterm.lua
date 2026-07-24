@@ -3,7 +3,7 @@
 local wezterm = require 'wezterm'
 
 ------------------------------------------------------------
--- DEFAULT PROGRAM (Windows-friendly)
+-- DEFAULT PROGRAM
 ------------------------------------------------------------
 
 local target = wezterm.target_triple
@@ -20,7 +20,7 @@ local OS = IS_WIN and 'windows' or IS_LINUX and 'linux' or IS_MAC and 'mac' or e
 local config = wezterm.config_builder()
 
 ------------------------------------------------------------
--- FONT (robust fallback -- will never error)
+-- FONT
 ------------------------------------------------------------
 
 config.font = wezterm.font_with_fallback {
@@ -56,7 +56,7 @@ config.window_padding = {
 }
 
 ------------------------------------------------------------
--- DEFAULT PROGRAM (Windows-friendly)
+-- DEFAULT PROGRAM
 ------------------------------------------------------------
 
 -- config.default_prog = detect_default_shell()
