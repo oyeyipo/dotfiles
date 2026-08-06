@@ -12,8 +12,9 @@ return {
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
 
-    -- Allows extra capabilities provided by blink.cmp
+    -- Allows extra capabilities provided by blink.cmp & nvim-file-operations
     'saghen/blink.cmp',
+    'Crysthamus/nvim-file-operations',
 
     -- LSP signature hint as you type.
     -- blink.cmp has a built-in signature that can be used but is
