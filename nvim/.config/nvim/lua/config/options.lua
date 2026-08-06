@@ -1,84 +1,81 @@
--- [[ Setting options ]]
-local opt = vim.o
-
 -- Appearance
-opt.number = true
-opt.relativenumber = true -- To help with jumping
-opt.termguicolors = true
-opt.colorcolumn = '80'
-opt.signcolumn = 'yes'
-opt.scrolloff = 10
-opt.cmdheight = 1
-opt.completeopt = 'menuone,noinsert,noselect'
+vim.o.number = true
+vim.o.relativenumber = true -- To help with jumping
+vim.o.termguicolors = true
+vim.o.colorcolumn = '80'
+vim.o.signcolumn = 'yes'
+vim.o.scrolloff = 10
+vim.o.cmdheight = 1
+vim.o.completeopt = 'menuone,noinsert,noselect'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-opt.mouse = 'a'
+vim.o.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-opt.showmode = false
+vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 -- Remove this option if you want your OS clipboard to remain independent.
-vim.schedule(function() opt.clipboard = 'unnamedplus' end)
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
-opt.breakindent = true
+vim.o.breakindent = true
 
 -- Save undo history
-opt.undofile = true
+vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the
 -- search term
-opt.ignorecase = true
-opt.smartcase = true
-opt.incsearch = true
-opt.hlsearch = false
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
+vim.o.hlsearch = false
 
 -- Decrease update time
-opt.updatetime = 200
+vim.o.updatetime = 200
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-opt.timeoutlen = 300
+vim.o.timeoutlen = 300
 
 -- Configure how new splits should be opened
-opt.splitright = true
-opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor
-opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.list = true
+vim.o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview Substitution live, as you type!
-opt.inccommand = 'split'
+vim.o.inccommand = 'split'
 
 -- Show which line your cursor is on
-opt.cursorline = true
+vim.o.cursorline = true
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.opt.confirm = true
+vim.o.confirm = true
 -- vim.o.winborder = "rounded"
 
 -- Tab / indentation
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.smartindent = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
 
-opt.wrap = false
+vim.o.wrap = false
 
 -- Other Bahaviours
-opt.encoding = 'UTF-8'
-opt.autochdir = false
-opt.hidden = true
-opt.errorbells = false
-opt.swapfile = false
-opt.backup = false
-opt.undodir = vim.fn.expand '~/.vim/undodir'
-opt.backspace = 'indent,eol,start'
-vim.opt.iskeyword:append '-'
-opt.modifiable = true
+vim.o.encoding = 'UTF-8'
+vim.o.autochdir = false
+vim.o.hidden = true
+vim.o.errorbells = false
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = vim.fn.expand '~/.vim/undodir'
+vim.o.backspace = 'indent,eol,start'
+vim.o.iskeyword:append '-'
+vim.o.modifiable = true
