@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 local function options(desc) return { desc = desc, noremap = true, silent = true } end
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-k.set('n', '<Esc>', ':nohlsearch<CR>', options 'Clear highlights on search')
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
 
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
@@ -12,7 +12,7 @@ vim.diagnostic.config {
   severity_sort = true,
   update_in_insert = false,
   float = { border = 'rounded', source = 'if_many' },
-  underline = { severity = vim.diagnostic.severity.ERROR },
+  underline = { severity = vim.diagnostic.severity.WARN },
 
   -- Can switch between these as you prefer
   virtual_text = true, -- Text shows up at the end of the line
@@ -39,7 +39,7 @@ vim.diagnostic.config {
     end,
   },
 }
-k.set('n', '<leader>q', vim.diagnostic.setloclist, options 'Open diagnostic [Q]uickfix list')
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Remap J and K in visual mode to move selected lines down or up
 -- while maintaining selection and reindenting.
@@ -117,6 +117,12 @@ k.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 k.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 k.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 k.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- NOTE: Some terminals have keymaps or are not able to send distinct keycodes
+vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
+vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
+vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
+vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
 -- Indenting
 k.set('v', '<', '<gv', { desc = 'Indent selected line right' })
