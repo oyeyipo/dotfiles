@@ -125,14 +125,14 @@ return { -- Autocompletion
       default = { 'lsp', 'path', 'snippets' },
     },
 
+    snippets = { preset = 'luasnip' },
+
     -- Whether to automatically show the window when new completion items are available
     cmdline = {
       completion = {
         menu = { auto_show = true },
       },
     },
-
-    snippets = { preset = 'luasnip' },
 
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
     -- which automatically downloads a prebuilt binary when enabled.

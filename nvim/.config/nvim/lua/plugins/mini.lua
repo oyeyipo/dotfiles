@@ -10,7 +10,8 @@ return {
     --  - yiiq - [Y]ank [I]+1 [N]ext [Q]uote
     --  - ci'  - [C]hange [I]nside [']quote
     require('mini.ai').setup {
-      -- NOTE: Avoid conflicts with the built-in incremental selection mappings on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
+      --  NOTE: Avoid conflicts with the built-in incremental selection mappings
+      --  on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
       mappings = {
         around_next = 'aa',
         inside_next = 'ii',
@@ -24,5 +25,8 @@ return {
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
+
+    -- If a nerd font is available, load the icons module for pretty icons in various plugins.
+    -- if vim.g.have_nerd_font then require('mini.icons').setup() end
   end,
 }

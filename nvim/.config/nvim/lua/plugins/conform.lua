@@ -24,6 +24,9 @@ return { -- Autoformat
         }
       end
     end,
+    default_format_opts = {
+      lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
       markdown = { 'doctoc', 'markdownlint', 'mdformat' },
@@ -49,9 +52,6 @@ return { -- Autoformat
       -- Use the "_" filetype to run formatters on filetypes that don't
       -- have other formatters configured.
       ['_'] = { 'trim_whitespace' },
-    },
-    default_format_opts = {
-      lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
     -- Custom formatters and overrides for built-in formatters
     formatters = {

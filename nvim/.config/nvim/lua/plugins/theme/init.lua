@@ -1,3 +1,4 @@
+-- If you want to see what colorscheme are already installed, you can use `:Telescope colorscheme`.
 return {
   -- Activated theme
   require 'plugins.theme.catppuccin',
