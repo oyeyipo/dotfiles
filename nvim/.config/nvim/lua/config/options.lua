@@ -45,7 +45,7 @@ vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor
 vim.o.list = true
-vim.o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview Substitution live, as you type!
 vim.o.inccommand = 'split'
@@ -56,7 +56,7 @@ vim.o.cursorline = true
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.o.confirm = true
+vim.opt.confirm = true
 -- vim.o.winborder = "rounded"
 
 -- Tab / indentation
@@ -77,5 +77,5 @@ vim.o.swapfile = false
 vim.o.backup = false
 vim.o.undodir = vim.fn.expand '~/.vim/undodir'
 vim.o.backspace = 'indent,eol,start'
-vim.o.iskeyword:append '-'
+vim.opt.iskeyword:append '-'
 vim.o.modifiable = true
