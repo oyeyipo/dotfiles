@@ -42,6 +42,7 @@ return {
             --"*/src/*/tsconfig.json",
           },
         },
+        use_libuv_file_watcher = true, -- use the OS level file watchers to detect changes
       },
       default_component_configs = {
         diagnostics = {
