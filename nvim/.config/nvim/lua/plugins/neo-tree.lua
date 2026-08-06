@@ -7,6 +7,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
+    's1n7ax/nvim-window-picker',
   },
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = '[\\] NeoTree toggle', silent = true },
@@ -58,6 +59,20 @@ return {
             warn = 'DiagnosticSignWarn',
             error = 'DiagnosticSignError',
           },
+        },
+      },
+      event_handlers = {
+        {
+          event = 'neo_tree_window_after_open',
+          handler = function(args)
+            if args.position == 'left' or args.position == 'right' then vim.cmd 'wincmd =' end
+          end,
+        },
+        {
+          event = 'neo_tree_window_after_close',
+          handler = function(args)
+            if args.position == 'left' or args.position == 'right' then vim.cmd 'wincmd =' end
+          end,
         },
       },
     }
