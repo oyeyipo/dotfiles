@@ -1,3 +1,6 @@
+-- Enable faster startup by caching compiled Lua modules
+vim.loader.enable()
+
 require 'config.globals'
 require 'config.options'
 require 'config.keymaps'
