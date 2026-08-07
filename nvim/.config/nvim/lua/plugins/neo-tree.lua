@@ -27,6 +27,10 @@ return {
           mappings = {
             ['\\'] = 'close_window',
             ['Z'] = 'expand_all_subnodes',
+            ['<cr>'] = 'open_with_window_picker',
+            ['o'] = 'open_with_window_picker',
+            ['s'] = 'split_with_window_picker',
+            ['v'] = 'vsplit_with_window_picker',
           },
         },
         filtered_items = {
