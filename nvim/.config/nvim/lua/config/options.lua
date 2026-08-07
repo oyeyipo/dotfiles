@@ -69,9 +69,7 @@ vim.o.smartindent = true
 vim.o.wrap = false
 
 -- Other Bahaviours
-vim.o.encoding = 'UTF-8'
 vim.o.autochdir = false
-vim.o.hidden = true
 vim.o.errorbells = false
 vim.o.swapfile = false
 vim.o.backup = false
