@@ -1,4 +1,4 @@
-return {
+return { -- Or, try Grapple.nvim => <https://github.com/cbochs/grapple.nvim>
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
   event = 'VimEnter',
@@ -27,11 +27,7 @@ return {
     map('<leader>r4', function() harpoon:list():replace_at(4) end, '[R]eplace buffer at [4]')
 
     -- Toggle previous & next buffers stored within Harpoon list
-    -- map("<leader>p", function()
-    -- 	harpoon:list():prev()
-    -- end, "[P]revious buffer")
-    -- map("<leader>n", function()
-    -- 	harpoon:list():next()
-    -- end, "[N]ext buffer")
+    map('<C-S-n>', function() harpoon:list():next() end, '[N]ext buffer')
+    map('<C-S-p>', function() harpoon:list():prev() end, '[P]revious buffer')
   end,
 }

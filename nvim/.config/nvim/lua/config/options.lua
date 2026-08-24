@@ -17,7 +17,7 @@ vim.o.showmode = false
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 -- Remove this option if you want your OS clipboard to remain independent.
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+-- vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 vim.o.breakindent = true
