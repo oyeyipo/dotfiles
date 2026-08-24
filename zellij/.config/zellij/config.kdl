@@ -518,3 +518,9 @@ serialize_pane_viewport true
 // Whether to show tips on startup
 // Default: true
 show_startup_tips false
+// The style of the pane frames when pane_frames is enabled.
+// Options:
+//     "titles" (default) - a single title line above each pane
+//     "full" - a full border around each pane (the pre-0.45.0 look)
+//     "none" - no frames at all (identical to pane_frames false)
+pane_frame_style "full"
