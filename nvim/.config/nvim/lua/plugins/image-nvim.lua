@@ -4,7 +4,7 @@ return {
   build = false,
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   opts = {
-    backend = 'sixel',
+    backend = 'kitty',
     processor = 'magick_cli',
     integrations = {
       markdown = {
