@@ -6,5 +6,4 @@ return {
   opts = {
     backend = 'kitty',
   },
-  window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
 }
