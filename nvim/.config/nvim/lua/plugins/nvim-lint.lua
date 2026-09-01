@@ -4,23 +4,45 @@ return { -- Linting
   config = function()
     local lint = require 'lint'
 
-    lint.linters_by_ft = {
-      markdown = { 'markdownlint' },
-      -- python = { "flake8" },
-      sh = { 'shellcheck' },
-      typescript = { 'biomejs' },
-      javascript = { 'biomejs' },
-      json = { 'biomejs' },
-      css = { 'biomejs' },
-      javascriptreact = { 'biomejs' },
-      typescriptreact = { 'biomejs' },
-      jsx = { 'biomejs' },
-      cpp = { 'cpplint' },
-      lua = { 'luacheck' },
-      htmldjango = { 'djlint' },
-      html = { 'biomejs' },
-      yaml = { 'yamllint' },
-    }
+    -- Old Way
+    --
+    -- lint.linters_by_ft = {
+    --   markdown = { 'markdownlint' },
+    --   -- python = { "flake8" },
+    --   sh = { 'shellcheck' },
+    --   typescript = { 'biomejs' },
+    --   javascript = { 'biomejs' },
+    --   json = { 'biomejs' },
+    --   css = { 'biomejs' },
+    --   javascriptreact = { 'biomejs' },
+    --   typescriptreact = { 'biomejs' },
+    --   jsx = { 'biomejs' },
+    --   cpp = { 'cpplint' },
+    --   lua = { 'luacheck' },
+    --   htmldjango = { 'djlint' },
+    --   html = { 'biomejs' },
+    --   yaml = { 'yamllint' },
+    -- }
+
+    -- To allow other plugins to add linters to require('lint').linters_by_ft,
+    -- instead set linters_by_ft like this:
+    lint.linters_by_ft = lint.linters_by_ft or {}
+
+    lint.linters_by_ft['markdown'] = { 'markdownlint' }
+    lint.linters_by_ft['python'] = nil
+    lint.linters_by_ft['sh'] = { 'shellcheck' }
+    lint.linters_by_ft['typescript'] = { 'biomejs' }
+    lint.linters_by_ft['javascript'] = { 'biomejs' }
+    lint.linters_by_ft['json'] = { 'biomejs' }
+    lint.linters_by_ft['css'] = { 'biomejs' }
+    lint.linters_by_ft['javascriptreact'] = { 'biomejs' }
+    lint.linters_by_ft['typescriptreact'] = { 'biomejs' }
+    lint.linters_by_ft['jsx'] = { 'biomejs' }
+    lint.linters_by_ft['cpp'] = { 'cpplint' }
+    lint.linters_by_ft['lua'] = { 'luacheck' }
+    lint.linters_by_ft['htmldjango'] = { 'djlint' }
+    lint.linters_by_ft['html'] = { 'biomejs' }
+    lint.linters_by_ft['yaml'] = { 'yamllint' }
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
     -- instead set linters_by_ft like this:
