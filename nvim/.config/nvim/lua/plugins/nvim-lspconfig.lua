@@ -122,7 +122,12 @@ return {
               checkThirdParty = false,
               -- NOTE: This version is a lot slower and will cause issues when working on you own configuration.
               -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-              library = vim.api.nvim_get_runtime_file('', true),
+              library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
+                '${3rd}/luv/library',
+                '${3rd}/busted/library',
+                'wezterm-types',
+              }),
+              -- library = vim.api.nvim_get_runtime_file('', true), -- new state according of kickstart.nvim
             },
           })
         end,
