@@ -506,7 +506,7 @@ ui {
 web_client {
   font "monospace"
 }
-theme "nightfox"
+theme "night-owl"
 // Choose the base input mode of zellij.
 // Default: normal
 default_mode "locked"

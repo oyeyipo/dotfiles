@@ -1,6 +1,6 @@
 return { -- Best light themed color
   'NLKNguyen/papercolor-theme',
-  -- lazy = false,
+  lazy = true,
   -- priority = 1000,
   config = function()
     vim.g.PaperColor_Theme_Options = {
@@ -18,7 +18,7 @@ return { -- Best light themed color
         },
       },
     }
-    vim.cmd [[set background=light]]
-    vim.cmd 'colorscheme PaperColor'
+    -- vim.cmd [[set background=light]]
+    -- vim.cmd.colorscheme 'PaperColor'
   end,
 }
