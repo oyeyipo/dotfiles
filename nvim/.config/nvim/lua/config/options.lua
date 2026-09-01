@@ -17,13 +17,18 @@ vim.o.showmode = false
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 -- Remove this option if you want your OS clipboard to remain independent.
--- vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
+
+-- Built-in undotree plugin
+-- To open a visual and interactive undo tree, type :Undotree
+-- See `:help :Undotree`
+-- vim.schedule(function() vim.cmd.packadd 'nvim.undotree' end)
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the
 -- search term
