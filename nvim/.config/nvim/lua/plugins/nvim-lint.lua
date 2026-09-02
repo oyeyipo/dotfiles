@@ -5,7 +5,7 @@ return { -- Linting
     local lint = require 'lint'
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
-    -- instead set linters_by_ft like this:
+    -- set linters_by_ft like this:
     lint.linters_by_ft = lint.linters_by_ft or {}
 
     -- You can disable the default linters by setting their filetypes to nil:
