@@ -4,6 +4,5 @@ return {
   require 'plugins.theme.embark',
   require 'plugins.theme.night-fox',
   require 'plugins.theme.night-owl',
-  require 'plugins.theme.onedark',
   require 'plugins.theme.tokyo-night',
 }
