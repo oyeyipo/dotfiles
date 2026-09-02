@@ -1,24 +1,28 @@
-return { -- Create beautiful code snippet
+-- see: https://github.com/michaelrommel/nvim-silicon
+-- for the local version alternative
+return {
   'ellisonleao/carbon-now.nvim',
   cmd = 'CarbonNow',
+  lazy = true,
   keys = {
     {
       '<leader>cc',
       '<cmd>CarbonNow<CR>',
       desc = '[C]apture [C]ode',
       mode = 'v',
+      silent = true,
     },
   },
   opts = {
     options = {
-      bg = 'yellow',
-      theme = 'Night Owl',
+      bg = '#F8E71C',
+      theme = 'night-owl',
       font_family = 'Cascadia Code',
-      font_size = '16px',
-      titlebar = 'Made with 💗 by Wale',
+      titlebar = 'Made by WaleCoded 🚀',
       drop_shadow = true,
-      padding_horizontal = '40px',
-      padding_vertical = '40px',
+      padding_horizontal = '64px',
+      padding_vertical = '64px',
+      width = '860',
       window_theme = 'none',
     },
   },
