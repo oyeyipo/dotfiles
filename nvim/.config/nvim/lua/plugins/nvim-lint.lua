@@ -4,6 +4,15 @@ return { -- Linting
   config = function()
     local lint = require 'lint'
 
+    local function add_linter(fts, linters)
+      for _, ft in ipairs(fts) do
+        lint.linters_by_ft[ft] = lint.linters_by_ft[ft] or {}
+        for _, linter in ipairs(linters) do
+          table.insert(lint.linters_by_ft[ft], linter)
+        end
+      end
+    end
+
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
     -- set linters_by_ft like this:
     lint.linters_by_ft = lint.linters_by_ft or {}
@@ -12,24 +21,18 @@ return { -- Linting
     lint.linters_by_ft['markdown'] = { 'markdownlint' }
     lint.linters_by_ft['python'] = nil
     lint.linters_by_ft['sh'] = { 'shellcheck' }
-    lint.linters_by_ft['typescript'] = { 'biomejs' }
-    lint.linters_by_ft['javascript'] = { 'biomejs' }
-    lint.linters_by_ft['json'] = { 'biomejs' }
-    lint.linters_by_ft['css'] = { 'biomejs' }
-    lint.linters_by_ft['javascriptreact'] = { 'biomejs' }
-    lint.linters_by_ft['typescriptreact'] = { 'biomejs' }
-    lint.linters_by_ft['jsx'] = { 'biomejs' }
     lint.linters_by_ft['cpp'] = { 'cpplint' }
     lint.linters_by_ft['lua'] = { 'luacheck' }
     lint.linters_by_ft['htmldjango'] = { 'djlint' }
-    lint.linters_by_ft['html'] = { 'biomejs' }
     lint.linters_by_ft['yaml'] = { 'yamllint' }
     lint.linters_by_ft['inko'] = nil
     lint.linters_by_ft['janet'] = nil
-    lint.linters_by_ft['rst'] = nil
     lint.linters_by_ft['ruby'] = nil
     lint.linters_by_ft['terraform'] = nil
-    lint.linters_by_ft['text'] = nil
+    -- Sample: Run linter(s) on every filetype
+    -- lint.linters_by_ft['_'] = { 'codespell' }
+    add_linter({ 'markdown', 'rst', 'text' }, { 'codespell' })
+    add_linter({ 'html', 'jsx', 'typescriptreact', 'javascriptreact', 'css', 'json', 'javascript', 'typescript' }, { 'biomejs' })
 
     -- Create autocommand which carries out the actual linting
     -- on the specified events.
