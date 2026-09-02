@@ -201,6 +201,8 @@ return {
       'kdlfmt',
       -- YAML
       'yamllint',
+      -- Closure
+      'clj-kondo',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
