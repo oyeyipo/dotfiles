@@ -1,8 +1,6 @@
 -- debug.lua (DAP means Debug Adapter Protocol)
 --
 -- shows how to use the DAP plugin to debug your code.
----@module 'lazy'
----@type LazySpec
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
