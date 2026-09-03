@@ -17,7 +17,9 @@ return {
     options = {
       bg = '#F8E71C',
       theme = 'night-owl',
-      font_family = 'Cascadia Code',
+      font_size = '16px',
+      font_family = 'Jetbrains Mono',
+      line_height = '155%',
       titlebar = 'Made by WaleCoded 🚀',
       drop_shadow = true,
       padding_horizontal = '64px',
