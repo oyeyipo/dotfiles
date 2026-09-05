@@ -105,22 +105,6 @@ keybinds clear-defaults=true {
       GoToTab 5
       SwitchToMode "locked"
     }
-    bind "6" {
-      GoToTab 6
-      SwitchToMode "locked"
-    }
-    bind "7" {
-      GoToTab 7
-      SwitchToMode "locked"
-    }
-    bind "8" {
-      GoToTab 8
-      SwitchToMode "locked"
-    }
-    bind "9" {
-      GoToTab 9
-      SwitchToMode "locked"
-    }
     bind "[" {
       BreakPaneLeft
       SwitchToMode "locked"

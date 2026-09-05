@@ -1,10 +1,11 @@
-local k = vim.keymap
+local set = vim.keymap.set
+local k = vim.keycode
 local opts = { noremap = true, silent = true }
 
 local function options(desc) return { desc = desc, noremap = true, silent = true } end
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
+set('n', '<Esc>', ':nohlsearch<CR>')
 
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
@@ -39,66 +40,66 @@ vim.diagnostic.config {
     end,
   },
 }
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Remap J and K in visual mode to move selected lines down or up
 -- while maintaining selection and reindenting.
-k.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
-k.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
+set('v', 'J', ":m '>+1<CR>gv=gv", opts)
+set('v', 'K', ":m '<-2<CR>gv=gv", opts)
 
 -- Scroll down or up half a screen and center the cursor.
-k.set('n', '<C-d>', '<C-d>zz', opts)
-k.set('n', '<C-u>', '<C-u>zz', opts)
+set('n', '<C-d>', '<C-d>zz', opts)
+set('n', '<C-u>', '<C-u>zz', opts)
 
 -- Jump to the next or previous search result, center it, and open folds
-k.set('n', 'n', 'nzzzv', opts)
-k.set('n', 'N', 'Nzzzv', opts)
+set('n', 'n', 'nzzzv', opts)
+set('n', 'N', 'Nzzzv', opts)
 
 -- Perform custom line join operation
-k.set('n', 'J', 'mzJ`z', opts)
+set('n', 'J', 'mzJ`z', opts)
 
 -- Replace selected text with clipboard content without overwriting the clipboard
-k.set('x', '<leader>p', [["_dP]], options '[P]aste without overwriting clipboard')
+set('x', '<leader>p', [["_dP]], options '[P]aste without overwriting clipboard')
 
 -- For when you want to separate neovim and system clipboard
 -- Yank (copy) to system clipboard in normal and visual modes.
-k.set({ 'n', 'v' }, '<leader>y', [["+y]])
+set({ 'n', 'v' }, '<leader>y', [["+y]])
 -- Yank (copy) the entire line to system clipboard in normal mode.
-k.set('n', '<leader>Y', [["+Y]])
+set('n', '<leader>Y', [["+Y]])
 
 -- Delete to the black hole register in normal and visual modes,
 -- without affecting the clipboard.
 -- Normal `d` is CUT while the below is real delete deal
-k.set({ 'n', 'v' }, '<leader>d', [["_d]], opts)
+set({ 'n', 'v' }, '<leader>d', [["_d]], opts)
 
 -- Jump to the next or previous item in the quickfix list and center the cursor.
-k.set('n', ']q', '<cmd>cnext<CR>zz', opts)
-k.set('n', '[q', '<cmd>cprev<CR>zz', opts)
+set('n', ']q', '<cmd>cnext<CR>zz', opts)
+set('n', '[q', '<cmd>cprev<CR>zz', opts)
 
 -- Jump to the next or previous item in the location list and center the cursor.
-k.set('n', '<leader>k', '<cmd>lnext<CR>zz', opts)
-k.set('n', '<leader>j', '<cmd>lprev<CR>zz', opts)
+set('n', '<leader>k', '<cmd>lnext<CR>zz', opts)
+set('n', '<leader>j', '<cmd>lprev<CR>zz', opts)
 
 -- Search and replace the word under the cursor across the entire
 -- file, with confirmation prompt.
-k.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Search and [R]eplace current [W]ord' })
+set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Search and [R]eplace current [W]ord' })
 
 -- Source current neovim config file
-k.set('n', '<leader>so', function() vim.cmd 'so' end, { desc = '[S][O]urce current config file' })
+set('n', '<leader>so', function() vim.cmd 'so' end, { desc = '[S][O]urce current config file' })
 
 -- DISABLE arrow keys in normal mode
-k.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-k.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-k.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-k.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Convience keys
-k.set('i', 'jj', '<Esc>', opts)
-k.set('i', 'jk', '<Esc>', opts)
-k.set('n', 'Q', '<nop>')
+set('i', 'jj', '<Esc>', opts)
+set('i', 'jk', '<Esc>', opts)
+set('n', 'Q', '<nop>')
 
 -- Toggle wrapping
-k.set('n', '<leader>z', function()
+set('n', '<leader>z', function()
   vim.wo.wrap = not vim.wo.wrap
   print('Wrap ' .. (vim.wo.wrap and 'Enabled' or 'Disabled'))
 end, { desc = '[z] Toggle Wrap' })
@@ -107,9 +108,9 @@ end, { desc = '[z] Toggle Wrap' })
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-k.set('t', '<Esc><Esc>', '<C-\\><C-n>', table.insert(opts, { desc = 'Exit terminal mode' }))
+set('t', '<Esc><Esc>', '<C-\\><C-n>', table.insert(opts, { desc = 'Exit terminal mode' }))
 -- Open a terminal at the bottom of the screen with a fixed height.
--- k.set('n', ',st', function()
+-- set('n', ',st', function()
 --   vim.cmd.new()
 --   vim.cmd.wincmd 'J'
 --   vim.cmd.nvim_win_set_height(0, 12)
@@ -121,17 +122,27 @@ k.set('t', '<Esc><Esc>', '<C-\\><C-n>', table.insert(opts, { desc = 'Exit termin
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-k.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-k.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-k.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-k.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- NOTE: Some terminals have keymaps or are not able to send distinct keycodes
-vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
-vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
-vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
-vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
+set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
+set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
+set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+
+-- Toggle hlsearch if it's on, otherwise just do "enter"
+set('n', '<CR>', function()
+  if vim.v.hlsearch == 1 then
+    vim.cmd.nohl()
+    return ''
+  else
+    return k '<CR>'
+  end
+end, { expr = true })
 
 -- Indenting
-k.set('v', '<', '<gv', { desc = 'Indent selected line right' })
-k.set('v', '>', '>gv', { desc = 'Indent selected line left' })
+set('v', '<', '<gv', { desc = 'Indent selected line right' })
+set('v', '>', '>gv', { desc = 'Indent selected line left' })
