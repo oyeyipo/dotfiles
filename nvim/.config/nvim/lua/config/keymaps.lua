@@ -108,6 +108,14 @@ end, { desc = '[z] Toggle Wrap' })
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 k.set('t', '<Esc><Esc>', '<C-\\><C-n>', table.insert(opts, { desc = 'Exit terminal mode' }))
+-- Open a terminal at the bottom of the screen with a fixed height.
+-- k.set('n', ',st', function()
+--   vim.cmd.new()
+--   vim.cmd.wincmd 'J'
+--   vim.cmd.nvim_win_set_height(0, 12)
+--   vim.wo.winfixheight = true
+--   vim.cmd.term()
+-- end)
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows

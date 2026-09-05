@@ -35,3 +35,15 @@ vim.api.nvim_create_user_command('LinterInfo', function()
     print('No linters configured for ' .. ft)
   end
 end, { desc = 'Show active linters for filetyp' })
+
+-- Set local settings for terminal buffers
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('custom-term-open', {}),
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.scrolloff = 0
+
+    vim.bo.filetype = 'terminal'
+  end,
+})
