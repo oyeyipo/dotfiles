@@ -146,3 +146,25 @@ end, { expr = true })
 -- Indenting
 set('v', '<', '<gv', { desc = 'Indent selected line right' })
 set('v', '>', '>gv', { desc = 'Indent selected line left' })
+
+-- Control the size of splits (height/width)
+-- set('n', '<M-,>', '<c-w>5<')
+-- set('n', '<M-.>', '<c-w>5>')
+-- set('n', '<M-t>', '<C-W>+')
+-- set('n', '<M-s>', '<C-W>-')
+
+-- set('n', '<M-j>', function()
+--   if vim.opt.diff:get() then
+--     vim.cmd [[normal! ]c]]
+--   else
+--     vim.cmd [[m .+1<CR>==]]
+--   end
+-- end)
+--
+-- set('n', '<M-k>', function()
+--   if vim.opt.diff:get() then
+--     vim.cmd [[normal! [c]]
+--   else
+--     vim.cmd [[m .-2<CR>==]]
+--   end
+-- end)
