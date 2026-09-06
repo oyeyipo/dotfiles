@@ -20,6 +20,11 @@ mann() { man "$@" | bat -l man --style=plain; }
 export LESS="-R --use-color -i"
 export LESSHISTFILE=-
 
+# Wslg display bug fix
+if [ -n "$WSL_DISTRO_NAME" ]; then
+    export GDK_BACKEND=x11
+fi
+
 # Set VI mode
 set -o vi
 bind 'set keyseq-timeout 40'
