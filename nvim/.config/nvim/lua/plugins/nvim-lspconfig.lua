@@ -159,6 +159,7 @@ return {
       zls = {},
       ast_grep = {},
       rust_analyzer = {},
+      autohotkey_lsp = {},
     }
 
     -- Ensure the servers and tools above are installed
