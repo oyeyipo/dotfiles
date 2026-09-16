@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 ---@type Wezterm
 local wezterm = require 'wezterm'
+local config = wezterm.config_builder()
 
 ------------------------------------------------------------
 -- DEFAULT PROGRAM
@@ -13,11 +14,8 @@ local IS_MAC = target:find 'apple' ~= nil
 
 local OS = IS_WIN and 'windows' or IS_LINUX and 'linux' or IS_MAC and 'mac' or error('Unknown platform: ' .. target)
 
-------------------------------------------------------------
--- CONFIG BUILDER
-------------------------------------------------------------
-
-local config = wezterm.config_builder()
+-- config.default_prog = detect_default_shell()
+if OS == 'windows' then config.default_domain = 'WSL:archlinux' end
 
 ------------------------------------------------------------
 -- FONT
@@ -56,14 +54,7 @@ config.window_padding = {
 }
 
 ------------------------------------------------------------
--- DEFAULT PROGRAM
-------------------------------------------------------------
-
--- config.default_prog = detect_default_shell()
-if OS == 'windows' then config.default_domain = 'WSL:archlinux' end
-
-------------------------------------------------------------
--- LEADER KEY
+-- KEYBINDINGS
 ------------------------------------------------------------
 
 config.leader = {
@@ -72,10 +63,6 @@ config.leader = {
   colors = { compose_cursor = 'blue' },
   timeout_milliseconds = 2000,
 }
-
-------------------------------------------------------------
--- KEYBINDINGS
-------------------------------------------------------------
 
 local act = wezterm.action
 
