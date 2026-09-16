@@ -30,20 +30,17 @@ $#k::
 
 ;------------------------------------------------------------
 
-$^#+Left::
+$^#+Left::{
 n := VD.getCurrentDesktopNum()
 if n = 1
-{
     return
 }
 n -= 1
 VD.MoveWindowToDesktopNum("A", n), VD.goToDesktopNum(n)
 Return
 
-$^#+Right::
+$^#+Right::{
 n := VD.getCurrentDesktopNum()
-if n = % VD.getCount()
-{
     Return
 }
 n += 1
