@@ -36,6 +36,7 @@ return { -- Highlight, edit, and navigate code
       'latex',
       'typst',
       'rust',
+      'kdl',
       'comment',
       'zig',
     }
