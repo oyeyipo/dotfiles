@@ -160,6 +160,10 @@ return {
       ast_grep = {},
       rust_analyzer = {},
       autohotkey_lsp = {},
+      harper_ls = {},
+      java_language_server = {},
+      kmp_lsp = {},
+      snyk_ls = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -205,6 +209,9 @@ return {
       'yamllint',
       -- Closure
       'clj-kondo',
+      -- Java
+      'trivy',
+      'google-java-format',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
