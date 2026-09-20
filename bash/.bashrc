@@ -119,11 +119,6 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # ls alias
-# alias ls='ls --color=auto'
-# alias ll='ls -alF'
-# alias la='ls -A'
-# alias l='ls -CF'
-
 alias l='eza -F --icons --icons --color=always --group-directories-first'       # type indicator
 alias ls='eza -al --icons --color=always --group-directories-first'             # my preferred listing
 alias la='eza -a --icons --color=always --group-directories-first'              # all files and dirs
@@ -257,13 +252,6 @@ PATH="$PATH:$HOME/.local/bin"
 
 # This is where you put your hand rolled scripts (remember to chmod them)
 PATH="$PATH:$HOME/bin"
-
-######################################################
-# FUNCTIONS
-######################################################
-
-# Automatically do an ls after each cd
-# cd() { builtin cd "$@" && ls -a; }
 
 #######################################################
 # fnm (Fast Node Manager)
