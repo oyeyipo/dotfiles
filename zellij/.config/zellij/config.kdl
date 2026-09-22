@@ -311,8 +311,11 @@ keybinds clear-defaults=true {
     bind "Alt ]" {
       NextSwapLayout
     }
-    bind "Alt f" {
+    bind "Alt w" {
       ToggleFloatingPanes
+    }
+    bind "Alt f" {
+      ToggleFocusFullscreen
     }
     bind "Alt i" {
       MoveTab "left"
